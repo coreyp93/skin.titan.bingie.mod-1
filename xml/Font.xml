@@ -4,7 +4,11 @@
 
 	<fontset id="default" unicode="true"> <!--Netflix sans font now default-->
 	
-		
+		<font>
+            <name>IBold30</name>
+            <filename>Impact.ttf</filename>
+            <size>30</size>
+        </font>
         <font>
             <name>arial26</name>
             <filename>arial.ttf</filename>

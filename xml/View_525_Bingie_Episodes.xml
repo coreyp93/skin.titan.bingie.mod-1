@@ -112,7 +112,7 @@
                 <width>episodes_thumb_width</width>
                 <height>episodes_thumb_height</height>
                 <bordersize>8</bordersize>
-                <texture diffuse="diffuse/wide.png" fallback="DefaultVideo.png">$VAR[LandscapeImage]</texture>
+                <texture diffuse="diffuse/wide2.png" fallback="DefaultVideo.png">$VAR[LandscapeImage]</texture>
                 <aspectratio scalediffuse="false" align="left" aligny="center">stretch</aspectratio>
             </control>
             <!-- gradient overlay -->
@@ -142,7 +142,7 @@
                 <width>150</width>
                 <font>Reg26</font>
                 <align>left</align>
-                <textcolor>ffc6c6c6</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>[B]$VAR[View525SeasonEpisodeFormat][/B]</label>
             </control>
             <!-- progress bar -->
@@ -198,17 +198,17 @@
             <align>left</align>
             <aspectratio align="left" aligny="top">stretch</aspectratio>
             <colordiffuse>$INFO[Skin.String(BingieSecondaryTextColor)]</colordiffuse>
-            <texture background="true">bingie/border/default_button_fo.png</texture>
+            <texture background="true" border="10">bingie/border/default_button_fo2.png</texture>
         </control>
         <!-- Season x label -->
         <control type="label">
             <left>15</left>
             <width>280</width>
-            <height>65</height>
+            <height>61</height>
             <aligny>center</aligny>
             <align>left</align>
             <font>Reg32</font>
-            <textcolor>silver</textcolor>
+            <textcolor>white</textcolor>
             <label>$INFO[ListItem.Label]</label>
         </control>
         <!-- x Episodes label -->
@@ -216,11 +216,11 @@
             <visible>String.IsEqual(Container(5250).ListItem.Season,Container(525).ListItem.Season)</visible>
             <right>15</right>
             <width>250</width>
-            <height>65</height>
+            <height>61</height>
             <aligny>center</aligny>
             <align>right</align>
             <font>Reg28</font>
-            <textcolor>ff8d8d8d</textcolor>
+            <textcolor>ffffffff</textcolor>
             <label>[LOWERCASE]$VAR[View525TotalEpisodes][/LOWERCASE]</label>
         </control>
     </include>
@@ -266,7 +266,7 @@
                 <height max="132">auto</height>
                 <align>left</align>
                 <font>Reg26</font>
-                <textcolor>silver</textcolor>
+                <textcolor>white</textcolor>
                 <selectedcolor>white</selectedcolor>
                 <label>$VAR[ViewsPlotWithOutline]</label>
                 <autoscroll delay="8000" time="6000" repeat="2000">!Skin.HasSetting(DisablePlotAutoScroll) + Control.HasFocus(525)</autoscroll>
@@ -279,7 +279,7 @@
                 <height>35</height>
                 <align>left</align>
                 <font>Reg26</font>
-                <textcolor>ff8d8d8d</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <selectedcolor>white</selectedcolor>
                 <label>$INFO[ListItem.Duration(mins),(,m)]</label>
             </control>
@@ -309,7 +309,7 @@
                 <width>auto</width>
                 <aligny>center</aligny>
                 <font>Reg26</font>
-                <textcolor>ff8d8d8d</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[GetYear]</label>
                 <include>Default_Visible_Fade</include>
             </control>
@@ -325,7 +325,18 @@
                 <label>$VAR[View525TotalSeasons]</label>
                 <height>35</height>
                 <aligny>center</aligny>
-                <textcolor>ff8d8d8d</textcolor>
+                <textcolor>ffffffff</textcolor>
+                <font>Reg26</font>
+                <include>Default_Visible_Fade</include>
+            </control>
+			<control type="label" id="611118">
+                <posy>5</posy>
+                <visible>!Control.IsVisible(611117)</visible>
+                <width>auto</width>
+                <label>$VAR[View525CurrentSeason]</label>
+                <height>35</height>
+                <aligny>center</aligny>
+                <textcolor>ffffffff</textcolor>
                 <font>Reg26</font>
                 <include>Default_Visible_Fade</include>
             </control>
@@ -337,17 +348,21 @@
     <include name="View_525_Episodes">
         <control type="group">
             <visible>Control.IsVisible(525)</visible>
-            <!-- base bg -->
-            <control type="image">
+            <!-- Fanart Image Added to View-->
+            <control type="multiimage">
                 <include>FullscreenDimensions</include>
-                <texture background="true" colordiffuse="$VAR[BingiePanelColor]">colors/color_white.png</texture>
+                <texture border="15">diffuse/bgpanel.png</texture>
+			    <colordiffuse>31ffffff</colordiffuse>
+				<imagepath background="true">$VAR[backgroundVar]</imagepath>
+                <aspectratio>scale</aspectratio>
+                <fadetime>350</fadetime>
+                <include>fanartSpeed</include>
+                <randomize>true</randomize>
+                <loop>yes</loop>
+			<!-- Background Animation -->
+                <animation effect="zoom" start="110" end="130" center="auto" time="12000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(BackgroundAnimation)">Conditional</animation>
+                <animation effect="slide" start="-10,-10" end="10,10" time="8000" tween="cubic" easing="inout" pulse="true" condition="Skin.HasSetting(BackgroundAnimation)">Conditional</animation>
             </control>
-            <!-- fanart background image -->
-            <include content="BingieSpotlightCornerImage">
-                <animation effect="fade" start="80" end="20" time="150" condition="true">Conditional</animation>
-                <param name="visibility" value="!String.IsEqual(Window(Home).Property(TrailerPlaying), windowed) + !$EXP[IsPlayingRecognizedContent]" />
-                <param name="image" value="$VAR[fanartBackground]" />
-            </include>
 
             <!-- base bg
             <control type="image">
@@ -404,19 +419,19 @@
  -->
             <!-- left group -->
             <control type="grouplist">
-                <top>22</top>
-                <include>BingieLeftDefs</include>
+                <top>10</top>
+                <left>122</left>
                 <usecontrolcoords>true</usecontrolcoords>
                 <orientation>vertical</orientation>
 
                 <!-- clearlogo title -->
                 <control type="image" id="887767">
                     <left>15</left>
-					<height>186</height>
-                    <width>480</width>
+					<height>190</height>
+                    <width>750</width>
                     <align>left</align>
                     <top>0</top>
-                    <fadetime>600</fadetime>
+                    <fadetime>350</fadetime>
                     <aspectratio align="left" aligny="center">keep</aspectratio>
                     <texture background="true" fallback="colors/color_transparent.png">$VAR[BingieInfoClearlogo]</texture>
                 </control>
@@ -424,6 +439,7 @@
                 <control type="textbox">
                     <visible>String.EndsWith(Control.GetLabel(887767),color_transparent.png)</visible>
                     <top>-143</top>
+					<left>14</left>
                     <width max="650">auto</width>
                     <height>auto</height>
                     <font>Reg48</font>
@@ -437,6 +453,7 @@
                 <!-- row details -->
                 <control type="group">
 					<left>15</left>
+					<top>8</top>
                     <width>650</width>
                     <height>40</height>
                     <include>View_525_Row_Details</include>
@@ -447,7 +464,7 @@
 			<control type="image">
 				<visible>String.Contains(Control.GetLabel(12345),landscape)</visible>
 				<visible>yes</visible>
-				<top>20</top>
+				<top>21</top>
 				<left>15</left>
 				<width>570</width>
 				<height>350</height>
@@ -457,23 +474,19 @@
 				<texture background="true">$VAR[View525SeasonOrShowLandscape]</texture>
 			</control>
 
-
-
-
-
                 <!-- seasons list -->
                 <control type="group">
                     <animation effect="fade" start="100" end="0" condition="Window.IsVisible(busydialog)">Conditional</animation>
-                    <height>390</height>
-                    <!-- fallback season list -->
+                    <height>390</height> 
+                    <!-- fallback season list 
                     <control type="group">
                         <visible>!Control.IsVisible(5250)</visible>
                         <animation effect="fade" start="100" end="55" time="150" condition="Control.HasFocus(525)">Conditional</animation>
                         <animation effect="fade" start="100" end="0" time="150" condition="Control.IsVisible(5250)">Conditional</animation>
-                        <top>80</top>
+                        <top>5</top>
                         <width>600</width>
-                        <height>65</height>
-                        <!-- bingie button border -->
+                        <height>65</height> -->
+                        <!-- bingie button border 
                         <control type="image">
                             <width>600</width>
                             <height>65</height>
@@ -481,34 +494,34 @@
                             <align>left</align>
                             <aspectratio align="left" aligny="top">stretch</aspectratio>
                             <colordiffuse>$INFO[Skin.String(BingieSecondaryTextColor)]</colordiffuse>
-                            <texture background="true">bingie/border/default_button_fo.png</texture>
+                            <texture background="true" border="10">bingie/border/default_button_fo2.png</texture>
                             <visible>!String.IsEmpty(Control.GetLabel(52510)) | !String.IsEmpty(Control.GetLabel(52511))</visible>
-                        </control>
-                        <!-- Season x label -->
+                        </control> -->
+                        <!-- Season x label 
                         <control type="label" id="52510">
                             <visible>!String.IsEmpty(Control.GetLabel(52510))</visible>
                             <left>15</left>
                             <width>280</width>
-                            <height>65</height>
+                            <height>61</height>
                             <aligny>center</aligny>
                             <align>left</align>
                             <font>Reg32</font>
-                            <textcolor>silver</textcolor>
+                            <textcolor>white</textcolor>
                             <label>$VAR[View525CurrentSeason]</label>
-                        </control>
-                        <!-- Episode x label -->
+                        </control> -->
+                        <!-- Episode x label 
                         <control type="label" id="52511">
                             <visible>!String.IsEmpty(Control.GetLabel(52511))</visible>
                             <right>15</right>
                             <width>250</width>
-                            <height>65</height>
+                            <height>61</height>
                             <aligny>center</aligny>
                             <align>right</align>
                             <font>Reg28</font>
-                            <textcolor>ff8d8d8d</textcolor>
+                            <textcolor>ffffffff</textcolor>
                             <label>$VAR[View525TotalEpisodes,[LOWERCASE],[/LOWERCASE]]</label>
                         </control>
-                    </control>
+                    </control> -->
 
                     <!-- Seasons list -->
                     <control type="list" id="5250">
@@ -518,7 +531,7 @@
                         <animation effect="fade" start="0" end="100" time="250">Visible</animation>
                         <animation effect="fade" start="100" end="55" time="150" condition="!Control.HasFocus(5250)">Conditional</animation>
                         <left>0</left>
-                        <top>10</top>       <!-- Original value 80 -->
+                        <top>5</top>       <!-- Original value 80 -->
                         <width>600</width>
 						<height>390</height>
 						<!-- <include condition="String.Contains(Control.GetLabel(12345),poster)">View525_PosterHeight</include> -->
@@ -540,11 +553,11 @@
                             <control type="label">
                                 <left>15</left>
                                 <width>280</width>
-                                <height>65</height>
+                                <height>61</height>
                                 <aligny>center</aligny>
                                 <align>left</align>
                                 <font>Reg32</font>
-                                <textcolor>silver</textcolor>
+                                <textcolor>white</textcolor>
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                         </itemlayout>
@@ -560,13 +573,13 @@
                                 <align>left</align>
                                 <aspectratio align="left" aligny="top">stretch</aspectratio>
                                 <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
-                                <texture background="true">bingie/border/default_button_fo.png</texture>
+                                <texture background="true" border="10">bingie/border/default_button_fo2.png</texture>
                             </control>
                             <!-- Season x label -->
                             <control type="label">
                                 <left>15</left>
                                 <width>280</width>
-                                <height>65</height>
+                                <height>61</height>
                                 <aligny>center</aligny>
                                 <align>left</align>
                                 <font>Reg32</font>
@@ -575,14 +588,13 @@
                             </control>
                             <!-- x Episodes label -->
                             <control type="label">
-                                <animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
                                 <right>15</right>
                                 <width>250</width>
-                                <height>65</height>
+                                <height>61</height>
                                 <aligny>center</aligny>
                                 <align>right</align>
                                 <font>Reg28</font>
-                                <textcolor>white</textcolor>
+                                <textcolor>ffffffff</textcolor>
                                 <label>[LOWERCASE]$VAR[View525TotalEpisodes][/LOWERCASE]</label>
                             </control>
                             <!-- bingie button border -->
@@ -594,17 +606,17 @@
                                 <align>left</align>
                                 <aspectratio align="left" aligny="top">stretch</aspectratio>
                                 <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
-                                <texture background="true">bingie/border/default_button_fo.png</texture>
+                                <texture background="true" border="10">bingie/border/default_button_fo2.png</texture>
                             </control>
                             <!-- Season x label -->
                             <control type="label">
                                 <left>15</left>
                                 <width>280</width>
-                                <height>65</height>
+                                <height>61</height>
                                 <aligny>center</aligny>
                                 <align>left</align>
                                 <font>Reg32</font>
-                                <textcolor>silver</textcolor>
+                                <textcolor>white</textcolor>
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                             <!-- x Episodes label -->
@@ -612,11 +624,11 @@
                                 <visible>String.IsEqual(Container(5250).ListItem.Season,Container(525).ListItem.Season)</visible>
                                 <right>15</right>
                                 <width>250</width>
-                                <height>65</height>
+                                <height>61</height>
                                 <aligny>center</aligny>
                                 <align>right</align>
                                 <font>Reg28</font>
-                                <textcolor>ff8d8d8d</textcolor>
+                                <textcolor>ffffffff</textcolor>
                                 <label>[LOWERCASE]$VAR[View525TotalEpisodes][/LOWERCASE]</label>
                             </control>
                         </focusedlayout>
@@ -637,7 +649,7 @@
                     <include content="View_Forced">
                         <param name="viewtype" value="$LOCALIZE[31827]" />
                     </include>
-                    <top>-146</top>
+                    <top>-149</top>
                     <posx>790</posx>
                     <height>1280</height>
                     <width>1050</width>
@@ -653,23 +665,22 @@
                     <preloaditems>2</preloaditems>
                     <focusposition>1</focusposition>
                     <include>ScrollTime</include>
-                    <itemlayout width="1050" height="episodes_thumb_height">
+                    <itemlayout width="1050" height="270">
                         <!-- landscape content -->
                         <include>View_525_Landscape_Defs</include>
                         <!-- details content -->
                         <include>View_525_Details_Defs</include>
                     </itemlayout>
-                    <focusedlayout width="1050" height="episodes_thumb_height">
+                    <focusedlayout width="1050" height="270">
                         <!-- panel/border -->
                         <control type="image">
                             <visible>!Skin.HasSetting(View525_DisableFixedBingieFrame)</visible>
                             <visible>Control.HasFocus(525)</visible>
-                            <include>View_525_Panel_Focus_Defs</include>
                             <height>episodes_thumb_height</height>
                             <width>episodes_thumb_width</width>
-                            <texture border="5">diffuse/wide.png</texture>
+                            <texture border="5">diffuse/wide2.png</texture>
                             <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
-                            <include>thumbsborder_unfocused</include>
+                            <include>thumbsborder_focused</include>
                         </control>
                         <!-- landscape content -->
                         <include>View_525_Landscape_Defs</include>
@@ -683,14 +694,14 @@
                 <!-- fixed border moving with screen -->
                 <control type="image">
                     <visible>Skin.HasSetting(View525_DisableFixedBingieFrame) + Integer.IsGreater(Container(525).NumItems,0) + Control.HasFocus(525)</visible>
-                    <top>120</top>
+                    <top>121</top>
                     <posx>790</posx>
                     <width>episodes_thumb_width</width>
                     <height>episodes_thumb_height</height>
-                    <texture background="true" border="4">$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]</texture>
+                    <texture background="true" border="10">$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]</texture>
                     <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
-                    <bordersize>5</bordersize>
-                    <include>Frame_Scrolling_Fade</include>
+                    <bordersize>2</bordersize>
+                    <!-- <include>Frame_Scrolling_Fade</include> -->
                 </control>
 
                 <!-- vertical Scrollbar -->

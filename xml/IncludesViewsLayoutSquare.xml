@@ -97,13 +97,13 @@
                 <bottom>0</bottom>
                 <height>74</height>
                 <bordersize>8</bordersize>
-                <texture>diffuse/poster_tag.png</texture>
+                <texture>diffuse/poster_tag2.png</texture>
                 <colordiffuse>$INFO[Skin.String(TagOverlaysPanelColor)]</colordiffuse>
             </control>
             <control type="textbox">
                 <left>15</left>
                 <right>15</right>
-                <bottom>10</bottom>
+                <bottom>15</bottom>
                 <height>48</height>
                 <include condition="Skin.HasSetting(ThumbsLabelAlignmentCenter)">align_center</include>
                 <align>left</align>
@@ -117,7 +117,7 @@
             <control type="textbox">
                 <left>15</left>
                 <right>15</right>
-                <bottom>10</bottom>
+                <bottom>15</bottom>
                 <height>48</height>
                 <include condition="Skin.HasSetting(ThumbsLabelAlignmentCenter)">align_center</include>
                 <align>left</align>

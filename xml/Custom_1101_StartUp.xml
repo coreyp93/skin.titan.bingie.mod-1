@@ -125,7 +125,7 @@
 				</control>
 				<!-- fake progress -->
 				<control type="group">
-					<width>800</width>
+					<width>860</width>
 					<height>10</height>
 					<control type="image">
 						<width>100%</width>

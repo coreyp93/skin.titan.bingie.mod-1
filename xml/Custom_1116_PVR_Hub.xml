@@ -46,7 +46,7 @@
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>10</itemgap>
-                <animation effect="slide" start="0" end="0,150" time="0" condition="Control.HasFocus(1510) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1510)">Conditional</animation>
+                <animation effect="slide" start="0" end="0,130" time="0" condition="Control.HasFocus(1510) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1510)">Conditional</animation>
                 <include content="Bingie_Headline_Item">
                     <param name="id" value="11602" />
                     <param name="image" value="$VAR[BingieInfoClearlogo]" />
@@ -126,17 +126,13 @@
                     <label>$LOCALIZE[31065]: $VAR[BingiePVRUpNextlabel]</label>
                     <include>Default_Visible_Fade</include>
                 </control>
-                <!-- Additional Info -->
-                <include condition="!Skin.HasSetting(DisableBingieMoreDetails)" content="Bingie_Additional_Info">
-                    <param name="visibility" value="![Control.HasFocus(1510) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1510)]" />
-                </include>
             </control>
         </control>
 
         <control type="grouplist" id="77777">
             <usecontrolcoords>true</usecontrolcoords>
             <left>0</left>
-            <top>605</top>
+            <top>575</top>
             <include condition="Skin.HasSetting(EnableFixedFocusWidgets)">Fixed_Focus_Bottom</include>
             <bottom>0</bottom>
             <include condition="Skin.HasSetting(EnableFixedFocusWidgets)">Fixed_Focus_Itemgap</include>
@@ -167,16 +163,17 @@
         <include content="Bingie_Screens_Fixed_Focus_Frame_Base" condition="Skin.HasSetting(EnableFixedFrameWidgets)">
             <visible>[Control.HasFocus(1510) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1510)] | [Control.HasFocus(1520) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1520)]</visible>
             <param name="visibility" value="ControlGroup(77777).HasFocus() + !String.IsEmpty(Container(77777).CurrentItem) + !String.IsEmpty(ListItem.Label)"/>
+			<top>615</top>
             <param name="width" value="210"/>
             <param name="height" value="210"/>
-            <param name="texture" value="$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]" />
+            <texture background="true" border="10">$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]</texture>
         </include>
         <include content="Bingie_Screens_Fixed_Focus_Frame_Base" condition="Skin.HasSetting(EnableFixedFrameWidgets)">
             <visible>[Control.HasFocus(1530) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1530)] | [Control.HasFocus(1540) | String.IsEqual(Window(Home).Property(CurrentWidgetID),1540)]</visible>
             <param name="visibility" value="ControlGroup(77777).HasFocus() + !String.IsEmpty(Container(77777).CurrentItem) + !String.IsEmpty(ListItem.Label)"/>
             <param name="width" value="landscape_width"/>
             <param name="height" value="210"/>
-            <param name="texture" value="$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]" />
+            <texture background="true" border="10">$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]</texture>
         </include>
 
         <include content="Dim_Overlay">

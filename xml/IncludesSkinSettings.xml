@@ -231,6 +231,7 @@
             <include>CustomColors_General_Colors_Settings</include>
             <include>CustomColors_Library_Colors_Settings</include>
             <include>CustomColors_Bingie_Colors_Settings</include>
+			<include>CustomColors_US_MPAA_Colors_Settings</include>
             <include>CustomColors_Header_Colors_Settings</include>
             <include>CustomColors_Footer_Colors_Settings</include>
             <include>CustomColors_OSD_Colors_Settings</include>
@@ -593,26 +594,26 @@
             <selected>Skin.HasSetting(DisableSpotlightLabel)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
         </control>
-		<!-- Prefer Round Sub Label on Home Spotlight -->	
+		<!-- Prefer White Top 250 Sub Label on Home Spotlight -->	
 		<control type="radiobutton" id="2047">
             <include>SkinSettings_Button</include>
-            <label>      Prefer Round Icons on Spotlight Sublabel</label>
-            <onclick>Skin.ToggleSetting(EnableSpotlightSquareLabel)</onclick>
-            <selected>Skin.HasSetting(EnableSpotlightSquareLabel)</selected>
+            <label>      Prefer White Top 250 Icon on Spotlight Sublabel</label>
+            <onclick>Skin.ToggleSetting(EnableSpotlightWhiteLabel)</onclick>
+            <selected>Skin.HasSetting(EnableSpotlightWhiteLabel)</selected>
             <visible>!skin.HasSetting(DisableSpotlightLabel)</visible>
         </control>
-		<!-- Prefer White Sub Label on Home Spotlight -->	
+		<!-- Prefer Color Director Sub Label on Home Spotlight -->	
 		<control type="radiobutton" id="2037">
             <include>SkinSettings_Button</include>
-            <label>      Prefer White Icons on Spotlight Sublabel</label>
-            <onclick>Skin.ToggleSetting(EnableSpotlightColoredLabel)</onclick>
-            <selected>Skin.HasSetting(EnableSpotlightColoredLabel)</selected>
+            <label>      Prefer Red Director Icon on Spotlight Sublabel</label>
+            <onclick>Skin.ToggleSetting(EnableSpotlightColorLabel)</onclick>
+            <selected>Skin.HasSetting(EnableSpotlightColorLabel)</selected>
             <visible>!skin.HasSetting(DisableSpotlightLabel)</visible>
         </control>
 		<!-- Disable Spotlight Slide Animation -->	
 		<control type="radiobutton" id="2035">
             <include>SkinSettings_Button</include>
-            <label>Disable Plot Slide animation on Spotlight</label>
+            <label>Disable Plot Slide Animation on Spotlight</label>
             <onclick>Skin.ToggleSetting(DisablePlotSlide)</onclick>
             <selected>Skin.HasSetting(DisablePlotSlide)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
@@ -655,12 +656,11 @@
         <!-- Enable Fixed Focus Widgets in Vertical Scrolling -->
         <control type="radiobutton" id="2016">
             <include>SkinSettings_Button</include>
-            <!-- <label>Enable Fixed Frame (Moving Frame) Vertical Scrolling in Home & Hubs</label> -->
 			<label>31012</label>
             <onclick>Skin.ToggleSetting(EnableFixedFocusWidgets)</onclick>
             <selected>Skin.HasSetting(EnableFixedFocusWidgets)</selected>
             <visible>!Skin.HasSetting(LowPerformanceMode) + !Skin.HasSetting(BingieHomeDisableFirstRow) + String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
-        </control>
+        </control>  
         <!-- Enable Fixed Frame in Home & Hubs (Moving Frame) -->
         <control type="radiobutton" id="2017">
             <include>SkinSettings_Button</include>
@@ -874,11 +874,19 @@
 		<!--Enable Alternate US Icons-->
         <control type="radiobutton" id="2019">
             <include>SkinSettings_Button</include>
-            <label>Enable Alternative US Icons on Details Row</label>
+            <label>Enable Color US Icons on Details Row</label>
             <onclick>Skin.reset(EnableUKIcons)</onclick>
 			<onclick>Skin.ToggleSetting(EnableUSIcons)</onclick>
             <selected>Skin.HasSetting(EnableUSIcons)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
+        </control>
+		<!--Fixed US MPAA Panel Size-->
+        <control type="radiobutton" id="2054">
+            <include>SkinSettings_Button</include>
+            <label>      Enable Fixed MPAA Panel Size</label>
+			<onclick>Skin.ToggleSetting(FixedMPAAPanel)</onclick>
+            <selected>Skin.HasSetting(FixedMPAAPanel)</selected>
+            <visible>String.IsEqual(Skin.String(HomeLayout),bingie) + Skin.HasSetting(EnableUSIcons)</visible>
         </control>
  <!--Enable Audio Codecs-->
         <control type="radiobutton" id="2018">
@@ -900,7 +908,7 @@
 <!--Fake Codec info on Details Row (if no codec info is present)-->
 		<control type="radiobutton" id="2031">
             <include>SkinSettings_Button</include>
-            <label>Fake Codec info on Details Row (if no codec info is present)</label>
+            <label>Fake Codec Info on Details Row (if no codec info is present)</label>
             <onclick>Skin.ToggleSetting(EnableFakeResolution)</onclick>
             <selected>Skin.HasSetting(EnableFakeResolution)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
@@ -929,6 +937,13 @@
             <selected>Skin.HasSetting(EnableTop250ColoredLabel)</selected>
             <visible>!Skin.HasSetting(DisableTop250)</visible>
         </control>
+		<!-- Prefer Color Details Icons -->	
+		<control type="radiobutton" id="2050">
+            <include>SkinSettings_Button</include>
+            <label>Prefer Red Director/Actors/Genre/Awards Icon</label>
+            <onclick>Skin.ToggleSetting(EnableColorDetailsIcons)</onclick>
+            <selected>Skin.HasSetting(EnableColorDetailsIcons)</selected>
+        </control>
 		<!-- Prefer Short Plot Outline in Widget Details -->
         <control type="radiobutton" id="31794">
             <include>SkinSettings_Button</include>
@@ -937,12 +952,12 @@
             <selected>Skin.HasSetting(WidgetsPreferPlotOutline)</selected>
             <visible>!Skin.HasSetting(DisableAllWidgets)</visible>
         </control>
-	    <!-- Disable Continue Watching Movie Percentage -->
+	    <!-- Enable Continue Watching Movie Percentage -->
         <control type="radiobutton" id="2045">
             <include>SkinSettings_Button</include>
-            <label>Disable Continue Watching Movie Percentage</label>
+            <label>Enable Continue Watching Movie Percentage</label>
             <onclick>Skin.ToggleSetting(MovieDetailsHome)</onclick>
-            <selected>!Skin.HasSetting(MovieDetailsHome)</selected>
+            <selected>Skin.HasSetting(MovieDetailsHome)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
         </control>
 	</include>
@@ -973,21 +988,21 @@
             <label>31494</label>
             <onclick>Skin.ToggleSetting(NoFooterBarOnHome)</onclick>
             <selected>Skin.HasSetting(NoFooterBarOnHome)</selected>
-        </control>
+        </control> 
 		
-		<!--Enable New footer -->
+		<!--Enable New footer  DONT NEED THIS ONE ANYMORE
 			<control type="radiobutton" id="2039">
             <include>SkinSettings_Button</include>
             <label>Enable New Footer Ratings</label>
             <onclick>Skin.ToggleSetting(EnableNewFooter)</onclick>
 			<selected>Skin.HasSetting(EnableNewFooter)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie) + !Skin.HasSetting(BingieHomeDisableFirstRow) + !Skin.HasSetting(NoFooterBarOnHome)</visible>
-            </control>
+            </control> -->
 			
 			<!--Prefer white footer -->
 			<control type="radiobutton" id="2040">
             <include>SkinSettings_Button</include>
-            <label>      Prefer White instead of color logos</label>
+            <label>      Prefer White Instead of Color Logos</label>
             <onclick>Skin.ToggleSetting(PreferWhiteFooter)</onclick>
 			<onclick>Skin.Reset(EnableTextFooter)</onclick>
 			<selected>Skin.HasSetting(PreferWhiteFooter)</selected>
@@ -1015,7 +1030,7 @@
             <visible>Skin.HasSetting(EnableNewFooter) + String.IsEqual(Skin.String(HomeLayout),bingie) + !Skin.HasSetting(BingieHomeDisableFirstRow) + !Skin.HasSetting(NoFooterBarOnHome)</visible>
             </control>
 						
-        <!--Enable Monochrome Rating Flags in Bingie Views -->
+        <!--Enable Monochrome Rating Flags in Bingie Views  DONT NEED THIS ONE ANYMORE
         <control type="radiobutton" id="399766">
             <include>SkinSettings_Button</include>
             <label>31896</label>
@@ -1023,7 +1038,7 @@
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie) + !Skin.HasSetting(BingieHomeDisableFirstRow) + !Skin.HasSetting(NoFooterBarOnHome)</visible>
             <visible>!Skin.HasSetting(EnableNewFooter)</visible>
 			<selected>Skin.HasSetting(EnableMonochromeRatingInBingieViews)</selected>
-        </control>
+        </control>--> 
 		
 		<!-- disable Studio logos in Bingie home & library -->
         <control type="radiobutton" id="131767">
@@ -1034,7 +1049,7 @@
             <selected>Skin.HasSetting(BingieViewsDisableStudio)</selected>
         </control>
         
-		<!--disable ratings on bingie home-->
+		<!--disable ratings on bingie home  DONT NEED THIS ONE ANYMORE
         <control type="radiobutton" id="131766">
             <include>SkinSettings_Button</include>
             <label>31899</label>
@@ -1042,7 +1057,7 @@
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie) + !Skin.HasSetting(NoFooterBarOnHome) + !Skin.HasSetting(BingieHomeDisableFirstRow)</visible>
             <visible>!Skin.HasSetting(EnableNewFooter)</visible>
 			<selected>Skin.HasSetting(BingieViewsDisableRating)</selected>
-        </control>
+        </control> -->
         
 		<!-- Disable bingie more details info  DONT NEED THIS ONE ANYMORE-->
         <!-- <control type="radiobutton" id="131788"> -->
@@ -1056,7 +1071,7 @@
 	   <!-- Hide Ratings & Studio Logo in Footer for Trailers & Spotlight Widget -->
         <control type="radiobutton" id="131786">
             <include>SkinSettings_Button</include>
-            <label>Hide Ratings & Studio Logo in Footer for Trailers & Spotlight Widgets</label>
+            <label>      Hide Ratings & Studio Logo in Footer for Trailers & Spotlight Widgets</label>
             <onclick>Skin.ToggleSetting(HideMediaFlagsTrailer)</onclick>
             <!-- <visible>!Skin.HasSetting(BingieHomeDisableFirstRow) + String.IsEqual(Skin.String(HomeLayout),bingie) + !Skin.HasSetting(NoFooterBarOnHome) + [Skin.HasSetting(SpotLightTrailers) | Skin.HasSetting(BingieAutoTrailer)]</visible> -->
             <visible>!Skin.HasSetting(NoFooterBarOnHome)</visible>
@@ -1225,6 +1240,14 @@
             <selected>Skin.HasSetting(Disableprofile)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
         </control>
+		<!-- Enable Netflix Profile Icons -->    
+		<control type="radiobutton" id="2053">
+            <include>SkinSettings_Button</include>
+            <label>     Enable Netflix user profile icons</label>
+            <onclick>Skin.ToggleSetting(EnableNetflixIcons)</onclick>
+            <selected>Skin.HasSetting(EnableNetflixIcons)</selected>
+            <visible>!Skin.HasSetting(Disableprofile)</visible>
+        </control>
 		<!-- Disable Static Slim Menu -->    
 		<control type="radiobutton" id="2013">
             <include>SkinSettings_Button</include>
@@ -1241,12 +1264,12 @@
             <include>SkinSettings_Header</include>
             <label>31122</label>
         </control>
-       <!--Enab Netflix Logo on Bingie Home-->
+       <!--Enab Netflix Logo on Bingie Home and Settings-->
         <control type="radiobutton" id="2014">
             <include>SkinSettings_Button</include>
-            <label>Enable Netflix Logo on Home</label>
-            <onclick>Skin.ToggleSetting(EnableNetflixLogoonHome)</onclick>
-            <selected>Skin.HasSetting(EnableNetflixLogoonHome)</selected>
+            <label>Enable Netflix Logo on Home and Settings</label>
+            <onclick>Skin.ToggleSetting(EnableNetflixLogo)</onclick>
+            <selected>Skin.HasSetting(EnableNetflixLogo)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
         </control>
         <!-- Disable Welcome Pop-Up Message Notification -->        
@@ -1261,35 +1284,37 @@
 	                                     
 										 <!-- Waiting for next HOLIDAY SEASON -->
 	   
-	   <!-- Season Greetings -->
-	    <!-- <control type="label" id="2034"> -->
-            <!-- <include>SkinSettings_Header</include> -->
-			<!-- <label>Season Greetings</label> -->
-			<!-- <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor> -->
-        <!-- </control> -->
+	  <!-- Season Greetings -->
+	    <control type="label" id="2034"> 
+            <include>SkinSettings_Header</include>
+			<label>Season Greetings</label>
+			<textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+        </control>
 		                                                                 
 		<!-- Enable Snow -->
-        <!-- <control type="radiobutton" id="2010"> -->
-            <!-- <description/> -->
-            <!-- <include>SkinSettings_Button</include> -->
-            <!-- <label>Enable Snow Animation</label> -->
-            <!-- <onclick>Skin.ToggleSetting(enablesnow)</onclick> -->
-			<!-- <onclick>Skin.ToggleSetting(expandsnow)</onclick> -->
-            <!-- <selected>Skin.HasSetting(enablesnow)</selected> -->
-			<!-- <selected>Skin.HasSetting(expandsnow)</selected> -->
-			<!-- <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible> -->
-		<!-- </control> -->
+        <control type="radiobutton" id="2010">
+             <description/>
+            <include>SkinSettings_Button</include>
+            <label>Enable Snow Animation</label>
+            <onclick>Skin.ToggleSetting(enablesnow)</onclick>
+			<onclick>Skin.ToggleSetting(expandsnow)</onclick>
+            <selected>Skin.HasSetting(enablesnow)</selected>
+			<selected>Skin.HasSetting(expandsnow)</selected>
+			<visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
+			<visible>!Skin.HasSetting(enablepumpkins)</visible>
+		</control>
 	   <!-- Enable Pumpkins -->
-        <!-- <control type="radiobutton" id="2048"> -->
-            <!-- <description/> -->
-            <!-- <include>SkinSettings_Button</include> -->
-            <!-- <label>Enable Halloween Animation</label> -->
-            <!-- <onclick>Skin.ToggleSetting(enablepumkins)</onclick> -->
-			<!-- <onclick>Skin.ToggleSetting(expandpumkins)</onclick> -->
-            <!-- <selected>Skin.HasSetting(enablepumpkins)</selected> -->
-			<!-- <selected>Skin.HasSetting(expandpumpkins)</selected> -->
-			<!-- <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible> -->
-		<!-- </control> -->
+       <control type="radiobutton" id="2048">
+           <description/>
+          <include>SkinSettings_Button</include>
+            <label>Enable Halloween Animation</label>
+            <onclick>Skin.ToggleSetting(enablepumpkins)</onclick>
+			<onclick>Skin.ToggleSetting(expandpumpkins)</onclick>
+            <selected>Skin.HasSetting(enablepumpkins)</selected>
+			<selected>Skin.HasSetting(expandpumpkins)</selected>
+			<visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
+			<visible>!Skin.HasSetting(enablesnow)</visible>
+		</control>
 	   
 	   <!--Toggle RSS Feed-->
         <control type="radiobutton" id="23720">
@@ -1505,7 +1530,7 @@
        <!-- Disable Total Media Count In Bingie Library Views  -->	
 		<control type="radiobutton" id="2044">
             <include>SkinSettings_Button</include>
-            <label>Disable Total Media Count in Bingie Views</label>
+            <label>Disable total media count in Bingie views</label>
             <onclick>Skin.ToggleSetting(DisableMediaCount)</onclick>
             <selected>Skin.HasSetting(DisableMediaCount)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
@@ -1676,7 +1701,7 @@
         <!-- video information dialog -->
         <control type="label" id="20159">
             <include>SkinSettings_Header</include>
-            <label>20159</label>
+            <label>320009</label>
             <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
         </control>
         <!-- use bingie info -->
@@ -1716,6 +1741,23 @@
             <param name="action" value="RunScript(script.skin.helper.service,action=setskinsetting,setting=videoinfo_details,header=$LOCALIZE[31930])" />
             <param name="visible" value="Skin.HasSetting(UseBingieInfoDialog) + !Skin.HasSetting(UseExtendedInfoDialog)" />
         </include>
+		<!-- Disable Top250 Sublabel on Video Info -->
+		<control type="radiobutton" id="2051">
+            <include>SkinSettings_Button</include>
+            <label>Disable Top250 Sublabel on Video Info</label>
+            <onclick>Skin.ToggleSetting(DisableTop250Info)</onclick>
+            <selected>Skin.HasSetting(DisableTop250Info)</selected>
+            <visible>!Skin.HasSetting(UseExtendedInfoDialog) + Skin.HasSetting(UseBingieInfoDialog)</visible>
+        </control>
+		<!-- Prefer White Top250 Sublabel on Video Info -->	
+		<control type="radiobutton" id="2052">
+            <include>SkinSettings_Button</include>
+            <label>      Prefer White Icon on Top250 Sublabel</label>
+            <onclick>Skin.ToggleSetting(EnableTop250ColoredLabelInfo)</onclick>
+            <selected>Skin.HasSetting(EnableTop250ColoredLabelInfo)</selected>
+			<visible>!Skin.HasSetting(UseExtendedInfoDialog) + Skin.HasSetting(UseBingieInfoDialog)</visible>
+            <visible>!Skin.HasSetting(DisableTop250Info)</visible>
+        </control>
         <control type="radiobutton" id="46655">
             <include>SkinSettings_Button</include>
             <label>31908</label>
@@ -1859,6 +1901,58 @@
             <param name="id" value="31010" />
             <param name="label" value="$LOCALIZE[31411]" />
             <param name="skinsetting" value="BingieInfoDialogIconColor" />
+        </include>
+    </include>
+	
+	<!-- Custom Colors Header Settings -->
+    <include name="CustomColors_US_MPAA_Colors_Settings">
+        <!-- general color settings -->
+        <control type="label" id="320019">
+            <include>SkinSettings_Header</include>
+            <label>320019</label>
+            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+        </control>
+        <!--General Audiences Panel Color-->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320020" />
+            <param name="label" value="$LOCALIZE[320020]" />
+            <param name="skinsetting" value="GPanelColor" />
+        </include>
+        <!--Parental Guidance Suggested Panel Color-->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320021" />
+            <param name="label" value="$LOCALIZE[320021]" />
+            <param name="skinsetting" value="PGPanelColor" />
+        </include>
+        <!--Parents Strongly Cautioned Panel Color-->
+        <include content="SkinSettings_ColorButton" condition="!Skin.HasTheme(classic)">
+            <param name="id" value="320022" />
+            <param name="label" value="$LOCALIZE[320022]" />
+            <param name="skinsetting" value="PG13PanelColor" />
+        </include>
+		<!--Restricted Panel Color-->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320023" />
+            <param name="label" value="$LOCALIZE[320023]" />
+            <param name="skinsetting" value="RPanelColor" />
+        </include>
+        <!--Adults Only Panel Color-->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320024" />
+            <param name="label" value="$LOCALIZE[320024]" />
+            <param name="skinsetting" value="NC17PanelColor" />
+        </include>
+        <!--Not Rated Panel Color-->
+        <include content="SkinSettings_ColorButton" condition="!Skin.HasTheme(classic)">
+            <param name="id" value="320025" />
+            <param name="label" value="$LOCALIZE[320025]" />
+            <param name="skinsetting" value="NRPanelColor" />
+        </include>
+		<!--Font color-->
+        <include content="SkinSettings_ColorButton" condition="!Skin.HasTheme(classic)">
+            <param name="id" value="320026" />
+            <param name="label" value="$LOCALIZE[320026]" />
+            <param name="skinsetting" value="MPAATextColor" />
         </include>
     </include>
 
@@ -2035,11 +2129,17 @@
             <param name="label" value="$LOCALIZE[31604]" />
             <param name="skinsetting" value="TagOverlaysTextColor" />
         </include>
-        <!--home widgets border color-->
+        <!--home widgets border color
         <include content="SkinSettings_ColorButton">
             <param name="id" value="31735" />
             <param name="label" value="$LOCALIZE[31735]" />
             <param name="skinsetting" value="HomeWidgetsBorderColor" />
+        </include>-->
+		<!--Line Under Home Menu Icons-->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320001" />
+            <param name="label" value="320001" />
+            <param name="skinsetting" value="LineUnderMenuIconsColor" />
         </include>
     </include>
 
@@ -2185,10 +2285,31 @@
             <param name="skinsetting" value="OSDButtonsFocusColor" />
             <param name="visible" value="!Skin.HasTheme(classic)" />
         </include>
+		 <!--osd bingie buttons color -->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320006" />
+            <param name="label" value="$LOCALIZE[320006]" />
+            <param name="skinsetting" value="OSDBingieButtonsColor" />
+            <param name="visible" value="!Skin.HasTheme(classic)" />
+        </include>
+        <!--osd bingie buttons focus color -->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320007" />
+            <param name="label" value="$LOCALIZE[320007]" />
+            <param name="skinsetting" value="OSDBingieButtonsFocusColor" />
+            <param name="visible" value="!Skin.HasTheme(classic)" />
+        </include>
+		<!--OSD Volume Button Color -->
+        <include content="SkinSettings_ColorButton">
+            <param name="id" value="320010" />
+            <param name="label" value="$LOCALIZE[320010]" />
+            <param name="skinsetting" value="OSDVolumeButtonColor" />
+            <param name="visible" value="!Skin.HasTheme(classic)" />
+        </include>
         <!--OSD Buffering Spinner Color -->
         <include content="SkinSettings_ColorButton">
             <param name="id" value="31295" />
-            <param name="label" value="OSD Buffering Spinner Color" />
+            <param name="label" value="OSD buffering spinner color" />
             <param name="skinsetting" value="OSDBufferingSpinnerColor" />
             <param name="visible" value="!Skin.HasTheme(classic)" />
         </include>
@@ -2247,12 +2368,6 @@
             <param name="id" value="31222" />
             <param name="label" value="$LOCALIZE[31222]" />
             <param name="skinsetting" value="ViewDetailsTextColor" />
-        </include>
-        <!--Ratings Logo Color-->
-        <include content="SkinSettings_ColorButton">
-            <param name="id" value="31833" />
-            <param name="label" value="$LOCALIZE[31833]" />
-            <param name="skinsetting" value="RatingsLogoColor" />
         </include>
         <!--view details shadow color-->
         <include content="SkinSettings_ColorButton">
@@ -2535,7 +2650,7 @@
 		<!-- Show ClearArt instead of Clearlogo on Pause  -->
 		<control type="radiobutton" id="2025">
             <include>SkinSettings_Button</include>
-            <label>Show ClearArt Instead of clearlogo on Pause</label>
+            <label>Show ClearArt Instead of Clearlogo on Pause</label>
             <onclick>Skin.ToggleSetting(EnableClearArtPause)</onclick>
             <selected>Skin.HasSetting(EnableClearArtPause)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
@@ -2551,7 +2666,7 @@
 		<!-- Show Clearart instead of ClearLogo on Infopane -->
 		<control type="radiobutton" id="2026">
             <include>SkinSettings_Button</include>
-            <label>Show Clearart instead of Clearlogo on Infopane</label>
+            <label>Show Clearart Instead of Clearlogo on Infopane</label>
             <onclick>Skin.ToggleSetting(EnableClearArtInfo)</onclick>
             <selected>Skin.HasSetting(EnableClearArtInfo)</selected>
             <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
@@ -2559,7 +2674,7 @@
 		<!-- Enable Seek/Jump Indicator -->
 		<control type="radiobutton" id="2027">
             <include>SkinSettings_Button</include>
-            <label>Enable The OSD Seek/Jump Indicator</label>
+            <label>Enable OSD Seek/Jump Indicator</label>
             <onclick>Skin.ToggleSetting(DisableJumpIndicator)</onclick>
             <selected>Skin.HasSetting(DisableJumpIndicator)</selected>
             <visible>Skin.HasSetting(UseBingieOSD)</visible>
@@ -2651,7 +2766,7 @@
         <!-- style for codec info -->
         <control type="button" id="13064">
             <include>SkinSettings_Button</include>
-            <label>31632</label>
+            <label>320008</label>
             <label2>$INFO[Skin.String(osdmediaflagsstyle.label)]</label2>
             <onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=osdmediaflagsstyle,header=$LOCALIZE[31632])</onclick>
             <visible>!Skin.HasTheme(classic)</visible>
@@ -3174,7 +3289,7 @@
             <onclick>Skin.ToggleSetting(KioskMode.Enabled)</onclick>
             <selected>Skin.HasSetting(KioskMode.Enabled)</selected>
         </control>
-        <control type="radiobutton" id="5147">
+        <!-- <control type="radiobutton" id="5147">
             <include>SkinSettings_Button</include>
             <label>31209</label>
             <onclick>Skin.ToggleSetting(EnableTouchSupport)</onclick>
@@ -3194,7 +3309,7 @@
             <onclick>Skin.ToggleSetting(HideBatteryStatus)</onclick>
             <selected>Skin.HasSetting(HideBatteryStatus)</selected>
             <visible>Skin.HasSetting(EnableTouchSupport) + ![String.IsEqual(Skin.String(HomeLayout),simplever) | String.IsEqual(Skin.String(HomeLayout),simplever_tiles) | Skin.HasSetting(CompactHeader)]</visible>
-        </control>
+        </control> -->
         <control type="radiobutton" id="5162">
             <description>show scrollbars</description>
             <include>SkinSettings_Button</include>
@@ -3251,14 +3366,14 @@
             <selected>Skin.HasSetting(EnableBingieSearchFullKeyboard)</selected>
             <visible>!Skin.HasSetting(UseGlobalSearch)</visible>
         </control>
-        <control type="radiobutton" id="32103">
+        <!-- <control type="radiobutton" id="32103">
             <description>enable fanart in background</description>
             <include>SkinSettings_Button</include>
             <label>31141</label>
             <onclick>Skin.ToggleSetting(EnableBingieSearchFanart)</onclick>
             <selected>Skin.HasSetting(EnableBingieSearchFanart)</selected>
             <visible>!Skin.HasSetting(UseGlobalSearch)</visible>
-        </control>
+        </control> -->
         <control type="radiobutton" id="32104">
             <description>enable search results for episodes</description>
             <include>SkinSettings_Button</include>
@@ -3472,20 +3587,21 @@
             <label>31875</label>
             <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
         </control>
-        <!--thumbs border size unfocused-->
+        <!--thumbs border size unfocused
         <control type="button" id="31003">
             <include>SkinSettings_Button</include>
             <label>31003</label>
             <label2>$INFO[Skin.String(thumbsborder_unfocused.label)]</label2>
             <onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=thumbsborder_unfocused,header=$LOCALIZE[31003])</onclick>
-        </control>
+        </control>-->
         <!--thumbs border size focused-->
         <control type="button" id="31628">
             <include>SkinSettings_Button</include>
             <label>31628</label>
             <label2>$INFO[Skin.String(thumbsborder_focused.label)]</label2>
-            <onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=thumbsborder_focused,header=$LOCALIZE[31003])</onclick>
+            <onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=thumbsborder_focused,header=$LOCALIZE[31628])</onclick>
         </control>
+		
         <!--home alternate borders-->
         <control type="radiobutton" id="31638">
             <include>SkinSettings_Button</include>
@@ -3638,8 +3754,14 @@
             <param name="skinsetting" value="BingieNewEpisodesTagColor" />
             <param name="visible" value="!Skin.HasSetting(DisableNewEpisodesIndicator)" />
         </include>
+		<!-- Enable Top 250 on Posters -->	
+		<control type="radiobutton" id="2049">
+            <include>SkinSettings_Button</include>
+            <label>Disable Top 250 indicator</label>
+            <onclick>Skin.ToggleSetting(DisableTop250Indicator)</onclick>
+            <selected>Skin.HasSetting(DisableTop250Indicator)</selected>
+        </control>
     </include>
-
     <!-- General Poster Overlays Settings -->
     <include name="General_Poster_Overlays_Settings">
         <!-- poster overlays -->
@@ -3652,6 +3774,8 @@
             <include>SkinSettings_Button</include>
             <label>31525</label>
             <onclick>Skin.ToggleSetting(CaseOverlays)</onclick>
+			<onclick>Skin.Reset(View52_EnableZoomEffect)</onclick>
+			<onclick>Skin.Reset(View526_EnableZoomEffect)</onclick>
             <selected>Skin.HasSetting(CaseOverlays)</selected>
         </control>
         <include content="SkinSettings_ColorButton">
@@ -3794,14 +3918,15 @@
             <onclick condition="String.IsEqual(Skin.String(SplashAnimationResolution),2160p)">Skin.SetString(SplashAnimationResolution,1080p)</onclick>
             <onclick condition="String.IsEqual(Skin.String(SplashAnimationResolution),1080p)">Skin.SetString(SplashAnimationResolution,2160p)</onclick>
             <selected>String.IsEqual(Skin.String(SplashAnimationResolution),2160p)</selected>
-            <visible>!Skin.HasSetting(DisableAnimatedIntro) + String.IsEmpty(Skin.String(SplashScreen)) + String.IsEmpty(Skin.String(AutoStartPlayList))</visible>
+            <visible>!Skin.HasSetting(DisableAnimatedIntro) + !Skin.HasSetting(UseAltDefaultIntro) + String.IsEmpty(Skin.String(SplashScreen)) + String.IsEmpty(Skin.String(AutoStartPlayList))</visible>
         </control>
         <control type="radiobutton" id="8028">
-            <!-- Use Matrix Startup Animation Instead of Netflix -->
+            <!-- Use Netflix Exteneded Startup Animation -->
             <description/>
             <include>SkinSettings_Button</include>
-            <label>Use Matrix Startup Animation Instead of Netflix Animation</label>
+            <label>Use Netflix exteneded startup animation</label>
             <onclick>Skin.ToggleSetting(UseAltDefaultIntro)</onclick>
+			<onclick condition="String.IsEqual(Skin.String(SplashAnimationResolution),2160p)">Skin.SetString(SplashAnimationResolution,1080p)</onclick>
             <selected>Skin.HasSetting(UseAltDefaultIntro)</selected>
             <visible>!Skin.HasSetting(DisableAnimatedIntro) + String.IsEmpty(Skin.String(SplashScreen)) + String.IsEmpty(Skin.String(AutoStartPlayList))</visible>
         </control>

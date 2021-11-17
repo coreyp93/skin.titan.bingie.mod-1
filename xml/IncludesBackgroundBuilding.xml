@@ -150,6 +150,10 @@
         <control type="group">
             <include condition="Skin.HasSetting(enablesnow)">snow</include>
         </control>
+		 <!-- Halloween Effect -->
+        <control type="group">
+            <include condition="Skin.HasSetting(enablepumpkins)">pumpkin</include>
+        </control>
 		
         <!-- touchscreen workaround for windows tablets -->
         <include condition="Skin.HasSetting(EnableTouchSupport)">TouchScreenWorkaround</include>

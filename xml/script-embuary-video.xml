@@ -481,7 +481,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>						
 								<control type="group">
 									<left>29</left>
@@ -517,7 +517,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>		
 								<control type="group">
 									<left>29</left>
@@ -529,7 +529,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>28</top>
@@ -539,7 +539,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
 							</control>
@@ -597,7 +597,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>			
 								<control type="group">
 									<left>29</left>
@@ -633,7 +633,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>		
 								<control type="group">
 									<left>29</left>
@@ -645,7 +645,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>28</top>
@@ -655,7 +655,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
 							</control>
@@ -701,7 +701,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>			
 								<control type="group">
 									<left>29</left>
@@ -737,7 +737,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
 								<control type="group">
 									<left>29</left>
@@ -749,7 +749,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>28</top>
@@ -759,7 +759,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
 							</control>
@@ -805,7 +805,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>		
 								<control type="group">
 									<left>29</left>
@@ -841,7 +841,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>		
 								<control type="group">
 									<left>29</left>
@@ -853,7 +853,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>28</top>
@@ -863,7 +863,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
 							</control>
@@ -909,7 +909,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>			
 								<control type="group">
 									<left>29</left>
@@ -945,7 +945,7 @@
 									<top>2</top>
 									<width>266</width>
 									<height>376</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>	
 								<control type="group">
 									<left>29</left>
@@ -957,7 +957,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>28</top>
@@ -967,7 +967,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
 							</control>
@@ -1013,7 +1013,7 @@
 									<top>2</top>
 									<width>433</width>
 									<height>328</height>
-                                    <include>ThumbsViewLayout</include>
+                                    <include>ThumbsViewBingieLayout</include>
                                   </control>		
 								<control type="group">
 									<left>30</left>
@@ -1049,7 +1049,7 @@
 									<top>2</top>
 									<width>433</width>
 									<height>328</height>
-                                    <include>ThumbsViewLayoutFocus</include>
+                                    <include>ThumbsViewBingieLayoutFocus</include>
                                   </control>		
 								<control type="group">
 									<left>30</left>
@@ -1061,7 +1061,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>28</top>
@@ -1071,7 +1071,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
 							</control>

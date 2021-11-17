@@ -42,7 +42,7 @@
 				<control type="label">
 					<visible>!String.IsEmpty(Window.Property(AdditionalInfo))</visible>
 					<include>animation_fade_visible_hidden</include>
-					<right>61</right>
+					<right>84</right>
 					<posy>10</posy>
 					<width min="80" max="1400">auto</width>
 					<height>100</height>
@@ -56,8 +56,8 @@
 				<!-- dialog info details -->
 				<control type="grouplist">
 					<include>BingieLeftDefs</include>
-					<top>0</top>
-                                         <left>-800</left>
+					<top>-40</top>
+                    <left>-800</left>
 					<width>1200</width>
 					<usecontrolcoords>true</usecontrolcoords>
 					<orientation>vertical</orientation>
@@ -94,12 +94,12 @@
 						<animation effect="fade" start="100" end="0" time="200" condition="!String.IsEmpty(Window.Property(AdditionalInfo))">Conditional</animation>
 						<width>820</width>
 						<top>25</top>
-						<height min="50" max="80">auto</height>
-						<textcolor>darkgray</textcolor>
+						<height min="50" max="120">auto</height>
+						<textcolor>white</textcolor>
 						<shadowcolor></shadowcolor>
 						<align>left</align>
 						<font>Plots</font>
-						<label>$VAR[BingieInfoDialogPlot]</label>
+						<label>$VAR[BingiePlot]</label>     <!-- BingieInfoDialogPlot -->
 					</control>
                                      <!-- more details -->
 					<control type="grouplist">
@@ -115,19 +115,15 @@
 						<include condition="Skin.HasSetting(videoinfo_details_awards)">More_Details_Awards</include>
                     </control>
 
-</control>
-</control>
+				</control>
+			</control>
 
-
-
-
-                  
-     
           			<control type="panel" id="50">
-					<top>710</top>
+					<visible>!String.IsEqual(Window.Property(AdditionalInfo),similar)</visible>
+					<top>725</top>
 					<width>1720</width>
 					<height>317</height>
-                                         <left>126</left>
+                    <left>126</left>
 					<ondown condition="System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(50) + !String.IsEqual(ListItem.DBType,set)">RunScript(script.embuary.info,call=person,query='$ESCINFO[Container(50).ListItem.Label]')</ondown>
 					<ondown condition="System.HasAddon(script.embuary.info) + !System.AddonIsEnabled(script.embuary.info) + !String.IsEqual(ListItem.DBType,set)">EnableAddon(script.embuary.info)</ondown>
 					<ondown condition="!System.HasAddon(script.embuary.info) + !String.IsEqual(ListItem.DBType,set)">InstallAddon(script.embuary.info)</ondown>
@@ -136,33 +132,30 @@
 					<onup>8000</onup>
 					<scrolltime>200</scrolltime>
 					<orientation>horizontal</orientation>
-				
 						<itemlayout height="317" width="215">
-			                                <control type="image">
-                                                           <width>214</width>
-							<height>306</height>
-								<texture border="1" diffuse="diffuse/poster.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
-								
+			            <control type="image">
+                        <width>214</width>
+						<height>306</height>
+						<texture border="1" diffuse="diffuse/poster3.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="true" aligny="top" align="center">scale</aspectratio>						
 					<bordersize>10</bordersize>
 					</control>
-
 					</itemlayout>
 					 <focusedlayout height="317" width="215">
 						<control type="image">
-                                                    <width>214</width>
+                            <width>214</width>
 							<height>306</height>
-                                                    <bordersize>6</bordersize>
-							<include>PosterThumbFO_Defs</include>
+                            <bordersize>6</bordersize>
+							<include>PosterThumbFO_DefsBingie</include>
 						</control>
 						<control type="image">
-                                                     <width>214</width>
+                    <width>214</width>
 							<height>306</height>
-
-							<texture border="1" diffuse="diffuse/poster.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
-							
+							<texture border="1" diffuse="diffuse/poster3.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
+							<aspectratio scalediffuse="true" aligny="top" align="center">scale</aspectratio>
 							<bordersize>10</bordersize>
 						</control>
-	                                           <control type="label">
+                     <control type="label">
 							<left>14</left>
 							<bottom>0</bottom>
 							<width>87%</width>
@@ -186,61 +179,51 @@
 							<shadowcolor>ff000000</shadowcolor>
 							<scroll>true</scroll>
 						</control>
-
 					</focusedlayout>
-                                            </control>
-					
-
-					
-
+                    </control>
 						<!-- end -->
 
-						
-                          <!--Similar List-->
+                <!--Similar List-->
 				<control type="panel" id="352">
-			                 <top>710</top>
-					<width>1708</width>
+			        <top>727</top>
+					<width>1720</width>
 					<height>317</height>
-                                         <left>130</left>
+                    <left>128</left>
 					<onleft>ClearProperty(AdditionalInfo)</onleft>
 					<onback>ClearProperty(AdditionalInfo)</onback>
 					<onback>8000</onback>
 					<onleft>SetFocus(8000)</onleft>
-                                        <ondown condition="System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(352) + !String.IsEqual(ListItem.DBType,set)">RunScript(script.embuary.info,call=movie,query='$ESCINFO[Container(352).ListItem.Label]')</ondown>
+                    <ondown condition="System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(352) + !String.IsEqual(ListItem.DBType,set)">RunScript(script.embuary.info,call=movie,query='$ESCINFO[Container(352).ListItem.Label]')</ondown>
 					<ondown condition="System.HasAddon(script.embuary.info) + !System.AddonIsEnabled(script.embuary.info) + !String.IsEqual(ListItem.DBType,set)">EnableAddon(script.embuary.info)</ondown>
 					<ondown condition="!System.HasAddon(script.embuary.info) + !String.IsEqual(ListItem.DBType,set)">InstallAddon(script.embuary.info)</ondown>
 					<scrolltime>200</scrolltime>
 					<orientation>horizontal</orientation>	
 					<visible allowhiddenfocus="true">String.IsEqual(Window.Property(AdditionalInfo),similar)</visible>
-                                      <animation effect="fade" start="100" end="25" time="0" condition="Container(352).IsUpdating">Conditional</animation>
+                    <animation effect="fade" start="100" end="25" time="0" condition="Container(352).IsUpdating">Conditional</animation>
 					<animation effect="slide" start="0,0" end="0,1000" time="0" delay="0" condition="!String.IsEqual(Window.Property(AdditionalInfo),similar)">Conditional</animation>
-										<!-- itemlayout movies -->
+						<!-- itemlayout movies -->
 						<itemlayout height="317" width="215">
-			                                <control type="image">
-                                                           <width>211</width>
+			                <control type="image">
+                            <width>210</width>
 							<height>302</height>
-								<texture border="1" diffuse="diffuse/poster.png" background="true" fallback="defaultactorposter.png">$VAR[VideoInfoPosterImage]</texture>
-								<include>PosterPanelLayout</include>
+								<texture border="1" diffuse="diffuse/poster3.png" background="true" fallback="defaultactorposter.png">$VAR[VideoInfoPosterImage]</texture>
+								<include>PosterPanelBingieLayout</include>
 								<bordersize>8</bordersize>
 							</control>
-
 					</itemlayout>
-					<focusedlayout height="317" width="210">
+					<focusedlayout height="317" width="215">
 						<control type="group">
-							<width>211</width>
+							<width>210</width>
 							<height>302</height>
-							<include>PosterPanelLayoutFocus</include>
+							<include>PosterPanelBingieLayoutFocus</include>
 						</control>
 					</focusedlayout>
-					
 					<content limit="8">$VAR[InfoDialog_MoreLikeThis_Content]</content>
 				</control>
-
 				<!-- hidden my rating button -->
 				<control type="button" id="7">
 					<include>HiddenObject</include>
 				</control>
-
 				<!-- hidden play button
 				<control type="button" id="8">
 					<include>HiddenObject</include>
@@ -258,34 +241,30 @@
 					<content sortorder="ascending" sortby="playcount" limit="1">$VAR[InfoDialogNextUpContent]</content>
 				</control>
 
-
-
-
-				
 						<control type="grouplist" id="8000">
-							<width>1420</width>
+						<visible>!String.IsEqual(Window.Property(AdditionalInfo),similar)</visible>
+							<width>1424</width>
 							<height>325</height>
                             <orientation>horizontal</orientation>
-                           <top>655</top>
+                           <top>675</top>
                           <left>136</left>
-			 <itemgap>14</itemgap>
+							<itemgap>14</itemgap>
                             <onup>noop</onup>
                             <ondown>50</ondown>
                             <scrolltime tween="sine" easing="inout">200</scrolltime>
-			<onleft condition="String.IsEqual(Window.Property(AdditionalInfo), similar)">SetFocus(352)</onleft>
+							<onleft condition="String.IsEqual(Window.Property(AdditionalInfo), similar)">SetFocus(352)</onleft>
 								<pagecontrol>300</pagecontrol>
 						
 							<!-- Play/Resume via 5050 Container (next episode) -->
                             <control type="radiobutton" id="51">
                                 <visible>Skin.HasSetting(videoinfo_button_play)</visible>
 								<visible>Control.IsVisible(5050) + String.IsEqual(ListItem.dbtype,tvshow)</visible>
-                                
                                 <include content="Bingie_InfoDialog_Button_Texture">
                                     <param name="radiotexture" value="dialogs/videoinfo/info/play2.png"/>
                                 </include>
-				<height>40</height>
+							<height>40</height>
                             <width>300</width>
-                                <label>$VAR[PlayOrResumeSeasonEpisodeLabel]</label>
+                                <label>$VAR[PlayOrResumeSeasonEpisodeLabel2]</label>
 								<textwidth>243</textwidth>
                                 <radioposx>14</radioposx>
                                 <radiowidth>22</radiowidth>
@@ -299,7 +278,6 @@
                             <control type="radiobutton" id="8">
                                 <visible>Skin.HasSetting(videoinfo_button_play)</visible>
 				<visible>!Control.IsVisible(9) + !$EXP[IsTvShowDBTypeNoFallback]</visible>
-                                
                                 <include content="Bingie_InfoDialog_Button_Texture">
                                     <param name="radiotexture" value="dialogs/videoinfo/info/play2.png"/>
                                 </include>
@@ -317,12 +295,11 @@
                             <!-- Resume -->
                             <control type="radiobutton" id="9">
                                 <visible>Skin.HasSetting(videoinfo_button_play)</visible>
-				<visible>ListItem.IsResumable</visible>
-                                
+								<visible>ListItem.IsResumable</visible>
                                 <include content="Bingie_InfoDialog_Button_Texture">
                                     <param name="radiotexture" value="dialogs/videoinfo/info/play2.png"/>
                                 </include>
-				 <height>40</height>
+							<height>40</height>
                             <width>210</width>
                                 <label>$LOCALIZE[13404]$INFO[ListItem.Season, $LOCALIZE[31871],: ]$INFO[ListItem.Episode,$LOCALIZE[31873]. ,]</label>
                                 <radioposx>14</radioposx>
@@ -333,18 +310,16 @@
 								<onclick>Dialog.Close(movieinformation)</onclick>
                             </control>
 
-							
-
 							<!--More episodes-->
                             <control type="radiobutton" id="53">
                                 <visible>Skin.HasSetting(videoinfo_button_play)</visible>
                                 <visible>$EXP[IsTvShowDBTypeNoFallback]	| [$EXP[IsEpisodeDBTypeNoFallback] + !String.IsEmpty(ListItem.DBID) + !String.IsEmpty(Window(Home).Property(ListItem.TVShowID))]</visible>
-                                                                <include content="Bingie_InfoDialog_Button_Texture">
+                                   <include content="Bingie_InfoDialog_Button_Texture">
                                     <param name="radiotexture" value="dialogs/videoinfo/info/more_episodes.png"/>
                                 </include>
-				<height>40</height>
-                            <width>210</width>
-                                <label>episodes</label>
+							<height>40</height>
+                            <width>212</width>
+                                <label>Episodes</label>
                                 <radioposx>15</radioposx>
                                 <radiowidth>24</radiowidth>
                                 <radioheight>24</radioheight>
@@ -365,63 +340,60 @@
 							<!-- Trailer -->
                             <control type="radiobutton" id="11">
                                 <visible>Skin.HasSetting(videoinfo_button_trailer)</visible>
-				<visible>!String.IsEmpty(ListItem.Trailer) | [Skin.String(AutoYoutubeTrailer,true) + [$EXP[IsTvShowDBTypeNoFallback] | $EXP[IsMovieDBTypeNoFallback] | $EXP[IsEpisodeDBTypeNoFallback]]]</visible>
-                                                                <include content="Bingie_InfoDialog_Button_Texture">
-                                    <param name="radiotexture" value="dialogs/videoinfo/tvstudio-icon.png"/>
+								<visible>!String.IsEmpty(ListItem.Trailer) | [Skin.String(AutoYoutubeTrailer,true) + [$EXP[IsTvShowDBTypeNoFallback] | $EXP[IsMovieDBTypeNoFallback] | $EXP[IsEpisodeDBTypeNoFallback]]]</visible>
+                                <include content="Bingie_InfoDialog_Button_Texture">
+                                <param name="radiotexture" value="dialogs/videoinfo/tvstudio-icon.png"/>
                                 </include>
                                 <label>Trailer</label>
-				<height>40</height>
-                            <width>210</width>
+								<height>40</height>
+								<width>210</width>
                                 <radioposx>11</radioposx>
                                 <radiowidth>27</radiowidth>
                                 <radioheight>27</radioheight>
-                                                           </control>
+                             </control>
 
-							
-		
-
-							<!--Similar Button											Temporarily disabled until I fix the bug
+							<!--Similar Button	-->	
                             <control type="radiobutton" id="62">
                                 <visible>Skin.HasSetting(videoinfo_button_similar)</visible>
                                 <visible>!String.IsEqual(Window.Property(AdditionalInfo),similar) + Integer.IsGreater(Container(352).NumItems,0)</visible>
-                                
                                 <include content="Bingie_InfoDialog_Button_Texture">
-                                    <param name="radiotexture" value="dialogs/videoinfo/info/similar.png"/>
+                                <param name="radiotexture" value="dialogs/videoinfo/info/similar.png"/>
                                 </include>
-					  <height>40</height>
-                            <width>210</width>								
-                                <label>$LOCALIZE[31622]</label>
+								<height>40</height>
+								<width>210</width>								
+                                <label>$LOCALIZE[320005]</label>
                                 <radioposx>13</radioposx>
                                 <radiowidth>24</radiowidth>
                                 <radioheight>24</radioheight>
                                 <onclick>SetProperty(AdditionalInfo, similar)</onclick>
-                                <onclick>SetProperty(subtitle, $LOCALIZE[31622])</onclick>
+                                <onclick>SetProperty(subtitle, $LOCALIZE[320005])</onclick>
                                 <onclick>SetFocus(352)</onclick>
-                            </control> -->
+                            </control> 
 
-					<!-- Extended Info -->
+					<!-- Extended Info 
                             <control type="radiobutton" id="13">
                                 <visible>!String.IsEmpty(ListItem.Director)</visible>
-                                                                <include content="Bingie_InfoDialog_Button_Texture">
-                                    <param name="radiotexture" value="icons/infodialogs/director.png"/>
+                                <include content="Bingie_InfoDialog_Button_Texture">
+                                <param name="radiotexture" value="icons/infodialogs/director.png"/>
                                 </include>
-			 <height>40</height>
-                            <width>210</width>
+								<height>40</height>
+								<width>210</width>
                                 <label>Director</label>
                                 <radioposx>13</radioposx>
                                 <radiowidth>27</radiowidth>
                                 <radioheight>32</radioheight>
-			</control>
+							</control> -->
 
 							<!-- add to my list -->
                             <control type="radiobutton" id="56">
+								<visible>!$EXP[IsEpisodeDBType]</visible>
                                 <visible>Skin.HasSetting(videoinfo_button_mylist)</visible>
                                 <visible>!String.IsEmpty(ListItem.DBID) + [$EXP[IsTvShowDBTypeNoFallback] | $EXP[IsMovieDBTypeNoFallback] | $EXP[IsEpisodeDBTypeNoFallback]]</visible>
 								<visible>[!String.Contains(ListItem.Tag, mylist) + String.IsEmpty(Window(Home).Property(IsInMyList))] | !String.IsEqual(Window(Home).Property(IsInMyList), ListItem.DBID)</visible>
 						  <include content="Bingie_InfoDialog_Button_Texture">
                                     <param name="radiotexture" value="dialogs/videoinfo/info/plus.png"/>
                                 </include>
-                                <label>my list</label>
+                                <label>My List</label>
                              		  <height>40</height>
                             <width>210</width>								
                                 
@@ -433,6 +405,7 @@
 
 							<!-- remove from my list -->
                             <control type="radiobutton" id="57">
+							<visible>!$EXP[IsEpisodeDBType]</visible>
                                 <visible>Skin.HasSetting(videoinfo_button_mylist)</visible>
                                 <visible>!String.IsEmpty(ListItem.DBID) + [$EXP[IsTvShowDBTypeNoFallback] | $EXP[IsMovieDBTypeNoFallback] | $EXP[IsEpisodeDBTypeNoFallback]]</visible>
 				<visible>[String.Contains(ListItem.Tag, mylist) + String.IsEmpty(Window(Home).Property(IsInMyList))] | String.IsEqual(Window(Home).Property(IsInMyList), ListItem.DBID)</visible>
@@ -487,7 +460,7 @@
 			<control type="group">
 				<visible>Control.HasFocus(50) + !String.IsEqual(ListItem.DBType,set)</visible>
 				<animation effect="fade" time="200">VisibleChange</animation>
-				<top>10</top>
+				<top>18</top>
 				<left>0</left>
 				<control type="label">
 					<left>134</left>
@@ -500,7 +473,7 @@
 		<control type="group">
 				<visible>Control.HasFocus(352) + !String.IsEqual(ListItem.DBType,set)</visible>
 				<animation effect="fade" time="200">VisibleChange</animation>
-				<top>10</top>
+				<top>17</top>
 				<left>0</left>
 				<control type="label">
 					<left>134</left>
@@ -650,6 +623,53 @@
 						<height>40</height>
 						<include>SpotlightRowDetails</include>
 					</control>
+					
+<!-- Bingie Top 250/Sublabel/watch xx Now -->
+    <control type="group">
+			<orientation>horizontal</orientation>
+			<visible>!$EXP[IsEpisodeDBType]</visible>
+			<visible>!Skin.HasSetting(DisableTop250Info) + !String.IsEmpty(Control.GetLabel(8231)) + String.IsEmpty(Control.GetLabel(823))</visible>
+			<animation effect="fade" time="150">Visible</animation>
+			<height>60</height>
+			<width>800</width>
+			<top>-10</top>
+			<aligny>center</aligny> 
+			<usecontrolcoords>true</usecontrolcoords>
+			<itemgap>15</itemgap>
+		<!-- Spotlight Details Row Top250 Colored Icon -->
+		<control type="image">
+				<visible>!Skin.HasSetting(EnableTop250ColoredLabelInfo)</visible>
+				<visible>Control.IsVisible(8231)</visible>
+				<posy>30</posy>
+				<left>1</left>
+                <height>50</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250.png</texture>
+		</control>
+		<!-- Spotlight Details Row Top250 White Icon -->
+		<control type="image">
+				<visible>Skin.HasSetting(EnableTop250ColoredLabelInfo)</visible>
+				<visible>Control.IsVisible(8231)</visible>
+				<posy>30</posy>
+				<left>1</left>
+                <height>50</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top2501.png</texture>
+		</control>
+		<!-- Spotlight Text Label Top250 -->	
+		<control type="label" id="8231">
+            <visible>!$EXP[IsEpisodeDBType]</visible>
+            <visible>!String.IsEmpty(Control.GetLabel(8231)) + !Skin.HasSetting(DisableTop250Info)</visible>
+			<posy>25</posy>
+			<posx>66</posx>
+			<font>bold29</font> 
+            <textcolor>ffffffff</textcolor>
+            <label>$VAR[IMDBTop250RatingValue,#, on IMDB Today]</label>
+            <include>Default_Visible_Fade</include>
+        </control>
+		</control>
 
 					<!-- Sublabel -->
 					<control type="label" id="823">
@@ -670,12 +690,12 @@
 						<animation effect="fade" start="100" end="0" time="200" condition="!String.IsEmpty(Window.Property(AdditionalInfo))">Conditional</animation>
 						<width>820</width>
 						<top>25</top>
-						<height min="110" max="160">auto</height>
-						<textcolor>darkgray</textcolor>
+						<height min="50" max="120">auto</height>
+						<textcolor>ffffffff</textcolor>
 						<shadowcolor></shadowcolor>
 						<align>left</align>
 						<font>Plots</font>
-						<label>$VAR[BingieInfoDialogPlot]</label>
+						<label>$VAR[BingiePlot]</label>   <!-- BingieInfoDialogPlot -->
 					</control>
 
 					<!-- more details -->
@@ -689,8 +709,8 @@
                         <include condition="Skin.HasSetting(videoinfo_details_director)">More_Details_Director</include>
                         <include condition="Skin.HasSetting(videoinfo_details_writer)">More_Details_Writer</include>
                         <include condition="Skin.HasSetting(videoinfo_details_genre)">More_Details_Genre</include>
-                        <include condition="Skin.HasSetting(videoinfo_details_subtitles)">More_Details_Subtitles</include>
-                        <include condition="Skin.HasSetting(videoinfo_details_audiolanguages)">More_Details_AudioLanguages</include>
+                        <!-- <include condition="Skin.HasSetting(videoinfo_details_subtitles)">More_Details_Subtitles</include> -->
+                        <!-- <include condition="Skin.HasSetting(videoinfo_details_audiolanguages)">More_Details_AudioLanguages</include> -->
                         <include condition="Skin.HasSetting(videoinfo_details_awards)">More_Details_Awards</include>
 					</control>
 
@@ -706,10 +726,10 @@
 							<animation effect="fade" start="0" end="100" time="0" delay="125">Visible</animation>
 							<control type="progress">
 								<posy>28</posy>
-								<left>365</left>
+								<left>377</left>
 								<width>155</width>
 								<height>8</height>
-								<texturebg colordiffuse="cc515151" border="0">colors/color_white.png</texturebg>
+								<texturebg colordiffuse="ffffffff" border="0">colors/color_white.png</texturebg>
 								<lefttexture/>
 								<midtexture colordiffuse="$INFO[Skin.String(OSDProgressBarColor)]" border="4">colors/color_white.png</midtexture>
 								<righttexture/>
@@ -725,7 +745,7 @@
 							<animation effect="fade" start="0" end="100" time="0" delay="250">Visible</animation>
 							<width>550</width>
 							<height>65</height>
-							<texture border="4" background="true" colordiffuse="$INFO[Skin.String(ViewDetailsBorderFocusColor)]">bingie/border/default_button_fo.png</texture>
+							<texture border="10" background="true" colordiffuse="$INFO[Skin.String(ViewDetailsBorderFocusColor)]">bingie/border/default_button_fo2.png</texture>
 							<animation effect="slide" end="0,65" time="150" tween="sine" easing="out" condition="Integer.IsGreater(Container(8000).Position, 0)">Conditional</animation>
 							<animation effect="slide" end="0,65" time="150" tween="sine" easing="out" condition="Integer.IsGreater(Container(8000).Position, 1)">Conditional</animation>
 							<animation effect="slide" end="0,65" time="150" tween="sine" easing="out" condition="Integer.IsGreater(Container(8000).Position, 2)">Conditional</animation>
@@ -766,10 +786,10 @@
 								<font>Reg30</font>
 								<textcolor>$VAR[BingieInfoDialogButtonsTextColor]</textcolor>
 								<focusedcolor>$INFO[Skin.String(ViewDetailsTextColor)]</focusedcolor>
-								<texturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf.png</texturenofocus>
-								<alttexturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo.png</alttexturefocus>
-								<alttexturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf.png</alttexturenofocus>
+								<texturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo1.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf1.png</texturenofocus>
+								<alttexturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo1.png</alttexturefocus>
+								<alttexturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf1.png</alttexturenofocus>
 								<radioposx>120</radioposx>
 								<radiowidth>30</radiowidth>
 								<radioheight>30</radioheight>
@@ -806,10 +826,10 @@
 								<font>Plots</font>
 								<textcolor>$VAR[BingieInfoDialogButtonsTextColor]</textcolor>
 								<focusedcolor>$INFO[Skin.String(ViewDetailsTextColor)]</focusedcolor>
-								<texturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf.png</texturenofocus>
-								<alttexturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo.png</alttexturefocus>
-								<alttexturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf.png</alttexturenofocus>
+								<texturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo1.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf1.png</texturenofocus>
+								<alttexturefocus border="10" colordiffuse="$INFO[Skin.String(ViewDetailsTextColor)]">bingie/border/slimframefo1.png</alttexturefocus>
+								<alttexturenofocus border="10" colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">bingie/border/slimframenf1.png</alttexturenofocus>
 								<radioposx>120</radioposx>
 								<radiowidth>30</radiowidth>
 								<radioheight>30</radioheight>
@@ -929,7 +949,7 @@
                                 <include content="Bingie_InfoDialog_Button_Texture">
                                     <param name="radiotexture" value="dialogs/videoinfo/info/play_beginning.png"/>
                                 </include>
-                                <label>$LOCALIZE[12021]</label>
+                                <label>$LOCALIZE[320000]</label>
                                 <radioposx>17</radioposx>
                                 <radiowidth>22</radiowidth>
                                 <radioheight>22</radioheight>
@@ -1018,6 +1038,7 @@
 
 							<!-- add to my list -->
                             <control type="radiobutton" id="56">
+								<visible>!$EXP[IsEpisodeDBType]</visible>
                                 <visible>Skin.HasSetting(videoinfo_button_mylist)</visible>
                                 <visible>!String.IsEmpty(ListItem.DBID) + [$EXP[IsTvShowDBTypeNoFallback] | $EXP[IsMovieDBTypeNoFallback] | $EXP[IsEpisodeDBTypeNoFallback]]</visible>
 								<visible>[!String.Contains(ListItem.Tag, mylist) + String.IsEmpty(Window(Home).Property(IsInMyList))] | !String.IsEqual(Window(Home).Property(IsInMyList), ListItem.DBID)</visible>
@@ -1034,6 +1055,7 @@
 
 							<!-- remove from my list -->
                             <control type="radiobutton" id="57">
+								<visible>!$EXP[IsEpisodeDBType]</visible>
                                 <visible>Skin.HasSetting(videoinfo_button_mylist)</visible>
                                 <visible>!String.IsEmpty(ListItem.DBID) + [$EXP[IsTvShowDBTypeNoFallback] | $EXP[IsMovieDBTypeNoFallback] | $EXP[IsEpisodeDBTypeNoFallback]]</visible>
 								<visible>[String.Contains(ListItem.Tag, mylist) + String.IsEmpty(Window(Home).Property(IsInMyList))] | String.IsEqual(Window(Home).Property(IsInMyList), ListItem.DBID)</visible>
@@ -1050,6 +1072,7 @@
 
 							<!-- Rate this title -->
                             <control type="radiobutton" id="58">
+								<visible>!Container.Content(tvshows)</visible>
                                 <visible>Skin.HasSetting(videoinfo_button_myrating) + Control.IsEnabled(7)</visible>
                                 <visible>[String.IsEmpty(ListItem.UserRating) + String.IsEmpty(Window(Home).Property(RateTitle))] | [String.IsEqual(Window(Home).Property(RateTitle.Action),reset) + String.IsEqual(Window(Home).Property(RateTitle),ListItem.DBID)]</visible>
                                 <include>Bingie_InfoDialog_Button_Default_Defs</include>
@@ -1207,7 +1230,7 @@
 								<include content="Bingie_InfoDialog_Button_Texture">
 									<param name="radiotexture" value="dialogs/videoinfo/info/artwork.png"/>
 								</include>
-								<label>13511</label>
+								<label>$LOCALIZE[320002]</label>
 								<radioposx>16</radioposx>
 								<radioposy>22</radioposy>
 								<radiowidth>23</radiowidth>
@@ -1258,7 +1281,7 @@
 						<width>100%</width>
 						<height min="0" max="500">auto</height>
 						<label>$INFO[ListItem.Plot]</label>
-						<textcolor>gray</textcolor>
+						<textcolor>white</textcolor>
 						<align>justify</align>
 						<font>Reg30</font>
 					</control>
@@ -1288,7 +1311,7 @@
 				</control>
 				<!-- extendedinfo cast list -->
 				<control type="panel" id="351">
-					<posx>601</posx>
+					<posx>591</posx>
 					<posy>341</posy>
 					<width>800</width>
 					<height>720</height>
@@ -1304,29 +1327,30 @@
 					<viewtype label="actor list">list</viewtype>
 					<visible allowhiddenfocus="true">String.IsEqual(Window.Property(AdditionalInfo),cast)</visible>
 					<include>animation_window_open_close</include>
-					<itemlayout height="360" width="250">
+					<itemlayout height="360" width="260">
 						<control type="group">
-							<width>238</width>
-							<height>348</height>
+							<width>240</width>
+							<height>340</height>
+							<posy>4</posy>
+							<posx>4</posx>
 							<control type="image">
-								<include>PosterThumbBG</include>
+								<include>PosterThumbBGBingie</include>
 							</control>
 							<control type="image">
-								<texture border="1" diffuse="diffuse/poster.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
+								<texture border="1" diffuse="diffuse/poster3.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
 								<aspectratio scalediffuse="true" aligny="top" align="center">scale</aspectratio>
-								<bordersize>4</bordersize>
 							</control>
 						</control>
 					</itemlayout>
-					<focusedlayout height="360" width="250">
+					<focusedlayout height="360" width="260">
 						<control type="group">
-							<width>238</width>
+							<width>248</width>
 							<height>348</height>
 							<control type="image">
-								<include>PosterThumbFO_Defs</include>
+								<include>PosterThumbFO_DefsBingie</include>
 							</control>
 							<control type="image">
-								<texture border="1" diffuse="diffuse/poster.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
+								<texture border="1" diffuse="diffuse/poster3.png" background="true" fallback="defaultactorposter.png">$INFO[ListItem.Art(thumb)]</texture>
 								<aspectratio scalediffuse="true" aligny="top" align="center">scale</aspectratio>
 								<bordersize>4</bordersize>
 							</control>
@@ -1362,13 +1386,13 @@
 					<control type="group">
 						<right>35</right>
 						<posy>345</posy>
-						<width>515</width>
+						<width>495</width>
 						<height>700</height>
 						<!--Actor Image-->
 						<control type="image">
 							<description>Actor image</description>
 							<aspectratio align="center" aligny="top" scalediffuse="true">scale</aspectratio>
-							<texture background="true" diffuse="diffuse/poster.png" fallback="defaultactorposter.png">$INFO[Container(351).ListItem.Art(thumb)]</texture>
+							<texture background="true" diffuse="diffuse/poster3.png" fallback="defaultactorposter.png">$INFO[Container(351).ListItem.Art(thumb)]</texture>
 							<fadetime>300</fadetime>
 						</control>
 						<!--Panel-->
@@ -1376,7 +1400,7 @@
 							<bottom>-1</bottom>
 							<height>120</height>
 							<bordersize>0</bordersize>
-							<texture background="true" diffuse="diffuse/poster.png">colors/color_white.png</texture>
+							<texture background="true" diffuse="diffuse/poster3.png">colors/color_white.png</texture>
 							<colordiffuse>4d000000</colordiffuse>
 						</control>
 						<control type="label">
@@ -1394,8 +1418,8 @@
 
 				<!--Similar List-->
 				<control type="panel" id="352">
-					<posx>601</posx>
-					<posy>341</posy>
+					<posx>587</posx>
+					<posy>337</posy>
 					<width>800</width>
 					<height>720</height>
 					<onleft>ClearProperty(AdditionalInfo)</onleft>
@@ -1410,18 +1434,18 @@
 					<animation effect="fade" start="100" end="25" time="0" condition="Container(352).IsUpdating">Conditional</animation>
 					<animation effect="slide" start="0,0" end="0,1000" time="0" delay="0" condition="!String.IsEqual(Window.Property(AdditionalInfo),similar)">Conditional</animation>
 					<!-- itemlayout movies -->
-					<itemlayout height="360" width="250">
+					<itemlayout height="360" width="260">
 						<control type="group">
-							<width>238</width>
-							<height>348</height>
-							<include>PosterPanelLayout</include>
+							<width>256</width>
+							<height>356</height>
+							<include>PosterPanelBingieLayout</include>
 						</control>
 					</itemlayout>
-					<focusedlayout height="360" width="250">
+					<focusedlayout height="360" width="260">
 						<control type="group">
-							<width>238</width>
-							<height>348</height>
-							<include>PosterPanelLayoutFocus</include>
+							<width>256</width>
+							<height>356</height>
+							<include>PosterPanelBingieLayoutFocus</include>
 						</control>
 					</focusedlayout>
 					<content>$VAR[InfoDialog_MoreLikeThis_Content]</content>
@@ -1434,19 +1458,19 @@
 					<control type="group">
 						<right>35</right>
 						<posy>345</posy>
-						<width>515</width>
+						<width>495</width>
 						<height>700</height>
 						<control type="image">
-							<aspectratio align="center" aligny="top" scalediffuse="true">scale</aspectratio>
-							<texture background="true" diffuse="diffuse/poster.png">$INFO[Container(352).ListItem.Art(poster)]</texture>
+							<aspectratio align="center" aligny="top" scalediffuse="true">stretch</aspectratio>
+							<texture background="true" diffuse="diffuse/poster3.png">$INFO[Container(352).ListItem.Art(poster)]</texture>
 							<fadetime>300</fadetime>
 						</control>
-						<!--Panel-->
+						<!--Panel
 						<control type="image">
 							<bottom>-1</bottom>
 							<height>120</height>
 							<bordersize>0</bordersize>
-							<texture background="true" diffuse="diffuse/poster.png">colors/color_white.png</texture>
+							<texture background="true" diffuse="diffuse/poster3.png">colors/color_white.png</texture>
 							<colordiffuse>$INFO[Skin.String(TagOverlaysPanelColor)]</colordiffuse>
 						</control>
 						<control type="label">
@@ -1458,7 +1482,7 @@
 							<label>$INFO[Container(352).ListItem.Label2,[B],[/B][CR]]$INFO[Container(352).ListItem.Label]</label>
 							<font>Reg32</font>
 							<textcolor>$INFO[Skin.String(TagOverlaysTextColor)]</textcolor>
-						</control>
+						</control> -->
 					</control>
 				</control>
 			</control>
@@ -1664,7 +1688,7 @@
             <font>Reg26</font>
             <align>left</align>
             <label>$PARAM[label]</label>
-            <textcolor>ff8d8d8d</textcolor>
+            <textcolor>ffffffff</textcolor>
             <scroll>false</scroll>
         </control>
     </include>
@@ -1687,10 +1711,10 @@
         <font>Plots</font>  <!--better size for these buttons-->
         <textoffsetx>55</textoffsetx>
         <textoffsety>8</textoffsety>
-		<textcolor>darkgray</textcolor>
+		<textcolor>ffffffff</textcolor>
         <!-- <textcolor>$VAR[BingieInfoDialogButtonsTextColor]</textcolor> -->
         <!--default <focusedcolor>$INFO[Skin.String(ViewDetailsTextColor)]</focusedcolor> -->
-		<focusedcolor>white</focusedcolor>
+		<focusedcolor>ffffffff</focusedcolor>
 		<include condition="Skin.HasSetting(DisableFixedFrameVideoInfo)">No_FixedFrame_Texture</include>
 		<texturenofocus/>
         <texturefocus/>
@@ -1698,14 +1722,14 @@
 
 
 	<include name="No_FixedFrame_Texture">
-		<texturefocus border="4" colordiffuse="$INFO[Skin.String(ViewDetailsBorderFocusColor)]">bingie/border/default_button_fo.png</texturefocus>
+		<texturefocus border="4" colordiffuse="$INFO[Skin.String(ViewDetailsBorderFocusColor)]">bingie/border/default_button_fo2.png</texturefocus>
 	</include>
 
     <include name="Bingie_InfoDialog_Button_Texture">
-        <textureradioonfocus colordiffuse="white">$PARAM[radiotexture]</textureradioonfocus>
-        <textureradioofffocus colordiffuse="white">$PARAM[radiotexture]</textureradioofffocus>
-        <textureradioonnofocus colordiffuse="darkgray">$PARAM[radiotexture]</textureradioonnofocus>
-        <textureradiooffnofocus colordiffuse="darkgray">$PARAM[radiotexture]</textureradiooffnofocus>
+        <textureradioonfocus colordiffuse="ffffffff">$PARAM[radiotexture]</textureradioonfocus>
+        <textureradioofffocus colordiffuse="ffffffff">$PARAM[radiotexture]</textureradioofffocus>
+        <textureradioonnofocus colordiffuse="ffffffff">$PARAM[radiotexture]</textureradioonnofocus>
+        <textureradiooffnofocus colordiffuse="ffffffff">$PARAM[radiotexture]</textureradiooffnofocus>
     </include>
 
     <include name="Fade_Rate_Button">
@@ -1852,6 +1876,11 @@
 
     <!-- play/resume Sxx: ep. xx label -->
     <variable name="PlayOrResumeSeasonEpisodeLabel">
+        <value condition="Container(5050).ListItem.IsResumable">$LOCALIZE[13404]$INFO[Container(5050).ListItem.Season, $LOCALIZE[31871],: ]$INFO[Container(5050).ListItem.Episode,$LOCALIZE[31873]. ,]</value>
+        <value>$LOCALIZE[208]$INFO[Container(5050).ListItem.Season, $LOCALIZE[320003] ,: ]$INFO[Container(5050).ListItem.Episode,$LOCALIZE[320004] ,]</value>
+    </variable>
+	
+	<variable name="PlayOrResumeSeasonEpisodeLabel2">
         <value condition="Container(5050).ListItem.IsResumable">$LOCALIZE[13404]$INFO[Container(5050).ListItem.Season, $LOCALIZE[31871],: ]$INFO[Container(5050).ListItem.Episode,$LOCALIZE[31873]. ,]</value>
         <value>$LOCALIZE[208]$INFO[Container(5050).ListItem.Season, $LOCALIZE[31871] ,: ]$INFO[Container(5050).ListItem.Episode,$LOCALIZE[31873] ,]</value>
     </variable>

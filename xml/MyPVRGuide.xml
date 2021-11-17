@@ -118,28 +118,28 @@
 				
 				<control type="image">
 					<!--Seperator-->
-					<posy>307</posy>
-					<posx>-68</posx>
-					<width>2040</width>
+					<posy>306</posy>
+					<posx>50</posx>
+					<width>1800</width>
 					<height>10</height>
 					<align>left</align>
-					<texture border="10">common/menu-separator.png</texture>
+					<texture border="10">common/menu-separator2.png</texture>
                     <visible>String.IsEmpty(Window(Home).Property(pvrGuideOnFullscreenVideo))</visible>
 				</control>
 				<control type="image">
 					<!--Seperator-->
 					<posy>940</posy>
-					<posx>-68</posx>
-					<width>2040</width>
+					<posx>50</posx>
+					<width>1800</width>
 					<height>10</height>
 					<align>left</align>
-					<texture border="10">common/menu-separator.png</texture>
+					<texture border="10">common/menu-separator2.png</texture>
                     <visible>String.IsEmpty(Window(Home).Property(pvrGuideOnFullscreenVideo))</visible>
 				</control>
 				
 				<!-- info panel -->
 				<control type="group">
-					<posx>60</posx>
+					<posx>50</posx>
 					<posy>965</posy>
 					<visible>Skin.HasSetting(GuideShowInfo) + String.IsEmpty(Window(Home).Property(pvrGuideOnFullscreenVideo))</visible>
 					<control type="image">
@@ -164,7 +164,7 @@
 					<!--Video Window -->
 					<control type="videowindow">
 						<right>60</right>
-						<posy>0</posy>
+						<posy>-8</posy>
 						<width>300</width>
 						<height>210</height>
 						<visible>VideoPlayer.Content(livetv) + Skin.HasSetting(PVRShowPreview)</visible>
@@ -213,8 +213,8 @@
                     <include condition="!String.IsEmpty(Window(Home).Property(pvrGuideOnFullscreenVideo)) + Skin.string(GuideRows, 7)">altEpgOnScreen7</include>
                     <include condition="!String.IsEmpty(Window(Home).Property(pvrGuideOnFullscreenVideo)) + Skin.string(GuideRows, 9)">altEpgOnScreen9</include>
                     <include condition="!String.IsEmpty(Window(Home).Property(pvrGuideOnFullscreenVideo)) + Skin.string(GuideRows, 10)">altEpgOnScreen10</include>
-                    <top>275</top>
-                    <height>665</height>
+                    <top>277</top>
+                    <height>667</height>
                     <left>50</left>
                     <width>1800</width>
                     <pagecontrol>10</pagecontrol>

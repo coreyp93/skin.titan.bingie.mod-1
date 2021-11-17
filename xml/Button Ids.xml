@@ -118,6 +118,24 @@
 <!-- Enable Pumpkins -->
         <control type="radiobutton" id="2048">
 		
+<!-- Enable Top 250 on Posters -->
+        <control type="radiobutton" id="2049">
+		
+<!-- Prefer white details icons -->
+        <control type="radiobutton" id="2050">
+		
+<!-- Disable Top 250 Label from Info Dialog -->
+        <control type="radiobutton" id="2051">
+		
+<!-- Prefer White Top250 Sublabel on Vido Info -->
+        <control type="radiobutton" id="2052">
+		
+<!-- Enable Netflix User Icons -->
+        <control type="radiobutton" id="2053">
+		
+<!-- Fixed US MPAA Panel Size-->
+        <control type="radiobutton" id="2054">
+		
 		
 
 		

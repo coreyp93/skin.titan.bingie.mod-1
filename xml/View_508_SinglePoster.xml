@@ -116,6 +116,15 @@
                         <width>292</width>
                         <height>404</height>
                         <include>PosterPanelLayout</include>
+						<control type="group">
+			<!--Watched Overlay-->
+			<right>8</right>
+			<top>8</top>
+			<include>WatchedIndicatorNormal</include>
+			<animation type="Conditional" condition="Skin.HasTheme(classic)">
+				<effect type="slide" end="3,-3" time="0"  />
+			</animation>
+		</control>
                     </control>
 				</itemlayout>
 				<focusedlayout height="404" width="292">
@@ -123,8 +132,16 @@
                         <width>292</width>
                         <height>404</height>
                         <include>PosterPanelLayout</include>
+						<control type="group">
+			<!--Watched Overlay-->
+			<right>8</right>
+			<top>8</top>
+			<include>WatchedIndicatorNormal</include>
+			<animation type="Conditional" condition="Skin.HasTheme(classic)">
+				<effect type="slide" end="3,-3" time="0"  />
+			</animation>
+		</control>
                     </control>
-				
 				</focusedlayout>
             </control>
         </control>

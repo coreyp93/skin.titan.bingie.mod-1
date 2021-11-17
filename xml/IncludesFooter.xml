@@ -703,9 +703,10 @@
             <height>65</height>
             <control type="label">
                 <!--Start-->
-                <posx>60</posx>
-                <posy>0</posy>
+                <posx>143</posx>
+                <posy>4</posy>
                 <width>400</width>
+				<align>right</align>
                 <font>flags</font>
                 <textcolor>$INFO[Skin.String(FooterTextColor)]</textcolor>
                 <shadowcolor>$INFO[Skin.String(FooterTextShadowColor)]</shadowcolor>
@@ -713,25 +714,25 @@
             </control>
             <control type="progress">
                 <!--Progress Bar-->
-                <posx>200</posx>
+                <posx>151</posx>
                 <posy>25</posy>
-                <width>150</width>
+                <width>158</width>
                 <info>ListItem.Progress</info>
                 <visible>Skin.HasTheme(classic)</visible>
             </control>
             <control type="progress">
                 <!--Progress Bar-->
-                <posx>200</posx>
-                <posy>23</posy>
-                <width>150</width>
+                <posx>151</posx>
+                <posy>25</posy>
+                <width>158</width>
                 <height>20</height>
                 <info>ListItem.Progress</info>
                 <visible>!Skin.HasTheme(classic)</visible>
             </control>
             <control type="label">
                 <!--End-->
-                <posx>375</posx>
-                <posy>0</posy>
+                <posx>316</posx>
+                <posy>4</posy>
                 <width>400</width>
                 <font>flags</font>
                 <textcolor>$INFO[Skin.String(FooterTextColor)]</textcolor>
@@ -748,7 +749,7 @@
                 <!--live tv channel-->
                 <visible>String.IsEmpty(Control.Getlabel(44123))</visible>
                 <right>60</right>
-                <posy>16</posy>
+                <posy>17</posy>
                 <width>500</width>
                 <align>right</align>
                 <font>Reg30</font>
@@ -759,7 +760,7 @@
             <control type="label">
                 <!--live tv programname-->
                 <posx>610</posx>
-                <posy>16</posy>
+                <posy>17</posy>
                 <width>700</width>
                 <align>center</align>
                 <font>Bold30</font>
@@ -768,9 +769,9 @@
                 <label>$INFO[ListItem.Title]</label>
                 <visible>!Control.IsVisible(884)</visible>
             </control>
-                 <control type="image" id="44123">
+                <control type="image" id="44123">
                 <visible>!Skin.HasTheme(classic)</visible>
-                <right>60</right>
+                <right>50</right>
                 <posy>0</posy>
                 <width>260</width>
                 <height>100</height>
@@ -781,7 +782,7 @@
                 <!--live tv diskspace-->
                 <visible>Window.IsActive(tvrecordings) | Window.IsActive(tvtimers) | Window.IsActive(tvsearch)</visible>
                 <left>60</left>
-                <posy>16</posy>
+                <posy>17</posy>
                 <width>500</width>
                 <align>left</align>
                 <font>Reg30</font>
@@ -1135,7 +1136,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RottenTomatoesRatingValue,,  ]</label>
 				</control>
     </include>
@@ -1205,7 +1206,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating),,%  ]</label>
 				</control>
     </include>
@@ -1239,7 +1240,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[TVDBRatingValue,,  ]</label>
 				</control>
     </include>
@@ -1270,7 +1271,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[TMDBRatingValue,,  ]</label>
 				</control>
     </include>
@@ -1302,7 +1303,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBRatingValue,,  ]</label>
 				</control>
     </include>
@@ -1332,7 +1333,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBTop250RatingValue,#,  ]</label>
 			</control>
     </include>
@@ -1364,7 +1365,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[Label_Oscars,,  ]</label>
 			</control>
     </include>
@@ -1568,7 +1569,7 @@
 		<!--RT Audience Fresh Color (Won't display RT audience unless RT audience is your default rating!) -->
 				<control type="image">
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default can never be RT Audience-->
-                <!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+                <visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<visible>!String.IsEmpty(Control.GetLabel(3777122)) + Integer.IsGreater(ListItem.Rating,5.9)</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
 				<width>37</width>
@@ -1584,7 +1585,7 @@
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default will never be RT Audience-->
                 <visible>!String.IsEmpty(Control.GetLabel(3777122)) + !Integer.IsGreater(ListItem.Rating,5.9)</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<width>56</width>
                 <height>89</height>
 				<bottom>0</bottom>
@@ -1598,14 +1599,14 @@
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default will never be RT Audience-->
 				<visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
                 <visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<posy>3</posy>
 				<width>auto</width>
 				<height></height>
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RatingDecimalToPercentage,,%  ]</label>
 				</control>
         <include condition="Skin.HasSetting(EnableTVdbAndTMdbRating)">TVDB_Color_Hor</include>
@@ -1624,7 +1625,7 @@
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default can never be RT Audience-->
                 <visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<visible>Integer.IsGreater(ListItem.Rating,5.9)</visible>
 				<width>37</width>
                 <height>79</height>
@@ -1639,7 +1640,7 @@
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default can never be RT Audience-->
                 <visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<visible>!Integer.IsGreater(ListItem.Rating,5.9)</visible>
 				<width>56</width>
                 <height>89</height>
@@ -1654,14 +1655,14 @@
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default will never be RT Audience-->
 				<visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
                 <visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<posy>3</posy>
 				<width>auto</width>
 				<height></height>
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RatingDecimalToPercentage,,%  ]</label>
 				</control>
         <include condition="Skin.HasSetting(EnableTVdbAndTMdbRating)">TVDB_Monochrome_Hor</include>
@@ -1754,7 +1755,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[Label_Oscars,,  ]</label>
 				</control>
 								
@@ -1789,7 +1790,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBTop250RatingValue,#,  ]</label>
 				</control>
 				
@@ -1827,7 +1828,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBRatingValue,,  ]</label>
 				</control>
 				
@@ -1894,14 +1895,14 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RottenTomatoesRatingValue,,  ]</label>
 				</control>
 												
 				<!--RT Audience Fresh Color (Won't display RT audience unless RT audience is your default rating!) -->
 				<control type="image">
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default can never be RT Audience-->
-                <!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+                <visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<visible>!String.IsEmpty(Control.GetLabel(3777122)) + Integer.IsGreater(ListItem.Rating,5.9)</visible>
                 <visible>!Skin.HasSetting(PreferWhiteFooter)</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
@@ -1919,7 +1920,7 @@
                 <visible>!String.IsEmpty(Control.GetLabel(3777122)) + !Integer.IsGreater(ListItem.Rating,5.9)</visible>
                 <visible>!Skin.HasSetting(PreferWhiteFooter)</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<width>56</width>
                 <height>42</height>
 				<bottom>19</bottom>
@@ -1934,7 +1935,7 @@
                 <visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
                 <visible>Skin.HasSetting(PreferWhiteFooter)</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<visible>Integer.IsGreater(ListItem.Rating,5.9)</visible>
 				<width>37</width>
                 <height>49</height>
@@ -1950,7 +1951,7 @@
                 <visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
                 <visible>Skin.HasSetting(PreferWhiteFooter)</visible>
 				<visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<visible>!Integer.IsGreater(ListItem.Rating,5.9)</visible>
 				<width>56</width>
                 <height>42</height>
@@ -1965,14 +1966,14 @@
 				<visible>String.IsEqual(ListItem.DBType,movie)</visible> <!--hides default rating for TV shows since the default will never be RT Audience-->
 				<visible>!String.IsEmpty(Control.GetLabel(3777122))</visible>
                 <visible>Skin.HasSetting(enableRTAudience)</visible>
-				<!-- <visible>!String.IsEmpty(ListItem.DateAdded)</visible> Stops default rating showing up in addon widgets since their default rating is never RT audience-->
+				<visible>!String.IsEmpty(ListItem.DateAdded)</visible> <!--Stops default rating showing up in addon widgets since their default rating is never RT audience-->
 				<posy>37</posy>
 				<width>auto</width>
 				<height></height>
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RatingDecimalToPercentage,,%  ]</label>
 				</control>
 								
@@ -2012,7 +2013,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[TVDBRatingValue,,  ]</label>
 				</control>
 				
@@ -2048,7 +2049,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[TMDBRatingValue,,  ]</label>
 				</control>
 								
@@ -2083,7 +2084,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating),,%  ]</label>
 				</control>
 										
@@ -2158,7 +2159,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[rating_value_imdb_2,,  ]</label>
 				</control>
 
@@ -2219,7 +2220,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[rating_value_RT,,%  ]</label>
 				</control>
 				
@@ -2282,7 +2283,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[rating_value_RTaudience,,  ]</label>
 				<!-- <label>$VAR[RatingDecimalToPercentage,,%]</label> -->
 				</control>
@@ -2320,7 +2321,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[rating_value_TVDB,,  ]</label>
 				</control>
 				
@@ -2357,7 +2358,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[rating_value_tmdb,,  ]</label>
 				</control>
 				
@@ -2393,7 +2394,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[rating_value_Metacritic,,%  ]</label>
 				</control>
 				
@@ -2434,7 +2435,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[Label_Oscars,,  ]</label>
 				</control>
 				
@@ -2470,7 +2471,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBTop250RatingValue,#,  ]</label>
 				</control>
 				
@@ -2519,7 +2520,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>RT Certified  | </label>
 				</control>
 				
@@ -2533,7 +2534,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[Label_Oscars,Oscars ,  | ]</label>
 				</control>
 
@@ -2545,7 +2546,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBTop250RatingValue,Top250 #,  | ]</label>
 				</control>
 					
@@ -2558,7 +2559,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[IMDBRatingValue,IMDB ,  | ]</label>
 				</control>
 				
@@ -2573,7 +2574,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RottenTomatoesRatingValue,RT ,  | ]</label>
 				</control>
 				
@@ -2589,7 +2590,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[RatingDecimalToPercentage,RT Audience ,%  | ]</label>
 				</control>
 												
@@ -2604,7 +2605,7 @@
                 <aligny>center</aligny>
                 <fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[TVDBRatingValue,TVDB ,  | ]</label>
 				</control>
 				
@@ -2617,7 +2618,7 @@
                 <aligny>center</aligny>
 				<fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[TMDBRatingValue,TMDB ,  | ]</label>
 				</control>		
 						
@@ -2629,7 +2630,7 @@
 				<height></height>
                 <fadetime>300</fadetime>
                 <font>footer1</font>
-                <textcolor>fffafafa</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[MetaCriticRatingValue,Metacritic ,  | ]</label>
 				</control>			
 

@@ -236,8 +236,8 @@
                 <radioposy>$PARAM[radioposy]</radioposy>
                 <radiowidth>$PARAM[radiowidth]</radiowidth>
                 <radioheight>$PARAM[radioheight]</radioheight>
-                <textureradioonfocus colordiffuse="$INFO[Skin.String(ButtonFocusTextColor)]">$PARAM[texture]</textureradioonfocus>
-                <textureradioofffocus colordiffuse="$INFO[Skin.String(ButtonFocusTextColor)]">$PARAM[texture]</textureradioofffocus>
+                <textureradioonfocus colordiffuse="ffffffff">$PARAM[texture]</textureradioonfocus>
+                <textureradioofffocus colordiffuse="ffffffff">$PARAM[texture]</textureradioofffocus>
                 <textureradioonnofocus colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">$PARAM[texture]</textureradioonnofocus>
                 <textureradiooffnofocus colordiffuse="$INFO[Skin.String(BingiePrimaryTextColor)]">$PARAM[texture]</textureradiooffnofocus>
                 <ondown>$PARAM[ondown]</ondown>
@@ -286,11 +286,11 @@
         <textoffsetx>0</textoffsetx>
         <selectedcolor>$INFO[Skin.String(ButtonFocusTextColor)]</selectedcolor>
         <textcolor>$INFO[Skin.String(ButtonTextColor)]</textcolor>
-        <focusedcolor>$INFO[Skin.String(ButtonFocusTextColor)]</focusedcolor>
+        <focusedcolor>ffffffff</focusedcolor>
         <disabledcolor>$INFO[Skin.String(GeneralTextColor)]</disabledcolor>
         <pulseonselect>false</pulseonselect>
-        <texturefocus colordiffuse="$INFO[Skin.String(ButtonFocusColor)]" border="20">dialogs/keyboard/key-nf.png</texturefocus>
-        <texturenofocus colordiffuse="$INFO[Skin.String(BingieDetailsFlagColor)]" border="20">dialogs/keyboard/key-nf.png</texturenofocus>
+        <texturefocus border="20">dialogs/keyboard/key-nf2.png</texturefocus>
+        <texturenofocus colordiffuse="ff1a1a1a" border="20">dialogs/keyboard/key-nf.png</texturenofocus>
     </include>
 
     <!-- Search Keyboard Row -->
@@ -649,7 +649,7 @@
                             <align>left</align>
                             <aspectratio align="left" aligny="top">stretch</aspectratio>
                             <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
-                            <texture colordiffuse="$VAR[SuggestionBorderColor]">bingie/border/default_button_fo.png</texture>
+                            <texture border="10" colordiffuse="$VAR[SuggestionBorderColor]">bingie/border/default_button_fo2.png</texture>
                             <visible>Control.HasFocus($PARAM[id]) | Control.IsVisible(500)</visible>
                         </control>
                         <control type="label">
@@ -697,7 +697,7 @@
                                 <param name="force_tags" value="$PARAM[force_tags]" />
                                 <param name="widgetTags" value="$PARAM[widgetTags]" />
                             </include>
-                            <include>New_Episodes_Tag_Overlay</include>
+                            <include>Poster_New_Episodes_Tag_Overlay_Search</include>
                         </control>
                     </control>
                 </itemlayout>
@@ -711,8 +711,19 @@
                                 <param name="force_tags" value="$PARAM[force_tags]" />
                                 <param name="widgetTags" value="$PARAM[widgetTags]" />
                             </include>
-                            <include condition="String.IsEqual(Skin.String(HomeLayout),bingie)">New_Episodes_Tag_Overlay</include>
+                            <include condition="String.IsEqual(Skin.String(HomeLayout),bingie)">Poster_New_Episodes_Tag_Overlay_Search</include>
                         </control>
+						<!--Top 250-->
+				<control type="image">
+				<visible>!$EXP[IsEpisodeDBType]</visible>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator)</visible>
+				<posy>8</posy>
+				<left>8</left>
+                <height>60</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250p.png</texture>
+		        </control>
                     </control>
                 </focusedlayout>
             </control>
@@ -721,10 +732,10 @@
 
     <!-- Tag Overlays -->
     <include name="ThumbsViewTags">
-        <include condition="!String.IsEqual(Skin.String(Widgets_DisplayTags),disable) | $PARAM[force_tags]">ThumbsTagOverlay</include>
-        <include condition="String.IsEqual(Skin.String(Widgets_DisplayTags),auto)">LandscapeTagOverlayVisibility</include>
+        <include condition="!String.IsEqual(Skin.String(Widgets_DisplayTags),disable) | $PARAM[force_tags]">PosterTagOverlayBingie</include>
+        <include condition="String.IsEqual(Skin.String(Widgets_DisplayTags),auto)">PosterTagOverlayVisibility</include>
         <include content="$PARAM[widgetTags]" condition="String.IsEqual(Skin.String(Widgets_DisplayTags),override)">
-            <param name="prefix" value="Landscape"/>
+            <param name="prefix" value="Poster"/>
         </include>
     </include>
 
@@ -747,11 +758,11 @@
                     <include condition="Skin.HasSetting(ShowInformationBypass) + $PARAM[allow_showinfo_onclick]">ContainerShowInfoOnclick</include>
                     <param name="id" value="$PARAM[id]"/>
                     <param name="width" value="1188" />
-                    <param name="height" value="$PARAM[height]" />
+                    <param name="height" value="955" />
                     <param name="orientation" value="$PARAM[orientation]" />
                     <param name="layout" value="$PARAM[layout]" />
                     <param name="layoutwidth" value="$PARAM[layoutwidth]" />
-                    <param name="layoutheight" value="225]" />
+                    <param name="layoutheight" value="$PARAM[layoutheight]" />
                     <param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))" />
                     <param name="force_tags" value="$PARAM[force_tags]" />
                     <param name="visibility" value="$PARAM[visibility]" />
@@ -766,7 +777,7 @@
             <control type="grouplist" id="$PARAM[groupid]">
                 <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
                 <nested />
-                <height>36</height>
+                <height>40</height>
                 <orientation>horizontal</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>2</itemgap>
@@ -806,7 +817,9 @@
         <include content="SearchResultWidget">
             <param name="id" value="$PARAM[id]" />
             <param name="layout">ThumbsView</param>
-            <param name="layoutwidth">search_widget_thumb_width</param>
+            <param name="height" value="260" />
+            <param name="layoutwidth">396</param>
+			<param name="layoutheight">260</param>
             <param name="allow_showinfo_onclick" value="false" />
             <visible>!String.IsEmpty(Skin.String(CustomSearchTerm))</visible>
             <content sortby="file" limit="25" target="videos">plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[Skin.String(CustomSearchTerm)]&amp;search_type=videos</content>
@@ -823,12 +836,12 @@
         </include>
         <include content="SearchResultWidget">
             <param name="id" value="$PARAM[id]" />
-            <param name="layout">ThumbsView</param>
-            <param name="layoutwidth">search_widget_thumb_width</param>
+            <param name="layout">SquarePosterPanel</param>
+			<param name="height" value="260" />
+            <param name="layoutwidth">396</param>
+			<param name="layoutheight">260</param>
             <param name="allow_showinfo_onclick" value="false" />
             <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
-            <param name="widgetTags" value="WidgetTagOverlayEnable" />
-            <param name="force_tags" value="true" />
             <content limit="100" target="videos">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</content>
         </include>
     </include>
@@ -844,7 +857,9 @@
         <include content="SearchResultWidget">
             <param name="id" value="$PARAM[id]" />
             <param name="layout">ThumbsView</param>
-            <param name="layoutwidth">search_widget_thumb_width</param>
+            <param name="height" value="260" />
+            <param name="layoutwidth">396</param>
+			<param name="layoutheight">260</param>
             <param name="allow_showinfo_onclick" value="false" />
             <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
             <content limit="100" target="videos">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</content>
@@ -862,7 +877,9 @@
         <include content="SearchResultWidget">
             <param name="id" value="$PARAM[id]" />
             <param name="layout">SquarePosterPanel</param>
-            <param name="layoutwidth">search_widget_height</param>
+			<param name="height" value="396" />
+            <param name="layoutwidth">396</param>
+			<param name="layoutheight">396</param>
             <param name="allow_showinfo_onclick" value="false" />
             <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
             <content limit="100" target="music">musicdb://albums/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22album%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22album%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22albums%22%7d</content>
@@ -880,7 +897,9 @@
         <include content="SearchResultWidget">
             <param name="id" value="$PARAM[id]" />
             <param name="layout">SquarePosterPanel</param>
-            <param name="layoutwidth">search_widget_height</param>
+			<param name="height" value="396" />
+            <param name="layoutwidth">396</param>
+			<param name="layoutheight">396</param>
             <param name="allow_showinfo_onclick" value="false" />
             <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
             <content limit="100" target="music">musicdb://artists/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22artist%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D</content>
@@ -898,7 +917,9 @@
         <include content="SearchResultWidget">
             <param name="id" value="$PARAM[id]" />
             <param name="layout">SquarePosterPanel</param>
-            <param name="layoutwidth">search_widget_height</param>
+			<param name="height" value="396" />
+            <param name="layoutwidth">396</param>
+			<param name="layoutheight">396</param>
             <param name="allow_showinfo_onclick" value="false" />
             <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
             <content limit="100" target="music">musicdb://songs/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22artist%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22songs%22%7d</content>

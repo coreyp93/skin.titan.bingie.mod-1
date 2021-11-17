@@ -58,12 +58,6 @@
                     <control type="group">
                         <width>590</width>
                         <height>125</height>
-                        <animation type="focus">
-							<effect type="zoom" start="100" end="103" center="auto" time="150" />
-						</animation>
-						<animation type="unfocus">
-							<effect type="zoom" start="103" end="100" center="auto" time="150" />
-						</animation>
                         <control type="image">
                             <texture border="5">diffuse/banner.png</texture>
                             <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
@@ -90,12 +84,6 @@
                     <control type="group">
                         <width>890</width>
                         <height>205</height>
-                        <animation type="focus">
-							<effect type="zoom" start="100" end="103" center="auto" time="150" />
-						</animation>
-						<animation type="unfocus">
-							<effect type="zoom" start="103" end="100" center="auto" time="150" />
-						</animation>
                         <control type="image">
                             <texture border="5">diffuse/banner.png</texture>
                             <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>

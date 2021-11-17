@@ -20,6 +20,7 @@
                 <control type="textbox">
                     <width>100%</width>
                     <height>40</height>
+					<posx>7</posx>
                     <font>Bold31</font>
                     <align>left</align>
                     <textcolor>$INFO[Skin.String(ViewDetailsTextColor)]</textcolor>
@@ -30,6 +31,7 @@
 				<control type="textbox">
                     <width>100%</width>
                     <height>40</height>
+					<posx>7</posx>
                     <font>Bold31</font>
                     <align>left</align>
                     <textcolor>$INFO[Skin.String(ViewDetailsTextColor)]</textcolor>
@@ -59,8 +61,8 @@
                     <param name="top" value="40" />
                     <param name="width" value="335" />
                     <param name="height" value="198" />
-                    <texture background="true" border="4">$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]</texture>
-					<bordersize>5</bordersize>
+                    <texture background="true" border="10">$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]</texture>
+					<bordersize>2</bordersize>
                     <param name="xAxisAnim" value="333" />
                     <param name="isHorizontal" value="Skin.HasSetting(View_523_HorizontalNavigation)" />
                     <param name="yAxisAnim" value="198" />
@@ -134,14 +136,13 @@
                     <height>198</height>
                     <control type="image">
                         <!--Panel Normal-->
-                        <texture background="true">home/home_matte2.png</texture>
+                        <texture background="true">home/home_matte3.png</texture>
                         <colordiffuse>$VAR[ViewDetailsPanelColor]</colordiffuse>
                         <include>thumbsborder_unfocused</include>
                     </control>
-                    <include>ThumbsViewItemLayout</include>
+                    <include>ThumbsViewItemBingieLayout</include>
                     <control type="group">
                         <description>widget label overlay</description>
-                        <include condition="!String.IsEqual(Skin.String(Widgets_DisplayTags),disable)">ThumbsTagOverlay</include>
                         <include condition="String.IsEqual(Skin.String(Widgets_DisplayTags),auto)">LandscapeTagOverlayVisibility</include>
                     </control>
                 </control>
@@ -153,14 +154,13 @@
                     <control type="image">
                         <!--Panel Normal-->
                         <visible>Skin.HasSetting(View523_DisableFixedBingieFrame)</visible>
-                        <texture background="true">home/home_matte2.png</texture>
+                        <texture background="true">home/home_matte3.png</texture>
                         <colordiffuse>$VAR[ViewDetailsBorderFocusColor]</colordiffuse>
                         <include>thumbsborder_focused</include>
                     </control>
-                    <include>ThumbsViewItemLayout</include>
+                    <include>ThumbsViewItemBingieLayout</include>
                     <control type="group">
                         <description>widget label overlay</description>
-                        <include condition="!String.IsEqual(Skin.String(Widgets_DisplayTags),disable)">ThumbsTagOverlay</include>
                         <include condition="String.IsEqual(Skin.String(Widgets_DisplayTags),auto)">LandscapeTagOverlayVisibility</include>
                     </control>
                     <include content="LibraryAutoTrailerButton" condition="Skin.HasSetting(DetailsAutoTrailer)">
@@ -168,6 +168,29 @@
                     </include>
                     <animation effect="zoom" end="103,103" center="auto" time="100" condition="Skin.HasSetting(View523_DisableFixedBingieFrame) + Skin.HasSetting(View523_EnableZoomEffect)">focus</animation>
                 </control>
+				<!--Top 250 1-->
+				<control type="image">
+				<visible>!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + !Skin.HasSetting(View523_DisableFixedBingieFrame) + !Skin.HasSetting(View523_EnableZoomEffect) | 
+				!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + Skin.HasSetting(View523_DisableFixedBingieFrame) + !Skin.HasSetting(View523_EnableZoomEffect) | 
+				!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + !Skin.HasSetting(View523_DisableFixedBingieFrame) + Skin.HasSetting(View523_EnableZoomEffect)
+				</visible>
+				<posy>8</posy>
+				<left>8</left>
+                <height>60</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250p.png</texture>
+		        </control>
+				<!--Top 250 2-->
+				<control type="image">
+				<visible>!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + Skin.HasSetting(View523_DisableFixedBingieFrame) + Skin.HasSetting(View523_EnableZoomEffect)</visible>
+				<posy>5</posy>
+				<left>3</left>
+                <height>60</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250p.png</texture>
+		        </control>
             </focusedlayout>
         </control>
     </include>
