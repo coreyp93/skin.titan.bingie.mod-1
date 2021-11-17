@@ -20,7 +20,7 @@
             <param name="visibility" value="$EXP[IsPlayingUnrecognizedContent]" />
         </include>
         <control type="group">
-            <width>1920</width>
+            <width>2035</width>
             <height>600</height>
             <include content="BingieSpotlightCornerImage">
                 <param name="visibility" value="!$EXP[IsPlayingRecognizedContent] + !Control.IsVisible(11701)" />
@@ -29,75 +29,203 @@
 
             <!-- Details -->
             <control type="grouplist">
-                <width>1500</width>
-                <include>BingieLeftDefs</include>
-                <top>10</top>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>10</itemgap>
-                <!-- Header -->
-                <include content="Bingie_Headline_Item">
-                    <param name="id" value="$PARAM[id]0" />
-                    <param name="image" value="$VAR[BingieInfoClearlogo]" />
-                    <param name="text" value="$VAR[BingieMainFallbackTitle]" />
-                </include>
-                <!-- Row Details -->
-                <control type="group">
-                    <width>1000</width>
-                    <height>40</height>
-					<top>-8</top>
-                    <include>Default_Visible_Fade</include>
-                    <include>SpotlightRowDetails</include>
+                    <visible>!$EXP[IsCurrentWidgetSpotlight]</visible>
+                    <animation effect="fade" start="0" end="100" time="250" reversible="false">Visible</animation>
+                    <include condition="Skin.HasSetting(EnableFixedFocusWidgets)">WidgetsDisplaySpotlightTransition</include>
+                    <width>1500</width>
+                    <include>BingieLeftDefs</include>
+                    <top>10</top>  
+                    <height>600</height>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>10</itemgap>
+                    <!-- Movies and Episodes Info Slide-down -->
+                    <animation effect="slide" start="0" end="0,130" time="0" condition="Skin.HasSetting(MovieDetailsHome) + Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]">Conditional</animation>
+
+                    <include content="Bingie_Headline_Item">
+                        <param name="id" value="9000" />
+                        <param name="image" value="$VAR[BingieInfoClearlogo]" />
+                        <param name="text" value="$VAR[BingieInfoLabel]" />
+                    </include>
+
+                    <!-- Details Row at Top-->
+                    <control type="group">
+					<visible>!$EXP[IsMainMenuOpened]</visible>
+                        <visible>Skin.HasSetting(MovieDetailsHome) + !Integer.IsGreater(ListItem.PercentPlayed,1) | !Skin.HasSetting(MovieDetailsHome)</visible>
+                        <include>Default_Visible_Fade</include>
+                        <top>-7</top>
+                        <width>1000</width>
+                        <height>60</height>
+                        <include>SpotlightRowDetails</include>
+                    </control>
+
+<!-- Bingie Home Top 250/Sublabel/watch xx Now -->
+    <control type="grouplist">
+			<orientation>horizontal</orientation>
+			<visible>!$EXP[IsMainMenuOpened]</visible>
+			<visible>!$EXP[IsEpisodeDBType]</visible>
+			<visible>!Skin.HasSetting(DisableTop250) + !String.IsEmpty(Control.GetLabel(8231)) + !Integer.IsGreater(ListItem.PercentPlayed,1) | !Skin.HasSetting(DisableTop250) + !String.IsEmpty(Control.GetLabel(823)) + $EXP[IsTVShowInLastEpisodes] + !Integer.IsGreater(ListItem.PercentPlayed,1) | 
+			!Skin.HasSetting(DisableTop250) + !String.IsEmpty(Control.GetLabel(8231)) + !Skin.HasSetting(MovieDetailsHome) + Integer.IsGreater(ListItem.PercentPlayed,1)</visible>
+			<animation effect="fade" time="150">Visible</animation>
+			<height>55</height>
+			<width>800</width>
+			<top>-10</top>
+			<aligny>center</aligny> 
+			<usecontrolcoords>true</usecontrolcoords>
+			<itemgap>15</itemgap>
+		<!-- Spotlight Details Row Top250 Colored Icon -->
+		<control type="image">
+				<visible>!Skin.HasSetting(EnableTop250ColoredLabel)</visible>
+				<visible>!String.IsEmpty(Control.GetLabel(8231))</visible>
+				<posy>5</posy>
+				<left>1</left>
+                <height>50</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250.png</texture>
+		</control>
+		<!-- Spotlight Details Row Top250 White Icon -->
+		<control type="image">
+				<visible>Skin.HasSetting(EnableTop250ColoredLabel)</visible>
+				<visible>!String.IsEmpty(Control.GetLabel(8231))</visible>
+				<posy>5</posy>
+				<left>1</left>
+                <height>50</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top2501.png</texture>
+		</control>
+		<!-- Spotlight Text Label Top250 -->	
+		<control type="label" id="8231">
+            <visible>!$EXP[IsEpisodeDBType]</visible>
+            <visible>!String.IsEmpty(Control.GetLabel(8231))</visible>
+			<font>bold29</font> 
+            <textcolor>ffffffff</textcolor>
+            <label>$VAR[IMDBTop250RatingValue,#, on IMDB Today]</label>
+            <include>Default_Visible_Fade</include>
+        </control>	
+			<!-- Tagline/Watch xx Now -->
+		<control type="label" id="823">
+                <visible>!$EXP[IsEpisodeDBType]</visible>
+                <visible>!String.IsEmpty(Control.GetLabel(823)) + String.IsEmpty(Control.GetLabel(8231))</visible>
+                <width>820</width>
+                <font>bold29</font> 
+                <textcolor>ffffffff</textcolor> 
+                <label>$VAR[BingieSublabel]</label>
+                <include>Default_Visible_Fade</include>
+        </control> 
+	</control>
+
+                    <!-- TV shows Seasons and Episodes -->
+                    <control type="grouplist">
+					<visible>!$EXP[IsMainMenuOpened]</visible>
+                        <visible>$EXP[IsEpisodeDBType]</visible>
+                        <include>Default_Visible_Fade</include>
+                        <orientation>vertical</orientation>
+                        <top>0</top>
+						<height>200</height>
+						<width>650</width>
+						<itemgap>20</itemgap>
+						<usecontrolcoords>true</usecontrolcoords>
+                        <!--"Next Episode in" label-->
+                        <control type="label">
+                            <height>30</height>
+                            <width>650</width>
+                            <align>left</align>
+							<posx>-9</posx>
+                            <aligny>center</aligny>
+                            <font>Reg36</font>
+                         	<textcolor>ffffffff</textcolor>
+                            <label>$VAR[BingieEpisodeInfoHeader]</label>
+                        </control>
+   
+					<!--episode title/episode no. -->
+                        <control type="textbox">
+						<visible>!Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + !Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]</visible>
+						<top>-10</top>
+						    <height min="0" max="70">auto</height> <!--set to auto for episode title, set to 40 for just episode.-->
+		                    <width>650</width>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <font>Reg26</font> 
+                            <textcolor>ffffffff</textcolor>
+                            <label>$VAR[BingieEpisodeInfoSubLabel]</label>
+                        </control>
+                    </control>
+				
+				<!-- Movie and TV Show Continue Watching -->
+                        <control type="group">
+                            <visible>Skin.HasSetting(MovieDetailsHome)</visible>
+							<visible>Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]</visible>
+                            <top>29</top>
+							<left>1</left>
+							<width>650</width>
+                            <height>30</height>
+                            <aligny>center</aligny>
+                            <control type="progress">
+                                <width>185</width>
+                                <height>8</height>
+                                <texturebg colordiffuse="cc515151" border="0">colors/color_white.png</texturebg>
+                                <lefttexture/>
+                                <midtexture colordiffuse="$INFO[Skin.String(OSDProgressBarColor)]" border="4">colors/color_white.png</midtexture>
+                                <righttexture/>
+                                <info>ListItem.PercentPlayed</info>
+                            </control>
+                            <control type="label">
+                                <top>-11</top>
+                                <left>210</left>
+                                <height>25</height>
+                                <width>450</width>
+                                <font>Reg26</font>
+                                <textcolor>ffffffff</textcolor>
+                                <label>$VAR[PercentRemained,,% $LOCALIZE[31059]]</label>
+                            </control>
+                        </control>
+
+		<!-- Bingie Home Plot -->
+                    <control type="textbox" id="90009">
+					<visible>!$EXP[IsMainMenuOpened]</visible>
+                        <visible>Skin.HasSetting(MovieDetailsHome) + !Integer.IsGreater(ListItem.PercentPlayed,1) | !Skin.HasSetting(MovieDetailsHome)</visible>
+                        <include>Default_Visible_Fade</include>
+                        <include condition="Skin.HasSetting(DisableBingieMoreDetails)">Alt_Bingie_Plot_Height</include>
+						<top></top>
+						<height min="30" max="121">auto</height>   <!--80 for 2 lines with the larger font-->
+                        <width max="820">auto</width>                   <!-- default - 620 - -->
+                        <align>left</align>                            <!-- default - justify - -->
+                        <font>Plots</font>
+						<textcolor>ffffffff</textcolor>
+                        <label>$VAR[BingiePlot]</label>
+                    </control>
+
+                    <!-- Additional Info -->
+                    <include content="Bingie_Additional_Info">
+						<visible>!Control.HasFocus(60)</visible>
+                        <param name="visibility" value="!Skin.HasSetting(DisableBingieMoreDetails) + !$EXP[IsEpisodeDBType] + !$EXP[IsCategoryDBType] + !$EXP[IsMainMenuOpened] + !$EXP[IsTVShowInLastEpisodes] | !Skin.HasSetting(DisableBingieMoreDetails) + Skin.HasSetting(DisableTop250) + !$EXP[IsEpisodeDBType] + !$EXP[IsCategoryDBType] + !$EXP[IsMainMenuOpened]"/>
+                    </include>
                 </control>
-                <!-- Sublabel -->
-                <control type="label" id="823">
-                    <visible>!Container.Content(episodes)</visible>
-                    <visible>!String.IsEmpty(Control.GetLabel(823))</visible>
-                    <top>40</top>
-					<height>0</height>
-                    <width>820</width>
-                    <font>bold29</font> <!--to match netflix-->
-                    <align>left</align>
-                    <aligny>center</aligny> 
-                    <textcolor>white</textcolor> <!--to match netflix-->
-                    <label>$VAR[BingieSublabel]</label>
-                    <include>Default_Visible_Fade</include>
-                </control>
-                <!-- Plot -->
-                <control type="textbox">
-                    <visible>!Container.Content(seasons)</visible>
-					<height min="50" max="74">auto</height>	<!--3 lines visible here-->										  
-                    <top>25</top>
-					<width>850</width>                               <!-- default - 650 -->
-                    <textcolor>$VAR[BingiePlotTextColor]</textcolor>
-                    <align>left</align>                              <!-- justify -->
-                    <font>Reg28</font>					
-                    <label>$VAR[ViewsPlotWithOutline]</label>
-                    <include>Default_Visible_Fade</include>
-					<scroll>false</scroll>
-                </control>
-                <!-- Additional Info -->
-                <include condition="!Skin.HasSetting(DisableBingieMoreDetails)" content="Bingie_Additional_Info">
-                    <param name="visibility" value="true" />
-                </include>
+
+                <!-- Footer -->
+				<control type="group">
+				<visible>!Control.HasFocus(60)</visible>
+                <include condition="!Skin.HasSetting(NoFooterBarOnHome)">Bingie_Footer</include>
+				</control>
             </control>
-            <!-- Footer -->
-            <include condition="!Skin.HasSetting(NoFooterBarOnHome)">Bingie_Footer</include>
-        </control>
 
         <control type="group">
-            <include>BingieLeftDefs</include>
-            <top>650</top>
-            <width>1660</width>
+            <left>130</left>
+            <top>611</top>
+            <width>1666</width>
             <!-- Content Header -->
             <control type="textbox">
+			<top>-38</top>
+			<left>7</left>
                 <width>100%</width>
                 <height>40</height>
                 <font>Reg29</font>
                 <align>left</align>
                 <textcolor>$INFO[Skin.String(ViewDetailsTextColor)]</textcolor>
                 <label>[CAPITALIZE][B]$INFO[Window(Home).Property(category)][/B][/CAPITALIZE]</label>
-                <visible>!Container(117).IsUpdating | Integer.IsGreater(Container(117).NumItems,0)</visible>
+                <visible>Integer.IsGreater(Container(117).NumItems,0)</visible>
             </control>
 
             <!-- Container -->
@@ -254,20 +382,23 @@
             </control>
             <!-- Fixed Frame -->
             <include content="Bingie_Main_View_Fixed_Frame" condition="Skin.HasSetting(EnableFixedFrameWidgets)">
+				<left>130</left>
                 <param name="containerid" value="117" />
-                <param name="top" value="40" />
-                <param name="width" value="332" />
-                <param name="height" value="195" />
-                <param name="texture" value="$INFO[Skin.String(thumbsborder_focused),bingie/border/thumb_fo_,.png]" />
-                <param name="xAxisAnim" value="332" />
+                <param name="top" value="611" />
+				<param name="width" value="240" />
+				<param name="height" value="325" />
+				<texture background="true" border="12">$INFO[Skin.String(thumbsborder_focused),bingie/border/poster_fo_,.png]</texture>
+				<bordersize>2</bordersize>
+				<param name="xAxisAnim" value="238" />
+				<param name="yAxisAnim" value="340" />
             </include>
         </control>
 
         <!-- scrollbar -->
         <control type="group">
             <control type="scrollbar" id="60">
-                <visible>Control.IsVisible(117) + Integer.IsGreater(Container.NumItems,0)</visible>
-                <top>710</top>
+                <visible>Control.IsVisible(117) + !Integer.IsGreater(Container.NumItems,0)</visible>
+                <top>619</top>
                 <width>8</width>
                 <right>3</right>
                 <bottom>15</bottom>

@@ -116,7 +116,6 @@
 							<width>518</width>
 							<height>870</height>
                             <include condition="!Window.IsActive(Home)">PosterTagOverlay</include>
-							<include condition="Skin.HasSetting(CaseOverlays)">PosterCaseOverlay</include>
 					    </control>
 						<control type="group">
 						<right>50</right>
@@ -143,7 +142,6 @@
 							<width>518</width>
 							<height>870</height>
                             <include condition="!Window.IsActive(Home)">PosterTagOverlay</include>
-							<include condition="Skin.HasSetting(CaseOverlays)">PosterCaseOverlay</include>
 					    </control>
 						<control type="group">
 						<right>50</right>

@@ -225,44 +225,44 @@
     <setting id="widgetlimit" value="$NUMBER[200]" label="$NUMBER[200]"/>
 
     <!-- media flags -->
-    <setting id="mediaflagsstyle" value="classic" label="$LOCALIZE[31941]" condition="" icon="special://skin/extras/viewthumbs/flags_classic.jpg" description="">
+<!--<setting id="mediaflagsstyle" value="classic" label="$LOCALIZE[31941]" condition="" icon="special://skin/extras/viewthumbs/flags_classic.jpg" description="">
+        <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
+    </setting>-->
+	<setting id="mediaflagsstyle" value="large_color" label="$LOCALIZE[31945]" condition="!Skin.HasTheme(classic)" icon="special://skin/extras/viewthumbs/flags_large_color.jpg" description="" default="true">
+        <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
+    </setting>
+	<setting id="mediaflagsstyle" value="large" label="$LOCALIZE[31944]" condition="!Skin.HasTheme(classic)" icon="special://skin/extras/viewthumbs/flags_large.jpg" description="">
+        <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
+    </setting>
+	<setting id="mediaflagsstyle" value="textbased - full info" label="$LOCALIZE[31943]" condition="" icon="special://skin/extras/viewthumbs/flags_text.jpg" description="">
         <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
     </setting>
     <setting id="mediaflagsstyle" value="boxed" label="$LOCALIZE[31942]" condition="" icon="special://skin/extras/viewthumbs/flags_boxed.jpg" description="">
         <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
     </setting>
-    <setting id="mediaflagsstyle" value="textbased - full info" label="$LOCALIZE[31943]" condition="" icon="special://skin/extras/viewthumbs/flags_text.jpg" description="">
-        <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
-    </setting>
-    <setting id="mediaflagsstyle" value="large" label="$LOCALIZE[31944]" condition="!Skin.HasTheme(classic)" icon="special://skin/extras/viewthumbs/flags_large.jpg" description="">
-        <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
-    </setting>
-    <setting id="mediaflagsstyle" value="large_color" label="$LOCALIZE[31945]" condition="!Skin.HasTheme(classic)" icon="special://skin/extras/viewthumbs/flags_large_color.jpg" description="">
-        <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
-    </setting>
-    <setting id="mediaflagsstyle" value="disabled" label="$LOCALIZE[1223]" condition="" icon="" description="" default="true">
+    <setting id="mediaflagsstyle" value="disabled" label="$LOCALIZE[1223]" condition="" icon="" description="">
         <onselect condition="Window.IsActive(MyVideoNav.xml)">ReloadSkin()</onselect>
     </setting>
 
     <!-- OSD media flags -->
-    <setting id="osdmediaflagsstyle" value="classic" label="$LOCALIZE[31941]" condition="" icon="special://skin/extras/viewthumbs/flags_classic.jpg" description=""/>
+<!--<setting id="osdmediaflagsstyle" value="classic" label="$LOCALIZE[31941]" condition="" icon="special://skin/extras/viewthumbs/flags_classic.jpg" description=""/>-->
+	<setting id="osdmediaflagsstyle" value="large_color" label="$LOCALIZE[31945]" condition="" icon="special://skin/extras/viewthumbs/flags_large_color.jpg" description=""/>
+	<setting id="osdmediaflagsstyle" value="large" label="$LOCALIZE[31944]" condition="" icon="special://skin/extras/viewthumbs/flags_large.jpg" description=""/>
+	<setting id="osdmediaflagsstyle" value="textbased - full info" label="$LOCALIZE[31943]" condition="" icon="special://skin/extras/viewthumbs/flags_text.jpg" description=""/>
     <setting id="osdmediaflagsstyle" value="boxed" label="$LOCALIZE[31942]" condition="" icon="special://skin/extras/viewthumbs/flags_boxed.jpg" description=""/>
-    <setting id="osdmediaflagsstyle" value="textbased - full info" label="$LOCALIZE[31943]" condition="" icon="special://skin/extras/viewthumbs/flags_text.jpg" description=""/>
-    <setting id="osdmediaflagsstyle" value="large" label="$LOCALIZE[31944]" condition="" icon="special://skin/extras/viewthumbs/flags_large.jpg" description=""/>
-    <setting id="osdmediaflagsstyle" value="large_color" label="$LOCALIZE[31945]" condition="" icon="special://skin/extras/viewthumbs/flags_large_color.jpg" description=""/>
     <setting id="osdmediaflagsstyle" value="disabled" label="$LOCALIZE[1223]" condition="" icon="" description="" default="true"/>
 
     <!-- Guide rows -->
-    <setting id="GuideRows" value="7" label="7 $LOCALIZE[455]" condition="" icon="special://skin/extras/viewthumbs/guide_7.jpg" description="">
+    <setting id="GuideRows" value="7" label="7 $LOCALIZE[455]" condition="" icon="" description="">
         <onselect condition="Window.IsActive(MyPVRGuide.xml)">ReloadSkin()</onselect>
     </setting>
-    <setting id="GuideRows" value="8" label="8 $LOCALIZE[455]" condition="" icon="special://skin/extras/viewthumbs/guide_9.jpg" description="">
+    <setting id="GuideRows" value="8" label="8 $LOCALIZE[455]" condition="" icon="" description="">
         <onselect condition="Window.IsActive(MyPVRGuide.xml)">ReloadSkin()</onselect>
     </setting>
-    <setting id="GuideRows" value="9" label="9 $LOCALIZE[455]" condition="" icon="special://skin/extras/viewthumbs/guide_9.jpg" description="" default="true">
+    <setting id="GuideRows" value="9" label="9 $LOCALIZE[455]" condition="" icon="" description="" default="true">
         <onselect condition="Window.IsActive(MyPVRGuide.xml)">ReloadSkin()</onselect>
     </setting>
-    <setting id="GuideRows" value="10" label="10 $LOCALIZE[455]" condition="" icon="special://skin/extras/viewthumbs/guide_10.jpg" description="">
+    <setting id="GuideRows" value="10" label="10 $LOCALIZE[455]" condition="" icon="" description="">
         <onselect condition="Window.IsActive(MyPVRGuide.xml)">ReloadSkin()</onselect>
     </setting>
 
@@ -286,7 +286,7 @@
     <setting id="main_auto_trailer_interval" value="10" label="10 $LOCALIZE[31231]" condition="" icon="" description=""/>
 
     <!-- Video Library Auto-Trailer Interval -->
-    <setting id="details_auto_trailer_interval" value="1" label="1" condition="" icon="" description=""/>
+    <setting id="details_auto_trailer_interval" value="1" label="1 $LOCALIZE[31231]" condition="" icon="" description=""/>
     <setting id="details_auto_trailer_interval" value="2" label="2 $LOCALIZE[31231]" condition="" icon="" description=""/>
     <setting id="details_auto_trailer_interval" value="3" label="3 $LOCALIZE[31231]" condition="" icon="" description=""/>
     <setting id="details_auto_trailer_interval" value="4" label="4 $LOCALIZE[31231]" condition="" icon="" description=""/>
@@ -417,8 +417,8 @@
     <!-- case overlay fallback -->
     <setting id="CaseOverlays.Fallback" value="None" label="$LOCALIZE[16018]" condition="" icon="" description=""/>
     <setting id="CaseOverlays.Fallback" value="DVD" label="$LOCALIZE[446]" condition="" icon="" description=""/>
-    <setting id="CaseOverlays.Fallback" value="Bluray" label="$LOCALIZE[31963]" condition="" icon="" description="" default="true"/>
-    <setting id="CaseOverlays.Fallback" value="HD1080" label="$LOCALIZE[31964]" condition="" icon="" description=""/>
+    <setting id="CaseOverlays.Fallback" value="UHD" label="$LOCALIZE[31963]" condition="" icon="" description="" default="true"/>
+    <setting id="CaseOverlays.Fallback" value="FHD" label="$LOCALIZE[31964]" condition="" icon="" description=""/>
     <setting id="CaseOverlays.Fallback" value="Clear" label="$LOCALIZE[192]" condition="" icon="" description=""/>
 
     <!--Thumbs Border UnFocused Size-->
@@ -429,10 +429,9 @@
 	<setting id="thumbsborder_unfocused" value="8" label="$LOCALIZE[31729]" condition="" icon="" description=""/>
 
     <!--Thumbs Border Focused Size-->
-    <setting id="thumbsborder_focused" value="2" label="$LOCALIZE[31729]" condition="" icon="" description=""/>
     <setting id="thumbsborder_focused" value="4" label="$LOCALIZE[31729]" condition="" icon="" description="" default="true" />
-    <setting id="thumbsborder_focused" value="6" label="$LOCALIZE[31729]" condition="" icon="" description=""/>
-	<setting id="thumbsborder_focused" value="8" label="$LOCALIZE[31729]" condition="" icon="" description=""/>
+    <setting id="thumbsborder_focused" value="5" label="$LOCALIZE[31729]" condition="" icon="" description=""/>
+	<setting id="thumbsborder_focused" value="6" label="$LOCALIZE[31729]" condition="" icon="" description=""/>
 
     <!-- default focus position for home -->
     <setting id="home.defaultfocus" value="" label="$LOCALIZE[231]" condition="" icon="" description="" default="true"/>
@@ -471,8 +470,8 @@
     <setting id="widgets_rotate" value="override" label="$LOCALIZE[31731]" condition="!String.IsEqual(Skin.String(HomeLayout),bingie)" icon="" description="$LOCALIZE[31364]"/>
 
     <!-- display tags on widgets -->
-    <setting id="Widgets_DisplayTags" value="auto" label="$LOCALIZE[15109]" condition="" icon="" description="$LOCALIZE[31351]" default="true"/>
-    <setting id="Widgets_DisplayTags" value="disable" label="$LOCALIZE[1223]" condition="" icon="" description="$LOCALIZE[31355]"/>
+    <setting id="Widgets_DisplayTags" value="auto" label="$LOCALIZE[15109]" condition="" icon="" description="$LOCALIZE[31351]"/>
+    <setting id="Widgets_DisplayTags" value="disable" label="$LOCALIZE[1223]" condition="" icon="" description="$LOCALIZE[31355]" default="true"/>
     <setting id="Widgets_DisplayTags" value="enable" label="$LOCALIZE[305]" condition="" icon="" description="$LOCALIZE[31356]"/>
     <setting id="Widgets_DisplayTags" value="override" label="$LOCALIZE[31731]" condition="!Window.IsActive(script-skinshortcuts.xml)" icon="" description=""/>
 
@@ -567,8 +566,8 @@
         <option id="videoinfo_details_director" label="$LOCALIZE[20348]" condition="" default="true"/>
         <option id="videoinfo_details_writer" label="$LOCALIZE[20418]" condition="" default="true"/>
         <option id="videoinfo_details_genre" label="$LOCALIZE[135]" condition="" default="true"/>
-        <option id="videoinfo_details_subtitles" label="$LOCALIZE[287]" condition="" default="true"/>
-        <option id="videoinfo_details_audiolanguages" label="$LOCALIZE[21447]" condition="" default="true"/>
+        <!--<option id="videoinfo_details_subtitles" label="$LOCALIZE[287]" condition=""/>
+        <option id="videoinfo_details_audiolanguages" label="$LOCALIZE[21447]" condition=""/>-->
         <option id="videoinfo_details_awards" label="$LOCALIZE[31976]" condition="" default="true"/>
     </setting>
 
@@ -640,5 +639,27 @@
     <setting id="skinshortcuts-$INFO[Container(211).ListItem.Property(submenuVisibility)]" label="$LOCALIZE[31804]" value="widgetfanart" condition="!String.IsEmpty(Container(211).ListItem.Property(widget))"/>
 
     <setting id="MusicBackground" value="resource://resource.images.skinbackgrounds.titanium/hover_my radio.jpg" label="$LOCALIZE[571]" condition="" default="true" />
+	
+	<!--User Picture-->
+    <setting id="user_picture" value="1" label="Profile Icon 1" condition="" icon="special://skin/extras/userpicture/defaultuser_1.png" description=""/>
+    <setting id="user_picture" value="2" label="Profile Icon 2" condition="" icon="special://skin/extras/userpicture/defaultuser_2.png" description=""/>
+	<setting id="user_picture" value="3" label="Profile Icon 3" condition="" icon="special://skin/extras/userpicture/defaultuser_3.png" description=""/>
+	<setting id="user_picture" value="4" label="Profile Icon 4" condition="" icon="special://skin/extras/userpicture/defaultuser_4.png" description=""/>
+    <setting id="user_picture" value="5" label="Profile Icon 5" condition="" icon="special://skin/extras/userpicture/defaultuser_5.png" description=""/>
+	<setting id="user_picture" value="6" label="Profile Icon 6" condition="" icon="special://skin/extras/userpicture/defaultuser_6.png" description=""/>
+	<setting id="user_picture" value="7" label="Profile Icon 7" condition="" icon="special://skin/extras/userpicture/defaultuser_7.png" description=""/>
+    <setting id="user_picture" value="8" label="Profile Icon 8" condition="" icon="special://skin/extras/userpicture/defaultuser_8.png" description=""/>
+	<setting id="user_picture" value="9" label="Profile Icon 9" condition="" icon="special://skin/extras/userpicture/defaultuser_9.png" description=""/>
+	<setting id="user_picture" value="10" label="Profile Icon 10" condition="" icon="special://skin/extras/userpicture/defaultuser_10.png" description=""/>
+    <setting id="user_picture" value="11" label="Profile Icon 11" condition="" icon="special://skin/extras/userpicture/defaultuser_11.png" description=""/>
+	<setting id="user_picture" value="12" label="Profile Icon 12" condition="" icon="special://skin/extras/userpicture/defaultuser_12.png" description=""/>
+	<setting id="user_picture" value="13" label="Profile Icon 13" condition="" icon="special://skin/extras/userpicture/defaultuser_13.png" description=""/>
+	<setting id="user_picture" value="14" label="Profile Icon 14" condition="" icon="special://skin/extras/userpicture/defaultuser_14.png" description=""/>
+    <setting id="user_picture" value="15" label="Profile Icon 15" condition="" icon="special://skin/extras/userpicture/defaultuser_15.png" description=""/>
+	<setting id="user_picture" value="16" label="Profile Icon 16" condition="" icon="special://skin/extras/userpicture/defaultuser_16.png" description=""/>
+	<setting id="user_picture" value="17" label="Profile Icon 17" condition="" icon="special://skin/extras/userpicture/defaultuser_17.png" description="" default="true" />
+    <setting id="user_picture" value="18" label="Profile Icon 18" condition="" icon="special://skin/extras/userpicture/defaultuser_18.png" description=""/>
+	<setting id="user_picture" value="19" label="Profile Icon 19" condition="" icon="special://skin/extras/userpicture/defaultuser_19.png" description=""/>
+	<setting id="user_picture" value="20" label="Profile Icon 20" condition="" icon="special://skin/extras/userpicture/defaultuser_20.png" description=""/>
 
 </settings>

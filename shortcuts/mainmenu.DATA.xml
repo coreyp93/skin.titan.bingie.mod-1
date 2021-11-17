@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- BINGIE -->
 <shortcuts>
-	<!-- Live TV -->
-	<shortcut>
-		<label>32022</label>
-		<label2>32022</label2>
-		<icon>shortcuts/antenna.png</icon>
-		<thumb>$INFO[Window(Home).Property(SkinHelper.PvrBackground)]</thumb>
-		<action>ActivateWindow(1116,return)</action>
-	</shortcut>
-
 	<!-- Search -->
 	<shortcut>
 		<label>137</label>
@@ -28,11 +19,21 @@
 		<action>ActivateWindow(home,return)</action>
 		<visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
 	</shortcut>
-
-	<!-- New/Popular/New Hub -->
+	
+	<!-- Play Something Hub -->
 	<shortcut>
-		<label>New &amp; Popular</label>                           <!-- Default <label>31837</label> -->
-		<label2>New &amp; Popular</label2>                         <!-- Default <label2>31837</label2> -->
+		<label>320027</label>                           
+		<label2>320027</label2>                         
+		<icon>shortcuts/something.png</icon>
+		<thumb />
+		<action>ActivateWindow(1118,return)</action>
+        <visible>String.IsEqual(Skin.String(HomeLayout),bingie)</visible>
+	</shortcut>
+
+	<!-- New/Popular Hub -->
+	<shortcut>
+		<label>320032</label>
+		<label2>320032</label2>
 		<icon>shortcuts/new.png</icon>
 		<thumb />
 		<action>ActivateWindow(1112,return)</action>
@@ -41,8 +42,8 @@
 	
 	<!-- TV hub -->
 	<shortcut>
-		<label>20343</label>
-		<label2>20343</label2>
+		<label>320028</label>
+		<label2>320028</label2>
 		<icon>shortcuts/tv.png</icon>
         <thumb>$INFO[Window(Home).Property(SkinHelper.AllTvShowsBackground)]</thumb>
 		<action>ActivateWindow(1110,return)</action>
@@ -57,7 +58,7 @@
 		<action>ActivateWindow(1111,return)</action>
 	</shortcut>
 
-	<!-- Music -->
+	<!-- Music 
 	<shortcut>
 		<label>2</label>
 		<label2>2</label2>
@@ -65,7 +66,16 @@
 		<thumb>$INFO[Window(Home).Property(SkinHelper.AllMusicBackground)]</thumb>
 		<thumb />
 		<action>ActivateWindow(Music,musicdb://albums/,return)</action>
-	</shortcut>
+	</shortcut> -->
+	
+	<!-- Live TV 
+	<shortcut>
+		<label>32022</label>
+		<label2>32022</label2>
+		<icon>shortcuts/antenna.png</icon>
+		<thumb>$INFO[Window(Home).Property(SkinHelper.PvrBackground)]</thumb>
+		<action>ActivateWindow(1116,return)</action>
+	</shortcut> -->
 
 	<!-- My List Hub -->
     <shortcut>

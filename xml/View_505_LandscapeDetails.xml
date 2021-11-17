@@ -48,14 +48,14 @@
 				<control type="group">
                     <width>575</width>
                     <height>358</height>
-                    <include>ThumbsViewLayout</include>
+                    <include>LandscapeLayout</include>
                 </control>
 			</itemlayout>
 			<focusedlayout width="595" height="378" condition="![Skin.HasSetting(LandscapeAltAspectRatioAdvLauncher) + String.Contains(Container.FolderPath,advanced.launcher)]">
 				<control type="group">
                     <width>575</width>
                     <height>358</height>
-                    <include>ThumbsViewLayoutFocus</include>
+                    <include>LandscapeLayoutFocus</include>
                     <include content="LibraryAutoTrailerButton" condition="Skin.HasSetting(DetailsAutoTrailer)">
                         <param name="interval" value="$INFO[Skin.String(details_auto_trailer_interval)]" />
                     </include>
@@ -66,7 +66,7 @@
                     <width>493</width>
                     <height>368</height>
                     <left>60</left>
-                    <include>ThumbsViewLayout</include>
+                    <include>LandscapeLayout</include>
                 </control>
             </itemlayout>
             <focusedlayout width="595" height="378" condition="[Skin.HasSetting(LandscapeAltAspectRatioAdvLauncher) + String.Contains(Container.FolderPath,advanced.launcher)]">
@@ -74,7 +74,7 @@
                     <width>493</width>
                     <height>368</height>
                     <left>60</left>
-                    <include>ThumbsViewLayoutFocus</include>
+                    <include>LandscapeLayoutFocus</include>
                 </control>
             </focusedlayout>
 		</control>

@@ -21,6 +21,7 @@
                     <animation effect="slide" start="0" end="0,-15" time="0" condition="Skin.HasSetting(View526_DisableFixedBingieFrame) + Skin.HasSetting(View526_EnableZoomEffect)">Conditional</animation>
                     <width>100%</width>
                     <height>40</height>
+					<posx>7</posx>
                     <font>Bold31</font>
                     <align>left</align>
                     <textcolor>$INFO[Skin.String(ViewDetailsTextColor)]</textcolor>
@@ -32,6 +33,7 @@
                     <animation effect="slide" start="0" end="0,-15" time="0" condition="Skin.HasSetting(View526_DisableFixedBingieFrame) + Skin.HasSetting(View526_EnableZoomEffect)">Conditional</animation>
                     <width>100%</width>
                     <height>40</height>
+					<posx>7</posx>
                     <font>Bold31</font>
                     <align>left</align>
                     <textcolor>$INFO[Skin.String(ViewDetailsTextColor)]</textcolor>
@@ -62,8 +64,8 @@
                     <param name="top" value="40" />
                     <param name="width" value="240" />
                     <param name="height" value="325" />
-                    <texture background="true" border="4">$INFO[Skin.String(thumbsborder_focused),bingie/border/poster_fo_,.png]</texture>
-					<bordersize>5</bordersize>
+                    <texture background="true" border="12">$INFO[Skin.String(thumbsborder_focused),bingie/border/poster_fo_,.png]</texture>
+					<bordersize>2</bordersize>
                     <param name="xAxisAnim" value="238" />
                    <param name="isHorizontal" value="Skin.HasSetting(View_526_HorizontalNavigation)" />
                     <param name="yAxisAnim" value="340" />
@@ -138,7 +140,7 @@
                 <control type="group">
                     <width>240</width>
                     <height>325</height>
-                    <include>PosterPanelLayout</include>
+                    <include>PosterPanelBingieLayout</include>
                 </control>
             </itemlayout>
             <focusedlayout height="323" width="238">
@@ -147,13 +149,13 @@
                     <height>325</height>
                     <control type="image">
                         <visible>Skin.HasSetting(View526_DisableFixedBingieFrame)</visible>
-                        <include>PosterThumbFO_Defs</include>
+                        <include>PosterThumbFO_DefsBingie</include>
                         <include>thumbsborder_focused</include>
                     </control>
-                    <include>PosterThumbLayout</include>
-                    <include condition="!Window.IsActive(Home)">PosterTagOverlay</include>
+                    <include>PosterThumbBingieLayout</include>
+                    <include condition="!Window.IsActive(Home)">PosterTagOverlayBingie</include>
                     <control type="group">
-                        <include condition="Skin.HasSetting(CaseOverlays)">PosterCaseOverlay</include>
+                        <include condition="Skin.HasSetting(CaseOverlays)">PosterCaseOverlayBingie</include>
                     </control>
                     <control type="group">
                         <!--Watched Overlay-->
@@ -168,6 +170,29 @@
                     <animation effect="zoom" end="103,103" center="auto" time="100" condition="Skin.HasSetting(View526_DisableFixedBingieFrame) + Skin.HasSetting(View526_EnableZoomEffect)">focus</animation>
                     <include>Bounce_Up</include>
                 </control>
+				<!--Top 250 1-->
+				<control type="image">
+				<visible>!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + !Skin.HasSetting(View526_DisableFixedBingieFrame) + !Skin.HasSetting(View526_EnableZoomEffect) | 
+				!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + Skin.HasSetting(View526_DisableFixedBingieFrame) + !Skin.HasSetting(View526_EnableZoomEffect) | 
+				!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + !Skin.HasSetting(View526_DisableFixedBingieFrame) + Skin.HasSetting(View526_EnableZoomEffect)
+				</visible>
+				<posy>8</posy>
+				<left>8</left>
+                <height>60</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250p.png</texture>
+		        </control>
+				<!--Top 250 2-->
+				<control type="image">
+				<visible>!Container.Content(episodes) + !Container.Content(seasons) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator) + Skin.HasSetting(View526_DisableFixedBingieFrame) + Skin.HasSetting(View526_EnableZoomEffect)</visible>
+				<posy>3</posy>
+				<left>5</left>
+                <height>60</height>
+                <width>50</width>
+				<aspectratio>keep</aspectratio>
+                <texture>bingie/top250p.png</texture>
+		        </control>
             </focusedlayout>
         </control>
     </include>

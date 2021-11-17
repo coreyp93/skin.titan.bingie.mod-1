@@ -3,7 +3,7 @@
     <view id="List" value="50" languageid="31443" type="all" excludefromdisable="true"/>
     <view id="Bingie Main Landscape" value="523" languageid="31018" type="all" />
     <view id="Bingie Main Poster" value="526" languageid="31027" type="!episodes,all" />
-    <view id="Bingie Episodes" value="525" languageid="31827" type="seasons,episodes" />
+    <view id="Bingie Episodes" value="525" languageid="31827" type="episodes" />
     <view id="Big List" value="51" languageid="31444" type="all" />
     <view id="Big List 2" value="504" languageid="31643" type="!episodes,all" />
     <view id="Low List" value="515" languageid="31442" type="all" />	

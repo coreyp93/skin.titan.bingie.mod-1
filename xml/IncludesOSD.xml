@@ -889,9 +889,11 @@
 				</control>
 				<!-- Title -->
 				<control type="label">
-					<top>100</top>
+					<top>187</top>
 					<width>auto</width>
+					<height>auto</height>
 					<align>left</align>
+					<aligny>center</aligny>
 					<font>Reg60</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>dimgray</shadowcolor>
@@ -924,9 +926,21 @@
 		</control>
 
 		<control type="group">
+		   <animation type="WindowOpen">
+				<effect type="slide" start="0,400" end="0,0" tween="cubic" easing="out" delay="0" time="450" reversible="false"/>
+				<effect type="fade" start="0" end="100" delay="0" time="350" reversible="false"/>
+			</animation>
+			<animation type="WindowClose">
+				<effect type="slide" start="0,0" end="0,400" tween="cubic" easing="out" delay="0" time="450" reversible="false" condition="Window.IsVisible(1158)"/>
+				<effect type="fade" start="100" end="0" delay="0" time="350" reversible="false" condition="Window.IsVisible(1158)"/>
+				<effect type="fade" start="100" end="0" delay="0" time="150" reversible="false" condition="!Window.IsVisible(1158)"/>
+			</animation>
+			<animation end="$PARAM[bottomsize],0" time="0" effect="slide" condition="VideoPlayer.Content(livetv) + !Player.PauseEnabled">Conditional</animation>
+			<animation effect="fade" start="100" end="0" time="50" condition="Player.Forwarding | Player.Rewinding">Conditional</animation>
 			<bottom>0</bottom>
 			<height>290</height>
 			<control type="group">
+			<visible>[Window.IsActive(videoosd) | Player.ShowInfo | Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)] | Player.Forwarding | Player.Rewinding] + Window.IsActive(fullscreenvideo)</visible>
 <!-- Progress Bars  White Line Bottom Center-->
 				<control type="progress">
 					<visible>!VideoPlayer.HasEpg</visible>
@@ -960,10 +974,10 @@
 				</control>
 				<control type="progress" id="23">
 					<visible>VideoPlayer.HasEpg</visible>
-					<posx>516</posx>
+					<posx>384</posx>
 					<posy>169</posy>
 					<height>7</height>
-					<width>1020</width>
+					<width>1152</width>
 					<info>PVR.EpgEventProgress</info>
 					<texturebg border="2" colordiffuse="fff0f0f0">diffuse/panel_trans.png</texturebg>
 					<lefttexture/>
@@ -973,15 +987,9 @@
 				</control>
 				<control type="slider" id="401">
 					<description>Seek Slider</description>
-					<include content="posx" condition="VideoPlayer.HasEpg">
-						<param name="posx" value="516" />
-					</include>
 					<posx>384</posx>
 					<posy>163</posy>
 					<height>11</height>
-					<include content="width" condition="VideoPlayer.HasEpg">
-						<param name="width" value="1020" />
-					</include>
 					<width>1152</width>
 					<texturesliderbar>colors/color_transparent.png</texturesliderbar>
 					<textureslidernib border="2" colordiffuse="$INFO[Skin.String(OSDProgressBarColor)]">common/slider/slider_button_nofocus.png</textureslidernib>
@@ -993,11 +1001,8 @@
 				<control type="label">
 					<description>Play Time</description>
 					<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00) | [VideoPlayer.HasEpg + !String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + !String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
-					<include content="posx" condition="VideoPlayer.HasEpg">
-						<param name="posx" value="406" />
-					</include>
 					<posx>274</posx>
-					<posy>140</posy>
+					<posy>141</posy>
 					<width>160</width>
 					<align>left</align>
 					<font>Reg30</font>
@@ -1007,8 +1012,8 @@
 				</control>
 				<control type="label">
 					<description>Time Remaining</description>
-					<posx>1566</posx>
-					<posy>140</posy>
+					<posx>1559</posx>
+					<posy>141</posy>
 					<width>160</width>
 					<align>left</align>
 					<font>Reg30</font>
@@ -1039,14 +1044,14 @@
 				<!-- Live TV Info -->
 				<control type="label">
 					<posy>178</posy>
-					<posx>516</posx>
-					<width>1020</width>
+					<posx>384</posx>
+					<width>1152</width>
 					<height>auto</height>
 					<aligny>top</aligny>
 					<font>Light26</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>dimgray</shadowcolor>
-					<label>[B]$VAR[PlayerTitle][UPPERCASE]$INFO[VideoPlayer.Season,S,]$INFO[VideoPlayer.Episode,E,][/UPPERCASE]$INFO[VideoPlayer.EpisodeName, ","][/B]$INFO[Player.StartTime, [B]|[/B] ,]$INFO[VideoPlayer.EndTime,-,]$INFO[VideoPlayer.NextTitle, [B]|[/B] $LOCALIZE[31065]: ,][CR]$INFO[VideoPlayer.ChannelName]</label>
+					<label>$INFO[Player.StartTime]$INFO[VideoPlayer.EndTime,-,] | $VAR[PlayerTitle][UPPERCASE]$INFO[VideoPlayer.Season,S,]$INFO[VideoPlayer.Episode,E,][/UPPERCASE]$INFO[VideoPlayer.EpisodeName, ","]$INFO[VideoPlayer.NextTitle, | $LOCALIZE[31065]: ,][CR]$INFO[VideoPlayer.ChannelName]</label>
 					<scroll>false</scroll>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
@@ -1966,8 +1971,10 @@
 			<param name="gap" value="6" />
 			<param name="iconspath" value="osd/slim/" />
 			<param name="toposdposleft" value="65" />
-			<param name="bottomosdposleft" value="165" />
-			<param name="posbottom" value="90" />
+			<param name="bottomosdposleft" value="180" />
+			<param name="bottomosdposleftupdown" value="36" />
+			<param name="posbottom" value="76" />
+			<param name="posbottomupdown" value="85" />
 			<param name="postop" value="85" />
 		</include>
 
@@ -1978,7 +1985,9 @@
 			<param name="iconspath" value="osd/rounded/" />
 			<param name="toposdposleft" value="65" />
 			<param name="bottomosdposleft" value="165" />
-			<param name="posbottom" value="90" />
+			<param name="bottomosdposleftupdown" value="44" />
+			<param name="posbottom" value="85" />
+			<param name="posbottomupdown" value="92" />
 			<param name="postop" value="85" />
 		</include>
 	</include>
@@ -2933,12 +2942,13 @@
 				<control type="label">
 					<description>Finish Time</description>
 					<visible>Skin.HasSetting(EnableTimeInfo)</visible>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00) | [VideoPlayer.HasEpg + !String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + !String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
 					<include content="posx" condition="VideoPlayer.HasEpg">
 						<param name="posx" value="406" />
 					</include>
 					<bottom>30</bottom>
-					<left>265</left>
+					<left>258</left>
 					<width>400</width>
 					<align>left</align>
 					<font>Reg30</font>
@@ -2952,6 +2962,7 @@
 				<control type="label">
 					<description>Current Time</description>
 					<visible>Skin.HasSetting(EnableTimeInfo)</visible>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<bottom>30</bottom>
 					<posy>0</posy>
 					<width>1920</width>
@@ -2966,12 +2977,13 @@
 				<control type="label">
 					<description>Total Duration</description>
 					<visible>Skin.HasSetting(EnableTimeInfo)</visible>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<animation end="-45,0" time="0" effect="slide" condition="[!String.IsEqual(Player.Duration(hh),00) + Player.Seeking + [String.IsEqual(Player.TimeRemaining(hh),00) | [VideoPlayer.HasEpg + String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Duration(hh),00) + String.IsEqual(Player.TimeRemaining(hh),00)">Conditional</animation>
 					<include content="posx" condition="VideoPlayer.HasEpg">
 						<param name="posx" value="406" />
 					</include>
 					<bottom>30</bottom>
-					<right>187</right>
+					<right>190</right>
 					<width>300</width>
 					<align>left</align>
 					<font>Reg30</font>
@@ -2983,7 +2995,7 @@
                 <control type="image">
                     <visible>Skin.HasSetting(HideOSDDisc)</visible>
 					<visible>true</visible>
-					<posx>265</posx>
+					<posx>264</posx>
                     <posy>230</posy>
                     <width>300</width>
                     <height>300</height>
@@ -2994,7 +3006,7 @@
 				    <animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00) | [VideoPlayer.HasEpg + !String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + !String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
 				    <animation effect="rotate" end="-360" center="auto" time="12000" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
                     <animation effect="fade" start="0" end="100" delay="800" time="1200" reversible="false"/>
-                    <texture background="true" diffuse="diffuse/cdmask_medium_new.png" fallback="defaultcovers/cd_medium.png" border="5">$VAR[PlayerDiscArtImage]</texture>
+                    <texture background="true" diffuse="diffuse/cdmask_medium_new.png" fallback="defaultcovers/cd_medium.png">$VAR[PlayerDiscArtImage]</texture>
                     <aspectratio scalediffuse="false" align="center" aligny="center">scale</aspectratio>
                     <visible>Player.HasVideo + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))]</visible>
                </control>
@@ -3024,7 +3036,7 @@
 				<aspectratio align="left" aligny="top">keep</aspectratio>
 				<animation end="0" time="0" effect="fade" condition="String.Contains(Control.GetLabel(39623),DefaultVideo)">Conditional</animation>
 <!-- Animation to Move Poster to the Left when Playtime hits> 1 hour -->
-				<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00) | [VideoPlayer.HasEpg + !String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + !String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
+				<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00)]] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
 				<include content="posx" condition="VideoPlayer.HasEpg">
 					<param name="posx" value="406" />
 				</include>
@@ -3033,10 +3045,7 @@
 <!-- Info -->
 			<control type="grouplist">
 <!-- Animation to Move Whole Control to the Left when Playtime hits> 1 hour -->
-				<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00) | [VideoPlayer.HasEpg + !String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + !String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
-				<include content="posx" condition="VideoPlayer.HasEpg">
-					<param name="posx" value="406" />
-				</include>
+				<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00)]] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
 				<!-- hide for trailers -->
 				<visible>!String.Contains(VideoPlayer.Title, -trailer.)</visible>
 				<animation end="-250,0" time="0" effect="slide" condition="String.Contains(Control.GetLabel(39623),DefaultVideo)">Conditional</animation>
@@ -3045,8 +3054,19 @@
 				<width>1380</width>
 				<height>610</height>
 				<orientation>vertical</orientation>
+				
 <!-- You're watching label -->
 				<control type="label">
+				<visible>!VideoPlayer.HasEpg + !VideoPlayer.Content(livetv)</visible>
+					<align>left</align>
+					<width>250</width>
+					<label>31366</label>
+					<font>Reg32</font>
+				</control>
+				
+<!-- You're watching label -->
+				<control type="label">
+				<visible>VideoPlayer.HasEpg</visible>
 					<align>left</align>
 					<width>250</width>
 					<label>31366</label>
@@ -3056,6 +3076,7 @@
 <!-- TITLE of Movie -->
 				<control type="label">
 					<visible>false</visible>              <!-- True = On / False = Off -->
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<width>1130</width>
 					<align>left</align>
 					<font>Bold74</font>
@@ -3068,6 +3089,7 @@
 <!-- Clear Logo Title - Your Watching -->				
 				<control type="image">
 					<visible>!Skin.HasSetting(EnableClearArtInfo)</visible>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<width>400</width>
 					<height>150</height>
 					<align>left</align>
@@ -3077,6 +3099,7 @@
 <!-- Clearart Title - Your Watching -->
 				<control type="image">
 					<visible>Skin.HasSetting(EnableClearArtInfo)</visible>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<width>400</width>
 					<height>250</height>
 					<align>left</align>
@@ -3087,6 +3110,7 @@
 				
 				<!-- OSDLabel5 -->
 				<control type="label" id="74823">
+					<animation effect="slide" start="0" end="0,6" time="0" condition="VideoPlayer.Content(livetv)">Conditional</animation>
 					<width>980</width>
 					<align>left</align>
 					<font>Reg34</font>
@@ -3098,6 +3122,7 @@
 				</control>
 				<!-- details info -->
 				<control type="label">
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<width>1000</width>
 					<height>45</height>
 					<align>left</align>
@@ -3109,6 +3134,7 @@
 				</control>
 				<!-- Tagline -->
 				<control type="label">
+					<visible>!VideoPlayer.Content(livetv)</visible>
 					<width>1130</width>
 					<align>left</align>
 					<font>Reg32</font>
@@ -3120,6 +3146,7 @@
 				</control>
 				<!-- plot -->
 				<control type="textbox">
+					<animation effect="slide" start="0" end="0,7" time="0" condition="VideoPlayer.Content(livetv)">Conditional</animation>
 					<height min="0" max="115">auto</height>  
                     <width max="680">auto</width>
 					<label>$INFO[VideoPlayer.Plot]</label>
@@ -3192,7 +3219,7 @@
 	</variable>
 
 	<variable name="OSDLabel5">
-		<value condition="Player.HasVideo + VideoPlayer.Content(Episodes)">[UPPERCASE]$INFO[VideoPlayer.Season,S,]$INFO[VideoPlayer.Episode,E,][/UPPERCASE]$INFO[VideoPlayer.Title, ","]</value>
+		<value condition="Player.HasVideo + VideoPlayer.Content(Episodes)">[UPPERCASE]$INFO[VideoPlayer.Season,S,]:$INFO[VideoPlayer.Episode,E,][/UPPERCASE]$INFO[VideoPlayer.Title, ","]</value>
 		<value condition="Player.HasVideo + VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]$INFO[VideoPlayer.EpisodeName, - ,]</value>
 		<value condition="Player.HasAudio">$INFO[MusicPlayer.Title]</value>
 	</variable>
@@ -3380,8 +3407,8 @@
 					<height>$PARAM[topsize]</height>
 					<font/>
 					<label>36036</label>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]back_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]back.png</texturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]back_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]back.png</texturenofocus>
 					<onclick>PlayerControl(Stop)</onclick>
 					<include>Top_OSD_Button_Zoom_Anim</include>
 				</control>
@@ -3391,8 +3418,8 @@
 					<height>$PARAM[topsize]</height>
 					<label>287</label>
 					<font/>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]subtitles_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]subtitles.png</texturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]subtitles_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]subtitles.png</texturenofocus>
 					<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
 					<visible>!VideoPlayer.Content(livetv)</visible>
 					<include>Top_OSD_Button_Zoom_Anim</include>
@@ -3404,8 +3431,8 @@
                     <height>$PARAM[topsize]</height>
                     <label>13396</label>
                     <font/>
-                    <texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]audio_fo.png</texturefocus>
-                    <texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]audio.png</texturenofocus>
+                    <texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]audio_fo.png</texturefocus>
+                    <texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]audio.png</texturenofocus>
                     <onclick>ActivateWindow(124)</onclick>
                     <include>Top_OSD_Button_Zoom_Anim</include>
 					<visible>Skin.HasSetting(bingie_videoosd_buttons_audio)</visible>
@@ -3417,8 +3444,8 @@
                     <label>13395</label>
                     <align>left</align>
                     <font/>
-                    <texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]video_fo.png</texturefocus>
-                    <texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]video.png</texturenofocus>
+                    <texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]video_fo.png</texturefocus>
+                    <texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]video.png</texturenofocus>
                     <onclick>ActivateWindow(123)</onclick>
                     <include>Top_OSD_Button_Zoom_Anim</include>
 					<visible>Skin.HasSetting(bingie_videoosd_buttons_video)</visible>
@@ -3429,8 +3456,8 @@
 					<height>$PARAM[topsize]</height>
 					<label/>
 					<font/>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]dvd_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]dvd.png</texturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]dvd_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]dvd.png</texturenofocus>
 					<onclick>PlayerControl(ShowVideoMenu)</onclick>
 					<visible>VideoPlayer.HasMenu</visible>
 					<include>Top_OSD_Button_Zoom_Anim</include>
@@ -3442,8 +3469,8 @@
 					<height>$PARAM[topsize]</height>
 					<label/>
 					<font/>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]epg_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]epg.png</texturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]epg_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]epg.png</texturenofocus>
 					<visible>VideoPlayer.Content(livetv) + VideoPlayer.HasEpg</visible>
 					<onclick>ActivateWindow(pvrchannelguide)</onclick>
 					<include>Top_OSD_Button_Zoom_Anim</include>
@@ -3455,8 +3482,8 @@
 					<height>$PARAM[topsize]</height>
 					<label/>
 					<font/>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]bookmarks_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]bookmarks.png</texturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]bookmarks_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]bookmarks.png</texturenofocus>
 					<onclick>ActivateWindow(VideoBookmarks)</onclick>
 					<visible>!VideoPlayer.Content(livetv)</visible>
 					<include>Top_OSD_Button_Zoom_Anim</include>
@@ -3469,10 +3496,10 @@
 					<height>$PARAM[topsize]</height>
 					<label/>
 					<font/>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]recordoff_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]recordoff.png</texturenofocus>
-					<alttexturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]recordon_fo.png</alttexturefocus>
-					<alttexturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]recordon.png</alttexturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]recordoff_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]recordoff.png</texturenofocus>
+					<alttexturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]recordon_fo.png</alttexturefocus>
+					<alttexturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]recordon.png</alttexturenofocus>
 					<usealttexture>PVR.IsRecordingPlayingChannel</usealttexture>
 					<onclick>PVR.ToggleRecordPlayingChannel</onclick>
 					<visible>PVR.CanRecordPlayingChannel</visible>
@@ -3483,8 +3510,8 @@
 					<height>$PARAM[topsize]</height>
 					<font/>
 					<label/>
-					<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]reset_fo.png</texturefocus>
-					<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]reset.png</texturenofocus>
+					<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]reset_fo.png</texturefocus>
+					<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]reset.png</texturenofocus>
 					<onclick>seek(-298800)</onclick>
 					<onclick condition="Player.Paused">PlayerControl(Play)</onclick>
 					<include>Top_OSD_Button_Zoom_Anim</include>
@@ -3496,8 +3523,8 @@
                     <height>$PARAM[topsize]</height>
                     <label>31133</label>
                     <font/>
-                    <texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]info_fo.png</texturefocus>
-                    <texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]info.png</texturenofocus>
+                    <texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]info_fo.png</texturefocus>
+                    <texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]info.png</texturenofocus>
                     <visible>Player.HasVideo + !String.Contains(VideoPlayer.Title, -trailer.)</visible>
                     <onclick>Skin.ToggleSetting(EnableOSDInfo)</onclick>
                     <include>Top_OSD_Button_Zoom_Anim</include>
@@ -3512,12 +3539,111 @@
                 <width>auto</width>
                 <align>left</align>
                 <font>Reg28</font>
-                <textcolor>99fffeff</textcolor>
+                <textcolor>ffffffff</textcolor>
                 <label>$VAR[osd_button_description]</label>
                 <scroll>false</scroll>
             </control>
+			
         </control>
+		
+		<control type="grouplist">
+			<animation type="WindowOpen">
+				<effect type="slide" start="0,-400" end="0,0" tween="cubic" easing="out" delay="0" time="450" reversible="false"/>
+				<effect type="fade" start="0" end="100" delay="0" time="350" reversible="false"/>
+			</animation>
+			<animation type="WindowClose">
+				<effect type="slide" start="0,0" end="0,-400" tween="cubic" easing="out" delay="0" time="450" reversible="false" condition="Window.IsVisible(1158)"/>
+				<effect type="fade" start="100" end="0" delay="0" time="350" reversible="false" condition="Window.IsVisible(1158)"/>
+				<effect type="fade" start="100" end="0" delay="0" time="150" reversible="false" condition="!Window.IsVisible(1158)"/>
+			</animation>
 
+			<top>86</top>
+			<align>right</align>
+			<width>auto</width>
+			<height>100</height>
+			<itemgap>0</itemgap>
+			<onleft>noop</onleft>
+            <onright>noop</onright>
+			<ondown>200</ondown>
+			<orientation>vertical</orientation>
+			<control type="label">
+			    <top>86</top>
+				<height>40</height>
+				<width>auto</width>
+				<align>right</align>
+				<textoffsetx>86</textoffsetx>
+				<font>Reg28</font>
+				<textcolor>ffffffff</textcolor>
+				<label>[B]$VAR[OSDLabel4][/B]</label>
+				<scroll>false</scroll>
+			</control>
+			<control type="label" id="74823">
+				<width>auto</width>
+				<height>40</height>
+				<align>right</align>
+				<font>Reg28</font>
+				<textcolor>white</textcolor>
+				<label>[B]$VAR[OSDLabel5][/B]</label>
+				<textoffsetx>86</textoffsetx>
+				<scroll>false</scroll>
+				<visible>!String.IsEmpty(Control.GetLabel(74823))</visible>
+				</control>
+		</control>
+
+		<control type="grouplist" id="200">
+			<animation type="WindowOpen">
+				<effect type="slide" start="0,400" end="0,0" tween="cubic" easing="out" delay="0" time="450" reversible="false"/>
+				<effect type="fade" start="0" end="100" delay="0" time="350" reversible="false"/>
+			</animation>
+			<animation type="WindowClose">
+				<effect type="slide" start="0,0" end="0,400" tween="cubic" easing="out" delay="0" time="450" reversible="false" condition="Window.IsVisible(1158)"/>
+				<effect type="fade" start="100" end="0" delay="0" time="350" reversible="false" condition="Window.IsVisible(1158)"/>
+				<effect type="fade" start="100" end="0" delay="0" time="150" reversible="false" condition="!Window.IsVisible(1158)"/>
+			</animation>
+			<animation end="$PARAM[bottomsize],0" time="0" effect="slide" condition="VideoPlayer.Content(livetv) + !Player.PauseEnabled">Conditional</animation>
+			<animation end="-45,0" time="0" effect="slide" condition="[Player.Seeking + [!String.IsEqual(Player.SeekTime(hh),00) | [VideoPlayer.HasEpg + !String.IsEqual(PVR.EpgEventSeekTime(hh),00)]]] | [VideoPlayer.HasEPG + !String.IsEqual(PVR.EpgEventElapsedTime(hh),00)] | !String.IsEqual(Player.Time(hh),00)">Conditional</animation>
+			<animation effect="fade" start="100" end="0" time="50" condition="Player.Forwarding | Player.Rewinding">Conditional</animation>
+
+			<posx>$PARAM[bottomosdposleftupdown]</posx>
+			<bottom>$PARAM[posbottomupdown]</bottom>
+			<width>1540</width>
+			<height>$PARAM[bottomsize]</height>
+			<itemgap>$PARAM[gap]</itemgap>
+			<onleft condition="!Player.SeekEnabled">noop</onleft>
+            <onleft condition="Player.SeekEnabled + Player.Paused">PlayerControl(Play)</onleft>
+            <onleft condition="Player.SeekEnabled">back</onleft>
+			<onright condition="!Player.SeekEnabled">noop</onright>
+            <onright condition="Player.SeekEnabled + Player.Paused">PlayerControl(Play)</onright>
+			<onright condition="Player.SeekEnabled">back</onright>
+			<onup>300</onup>
+			<orientation>horizontal</orientation>
+			<animation effect="fade" start="100" end="50" time="0" condition="!ControlGroup(200).HasFocus()">Conditional</animation>
+
+			<control type="button" id="201">
+				<include>Bottom_OSD_Button_Zoom_Anim</include>
+				<description>previous channel</description>
+				<width>$PARAM[bottomsize]</width>
+				<height>$PARAM[bottomsize]</height>
+				<label>210</label>
+				<font/>
+				<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]channelup_fo.png</texturefocus>
+				<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]channelup.png</texturenofocus>
+				<onclick>ChannelUp</onclick>
+				<visible>VideoPlayer.Content(livetv)</visible>
+			</control>
+			<control type="button" id="206">
+				<include>Bottom_OSD_Button_Zoom_Anim</include>
+				<description>Next channel</description>
+				<width>$PARAM[bottomsize]</width>
+				<height>$PARAM[bottomsize]</height>
+				<label>209</label>
+				<font/>
+				<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]channeldown_fo.png</texturefocus>
+				<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]channeldown.png</texturenofocus>
+				<onclick>ChannelDown</onclick>
+				<visible>VideoPlayer.Content(livetv)</visible>
+			</control>
+		</control>
 		<control type="grouplist" id="200">
 			<animation type="WindowOpen">
 				<effect type="slide" start="0,400" end="0,0" tween="cubic" easing="out" delay="0" time="450" reversible="false"/>
@@ -3546,47 +3672,24 @@
 			<onup>300</onup>
 			<orientation>horizontal</orientation>
 			<animation effect="fade" start="100" end="50" time="0" condition="!ControlGroup(200).HasFocus()">Conditional</animation>
-
-			<control type="button" id="201">
-				<include>Bottom_OSD_Button_Zoom_Anim</include>
-				<description>previous channel</description>
-				<width>$PARAM[bottomsize]</width>
-				<height>$PARAM[bottomsize]</height>
-				<label>210</label>
-				<font/>
-				<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]channelup_fo.png</texturefocus>
-				<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]channelup.png</texturenofocus>
-				<onclick>ChannelUp</onclick>
-				<visible>VideoPlayer.Content(livetv)</visible>
-			</control>
-			<control type="button" id="206">
-				<include>Bottom_OSD_Button_Zoom_Anim</include>
-				<description>Next channel</description>
-				<width>$PARAM[bottomsize]</width>
-				<height>$PARAM[bottomsize]</height>
-				<label>209</label>
-				<font/>
-				<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]channeldown_fo.png</texturefocus>
-				<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsColor)]">$PARAM[iconspath]channeldown.png</texturenofocus>
-				<onclick>ChannelDown</onclick>
-				<visible>VideoPlayer.Content(livetv)</visible>
-			</control>
+			
 			<control type="togglebutton" id="203">
 				<include>Bottom_OSD_Button_Zoom_Anim</include>
 				<animation effect="fade" start="100" end="60">unfocus</animation>
 				<altlabel>208</altlabel>
 				<description>Play Pause</description>
-				<width>$PARAM[bottomsize]</width>
-				<height>$PARAM[bottomsize]</height>
+				<width>45</width>
+				<height>45</height>
 				<font/>
 				<label>208</label>
-				<texturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]pause_new_fo.png</texturefocus>
-				<texturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]pause_new.png</texturenofocus>
+				<texturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]pause_fo.png</texturefocus>
+				<texturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]pause.png</texturenofocus>
 				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
-				<alttexturefocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]play_new_fo.png</alttexturefocus>
-				<alttexturenofocus colordiffuse="$INFO[Skin.String(OSDButtonsFocusColor)]">$PARAM[iconspath]play_new_nf.png</alttexturenofocus>
+				<alttexturefocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsFocusColor)]">$PARAM[iconspath]play_fo.png</alttexturefocus>
+				<alttexturenofocus colordiffuse="$INFO[Skin.String(OSDBingieButtonsColor)]">$PARAM[iconspath]play.png</alttexturenofocus>
 				<onclick>PlayerControl(Play)</onclick>
 				<visible>Player.PauseEnabled</visible>
+				<visible>!VideoPlayer.Content(livetv)</visible>
 			</control>
 		</control>
 	</include>

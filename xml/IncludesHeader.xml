@@ -3,8 +3,8 @@
 <includes>
     
     <include name="Header">
-        <include condition="!Skin.HasSetting(CompactHeader) + !Skin.String(home_header,disable)">Header_Normal</include>
-        <include condition="Skin.HasSetting(CompactHeader) + !Skin.String(home_header,disable)">Header_Compact</include>
+        <include condition="!Skin.HasSetting(CompactHeader) + Skin.String(home_header,disable) | !Skin.HasSetting(CompactHeader) + !Skin.String(home_header,disable)">Header_Normal</include>
+        <include condition="Skin.HasSetting(CompactHeader) + Skin.String(home_header,disable) | Skin.HasSetting(CompactHeader) + !Skin.String(home_header,disable)">Header_Compact</include>
     </include>
     
     <include name="Header_Normal">
@@ -142,7 +142,7 @@
                 <include condition="String.IsEqual(Skin.String(HomeLayout),bingie) + !Skin.HasSetting(EnhancedHome_Circular)">BingieNoCircularWidgetHeaderAnim</include>
                 <orientation>horizontal</orientation>
                 <itemgap>25</itemgap>
-                <posx>50</posx>
+                <posx>-20</posx>
                 <top>25</top>
                 <onright>890</onright>
                 <ondown>9000</ondown>
@@ -781,22 +781,22 @@
             </control>
             <!-- time + date -->
             <control type="label">
-                <right>130</right>
+                <right>50</right>
                 <top>10</top>
                 <align>right</align>
                 <width>550</width>
                 <label>[B]$INFO[System.Time][/B]</label>
-                <font>Reg26</font>
+                <font>Bold30</font>
                 <textcolor>$INFO[Skin.String(HeaderTextColor)]</textcolor>
                 <shadowcolor>$INFO[Skin.String(HeaderTextShadowColor)]</shadowcolor>
             </control>
             <!-- weather conditions -->
             <control type="label">
-                <right>130</right>
+                <right>50</right>
                 <top>40</top>
                 <align>right</align>
                 <width>600</width>
-                <label>$INFO[Window(Weather).Property(Current.Temperature)] $INFO[System.TemperatureUnits], $INFO[Window(Weather).Property(Current.Condition)]</label>
+                <label>$INFO[Window(Weather).Property(Current.Temperature)] $INFO[System.TemperatureUnits] $INFO[Window(Weather).Property(Current.Condition)]</label>
                 <font>Reg26</font>
                 <textcolor>$INFO[Skin.String(HeaderTextColor)]</textcolor>
                 <shadowcolor>$INFO[Skin.String(HeaderTextShadowColor)]</shadowcolor>
@@ -808,7 +808,7 @@
         <control type="group">
             <control type="grouplist">
                 <!--Time Grouplist Line 1-->
-                <right>190</right>
+                <right>60</right>
                 <posy>0</posy>
                 <width>600</width>
                 <height>100</height>
@@ -848,7 +848,7 @@
             </control>
             <control type="label">
                 <!--weather info-->
-                <right>190</right>
+                <right>60</right>
                 <posy>75</posy>
                 <width>600</width>
                 <height>50</height>
@@ -897,26 +897,51 @@
     <include name="HeaderLogo">
         <!-- Kodi Logo image -->
         <control type="image">
-            <posx>35</posx>
-            <posy>10</posy>
-            <height>110</height>
-            <width>375</width>
+            <posx>38</posx>
+            <posy>-36</posy>
+            <height>206</height>
+            <width></width>
             <aspectratio align="left">keep</aspectratio>
             <colordiffuse>$INFO[Skin.String(HeaderTextColor)]</colordiffuse>
-            <texture>home/kodi_logo_light.png</texture>
+            <texture>bingie_logo.png</texture>
+			<visible>!$EXP[IsBingieHubsActive]</visible>
             <visible>!Skin.String(CustomLogoImage) + String.IsEmpty(Control.GetLabel(198754))</visible>
-            <visible>![Window.IsActive(Home) + String.Contains(Skin.String(HomeLayout),simplever)]</visible>
+            <visible>![Window.IsActive(Home) + String.Contains(Skin.String(HomeLayout),simplever) | Skin.HasSetting(CompactHeader)]</visible>
+        </control>
+		<control type="image">
+            <posx>36</posx>
+            <posy>-15</posy>
+            <height>132</height>
+            <width></width>
+            <aspectratio align="left">keep</aspectratio>
+            <colordiffuse>$INFO[Skin.String(HeaderTextColor)]</colordiffuse>
+            <texture>home/netflix_logo.png</texture>
+			<visible>!$EXP[IsBingieHubsActive]</visible>
+            <visible>!Skin.String(CustomLogoImage) + String.IsEmpty(Control.GetLabel(198754))</visible>
+            <visible>![Window.IsActive(Home) + String.Contains(Skin.String(HomeLayout),simplever) | !Skin.HasSetting(CompactHeader)]</visible>
         </control>
         <!-- custom Logo image -->
         <control type="image">
-            <posx>35</posx>
-            <posy>10</posy>
-            <height>110</height>
-            <width>375</width>
+            <posx>64</posx>
+            <posy>32</posy>
+            <height>80</height>
+            <width>300</width>
             <aspectratio align="left">keep</aspectratio>
             <texture background="true">$INFO[Skin.String(CustomLogoImage)]</texture>
+			<visible>!$EXP[IsBingieHubsActive]</visible>
             <visible>Skin.String(CustomLogoImage) + String.IsEmpty(Control.GetLabel(198754))</visible>
-            <visible>![Window.IsActive(Home) + String.Contains(Skin.String(HomeLayout),simplever)]</visible>
+            <visible>![Window.IsActive(Home) + String.Contains(Skin.String(HomeLayout),simplever) | Skin.HasSetting(CompactHeader)]</visible>
+        </control>
+		<control type="image">
+            <posx>53</posx>
+            <posy>29</posy>
+            <height>50</height>
+            <width>200</width>
+            <aspectratio align="left">keep</aspectratio>
+            <texture background="true">$INFO[Skin.String(CustomLogoImage)]</texture>
+			<visible>!$EXP[IsBingieHubsActive]</visible>
+            <visible>Skin.String(CustomLogoImage) + String.IsEmpty(Control.GetLabel(198754))</visible>
+            <visible>![Window.IsActive(Home) + String.Contains(Skin.String(HomeLayout),simplever) | !Skin.HasSetting(CompactHeader)]</visible>
         </control>
         <!-- background Logo image -->
         <include condition="Window.IsActive(Home) + Skin.HasSetting(Home_ShowBackgroundLogo)">BackgroundLogo</include>

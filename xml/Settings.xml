@@ -47,7 +47,7 @@
                 <posx>80</posx>
                 <posy>360</posy>
                 <width>500</width>
-                <height>250</height>
+                <height>270</height>
                 <font>Light30</font>
                 <align>left</align>
                 <label>$INFO[Container(9000).ListItem.Label2]</label>

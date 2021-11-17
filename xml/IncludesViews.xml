@@ -29,7 +29,7 @@
         
         <!-- footer bar (in back) -->
         <control type="group">
-            <visible>![Control.IsVisible(507) | Control.IsVisible(513) | Control.IsVisible(514) | Control.IsVisible(519) | Control.IsVisible(520) | Control.IsVisible(525) |  Control.IsVisible(523) |  Control.IsVisible(526)]</visible>
+            <visible>![Control.IsVisible(519) | Control.IsVisible(520) | Control.IsVisible(525) |  Control.IsVisible(523) |  Control.IsVisible(526)]</visible>
             <include condition="!Skin.HasSetting(nofooterbar)">Footer</include>
         </control>
         
@@ -37,7 +37,7 @@
         <control type="group" id="5000">
             <visible>!Window.IsActive(virtualkeyboard)</visible>
             <include>animation_window_open_close</include>
-            <animation effect="slide" end="0,100" time="0" condition="Skin.HasSetting(nofooterbar) + ![Control.IsVisible(519) | Control.IsVisible(520) | Control.IsVisible(507) | Control.IsVisible(523) |  Control.IsVisible(526) | Control.IsVisible(525)]">Conditional</animation>
+            <animation effect="slide" end="0,0" time="0" condition="Skin.HasSetting(nofooterbar) + ![Control.IsVisible(519) | Control.IsVisible(520) | Control.IsVisible(507) | Control.IsVisible(523) |  Control.IsVisible(526) | Control.IsVisible(525)]">Conditional</animation>
             <animation effect="slide" end="0,-80" time="0" condition="Skin.String(general_header,disable) + String.IsEqual(Skin.AspectRatio,16:10) + ![Control.IsVisible(519) | Control.IsVisible(520) | Control.IsVisible(507) | Control.IsVisible(515) | Control.IsVisible(521) | Control.IsVisible(508) | Control.IsVisible(58) | Control.IsVisible(523) |  Control.IsVisible(526) | Control.IsVisible(525)]">Conditional</animation>
             
             <include condition="!Skin.HasSetting(SkinHelper.View.Disabled.50)">View_50_List</include>
@@ -1328,19 +1328,19 @@
     </include>
 
     <include name="thumbsborder_focused">
-        <include condition="String.IsEqual(Skin.String(thumbsborder_focused),2)">thumbborder_2</include>
         <include condition="String.IsEqual(Skin.String(thumbsborder_focused),4)">thumbborder_4</include>
+        <include condition="String.IsEqual(Skin.String(thumbsborder_focused),5)">thumbborder_5</include>
         <include condition="String.IsEqual(Skin.String(thumbsborder_focused),6)">thumbborder_6</include>
     </include>
 
     <include name="thumbborder_0">
         <bordersize>9</bordersize>   
     </include>
-    <include name="thumbborder_2">
-        <bordersize>6</bordersize>   
-    </include>
     <include name="thumbborder_4">
         <bordersize>4</bordersize>   
+    </include>
+	<include name="thumbborder_5">
+        <bordersize>3</bordersize>   
     </include>
     <include name="thumbborder_6">
         <bordersize>2</bordersize>   
@@ -1388,6 +1388,19 @@
             </control>
             <control type="group">
                 <description>In progress Overlay</description>
+				<visible>!Skin.HasSetting(MovieDetailsHome) | 
+				[Control.IsVisible(50) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(51) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(52) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(53) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(54) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(55) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(56) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(57) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(58) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(59) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(501) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(502) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(503) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(504) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(505) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(506) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(507) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(508) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(509) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(510) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(511) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(512) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(513) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(514) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(515) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(516) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(517) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(518) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(519) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(520) + Skin.HasSetting(MovieDetailsHome)] |
+				[Control.IsVisible(521) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(522) + Skin.HasSetting(MovieDetailsHome)] | [Control.IsVisible(524) + Skin.HasSetting(MovieDetailsHome)]
+				</visible>
                 <visible>ListItem$PARAM[listitem].IsResumable + Skin.HasSetting(WatchedIndicator.Progress)</visible>
                 <visible>!ListItem$PARAM[listitem].IsPlaying + !ListItem$PARAM[listitem].IsRecording</visible>
                 <control type="image">
@@ -1982,6 +1995,18 @@
         <onclick condition="[Container.Content(unknown) + String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
         <onclick condition="[Container.Content(videos) + String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
     </include>
-
+	
+	<!--Top 250 Indicator-->
+	<include name="Top250Indicator">
+		<control type="image">
+		<visible>!$EXP[IsEpisodeDBType] + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)) + !Skin.HasSetting(DisableTop250Indicator)</visible>
+		<posy>8</posy>
+		<left>8</left>
+        <height>60</height>
+        <width>50</width>
+        <aspectratio>keep</aspectratio>
+        <texture>bingie/top250p.png</texture>
+		</control>
+    </include>
 
 </includes>

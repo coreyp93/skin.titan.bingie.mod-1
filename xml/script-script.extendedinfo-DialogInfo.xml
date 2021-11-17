@@ -402,7 +402,7 @@
 							<width>544</width>
 							<height>737</height>
 							<aspectratio align="right" aligny="top" scalediffuse="true">keep</aspectratio>
-							<texture background="true" diffuse="diffuse/poster.png" fallback="DefaultVideo.png" border="5">$INFO[Window.Property(thumb)]</texture>
+							<texture background="true" diffuse="diffuse/poster3.png" fallback="DefaultVideo.png" border="5">$INFO[Window.Property(thumb)]</texture>
 						</control>
                     </control>
 					
@@ -428,7 +428,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -458,7 +458,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -470,7 +470,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>25</top>
@@ -480,7 +480,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
                             </focusedlayout>
@@ -505,7 +505,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -535,7 +535,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -547,7 +547,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>25</top>
@@ -557,7 +557,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
                             </focusedlayout>
@@ -581,7 +581,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -611,7 +611,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -623,7 +623,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>25</top>
@@ -633,7 +633,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
                             </focusedlayout>
@@ -657,7 +657,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -687,7 +687,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -699,7 +699,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>25</top>
@@ -709,7 +709,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
                             </focusedlayout>
@@ -733,7 +733,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -763,7 +763,7 @@
                                 <control type="group">
                                     <width>232</width>
                                     <height>322</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
 								  <control type="group">
 									<left>0</left>
@@ -775,7 +775,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 									<control type="label">
 										<top>25</top>
@@ -785,7 +785,7 @@
 										<textoffsetx>10</textoffsetx>
 										<scroll>true</scroll>
 										<align>center</align>
-										<textcolor>FFE8E8E8</textcolor>
+										<textcolor>FFFFFFFF</textcolor>
 									</control>
 								</control>
                             </focusedlayout>
@@ -810,14 +810,14 @@
                                 <control type="group">
                                     <width>250</width>
                                     <height>364</height>
-                                    <include>PosterPanelLayout</include>
+                                    <include>PosterPanelBingieLayout</include>
                                   </control>
                             </itemlayout>
                             <focusedlayout height="389" width="257">
                                 <control type="group">
                                     <width>250</width>
                                     <height>364</height>
-                                    <include>PosterPanelLayoutFocus</include>
+                                    <include>PosterPanelBingieLayoutFocus</include>
                                   </control>
                             </focusedlayout>
                         </control>

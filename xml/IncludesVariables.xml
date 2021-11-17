@@ -1134,6 +1134,8 @@
         <value condition="Control.IsVisible(519)">$INFO[Skin.String(View519.Tags.label)]</value>
         <value condition="Control.IsVisible(520) + !Skin.String(View520.Tags)">$LOCALIZE[16316]</value>
         <value condition="Control.IsVisible(520)">$INFO[Skin.String(View520.Tags.label)]</value>
+		<value condition="Control.IsVisible(521) + !Skin.String(View521.Tags)">$LOCALIZE[16316]</value>
+        <value condition="Control.IsVisible(521)">$INFO[Skin.String(View521.Tags.label)]</value>
         <value condition="Control.IsVisible(523) + !Skin.String(View523.Tags)">$LOCALIZE[16316]</value>
         <value condition="Control.IsVisible(523)">$INFO[Skin.String(View523.Tags.label)]</value>
          <value condition="Control.IsVisible(526) + !Skin.String(View526.Tags)">$LOCALIZE[16316]</value>

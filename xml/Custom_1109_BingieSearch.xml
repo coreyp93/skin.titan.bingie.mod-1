@@ -183,7 +183,7 @@
             <!-- Suggestions Result -->
             <include content="SearchResultWidget">
                 <param name="id" value="500" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="height" value="899" />
                 <param name="orientation" value="vertical" />
@@ -202,7 +202,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="510" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -218,7 +218,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="520" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -234,7 +234,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="530" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -250,7 +250,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="540" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -266,7 +266,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="550" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -282,7 +282,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="560" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -297,7 +297,7 @@
             </include>
             <include content="SearchResultWidget">
                 <param name="id" value="570" />
-                <param name="layout">ThumbsView</param>
+                <param name="layout">PosterPanelBingie</param>
                 <param name="layoutwidth">search_widget_thumb_width</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
@@ -333,7 +333,9 @@
             <include content="SearchResultWidget" condition="Skin.HasSetting(EnableBingieSearchAddons)">
                 <param name="id" value="640" />
                 <param name="layout">SquarePosterPanel</param>
-                <param name="layoutwidth">search_widget_height</param>
+                <param name="height" value="396" />
+				<param name="layoutwidth">396</param>
+				<param name="layoutheight">396</param>
                 <param name="allow_showinfo_onclick" value="true" />
                 <param name="visibility" value="!String.IsEmpty(Skin.String(CustomSearchTerm))" />
                 <param name="widgetTags" value="WidgetTagOverlayEnable" />
