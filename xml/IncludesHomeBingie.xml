@@ -137,7 +137,7 @@
 		<control type="grouplist">
 				<visible>!Skin.HasSetting(DisableSpotlightLabel)</visible>
 				<visible>!String.IsEmpty(Control.GetLabel(823100)) | !String.IsEmpty(Control.GetLabel(82300))</visible>
-				<animation effect="slide" end="0,130" tween="sine" easing="in" time="400" delay="0" condition="System.IdleTime(15) + !Skin.HasSetting(DisablePlotSlide)" reversible="false">Conditional</animation>
+				<animation effect="slide" end="0,95" tween="sine" easing="in" time="400" delay="0" condition="System.IdleTime(15) + !Skin.HasSetting(DisablePlotSlide)" reversible="false">Conditional</animation>
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
 				<height>55</height>
@@ -194,7 +194,7 @@
                         </animation>
 						<include>Default_Visible_Fade</include>
                         <bottom></bottom>
-						<height min="0" max="160">115</height>  <!-- Two Lines of Text to Match Netflix -->
+						<height min="0" max="160">auto</height>  <!-- Two Lines of Text to Match Netflix -->
                         <!-- <height min="0" max="115">115</height> -->
                         <width max="680">auto</width>
                         <align>left</align>
@@ -206,11 +206,10 @@
 			<control type="grouplist">
 				<visible>!Skin.HasSetting(DisableSpotlightLabel)</visible>
 				<visible>!String.IsEmpty(Control.GetLabel(31001)) + String.IsEmpty(Control.GetLabel(823100)) + String.IsEmpty(Control.GetLabel(82300))</visible>
-				<animation effect="slide" end="0,0" tween="sine" easing="in" time="400" delay="0" condition="System.IdleTime(15) + !Skin.HasSetting(DisablePlotSlide)" reversible="false">Conditional</animation>
+				<animation effect="slide" end="0,95" tween="sine" easing="in" time="400" delay="0" condition="System.IdleTime(15) + !Skin.HasSetting(DisablePlotSlide)" reversible="false">Conditional</animation>
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
-				<top>10</top>
-				<height>96</height>
+				<height>56</height>
 				<width>800</width>
 				<itemgap>15</itemgap>
 			<!-- Home Spotlight Director Colored Icon -->
@@ -219,8 +218,8 @@
 				<visible>!String.IsEmpty(Control.GetLabel(31001)) + String.IsEmpty(Control.GetLabel(823100)) + String.IsEmpty(Control.GetLabel(82300))</visible>
 				<posy>0</posy>
 				<left>1</left>
-                <height>70</height>
-                <width>70</width>
+                <height>56</height>
+                <width>56</width>
 				<aspectratio>keep</aspectratio>
                 <texture>bingie/director.png</texture>
 			</control>
@@ -230,17 +229,16 @@
 				<visible>!String.IsEmpty(Control.GetLabel(31001)) + String.IsEmpty(Control.GetLabel(823100)) + String.IsEmpty(Control.GetLabel(82300))</visible>
 				<posy>0</posy>
 				<left>1</left>
-                <height>70</height>
-                <width>70</width>
+                <height>56</height>
+                <width>56</width>
 				<aspectratio>keep</aspectratio>
                 <texture>bingie/director1.png</texture>
 			</control>
 			<!-- Home Spotlight Directed By Text -->
 			<control type="label" id="31001">
 			    <posy>4</posy>
-				<posx>8</posx>
 				<visible>!String.IsEmpty(Control.GetLabel(31001)) + String.IsEmpty(Control.GetLabel(823100)) + String.IsEmpty(Control.GetLabel(82300))</visible>
-				<font>bold32</font> 
+				<font>bold29</font> 
 				<textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor> 
 				<label>$INFO[ListItem.Director,Directed by ,,]</label>
 				<include>Default_Visible_Fade</include>
@@ -294,7 +292,7 @@
 			<animation effect="fade" time="150">Visible</animation>
 			<height>55</height>
 			<width>800</width>
-			<top>-10</top>
+			<top></top>
 			<aligny>center</aligny> 
 			<usecontrolcoords>true</usecontrolcoords>
 			<itemgap>15</itemgap>
@@ -322,7 +320,7 @@
 		</control>
 		<!-- Spotlight Text Label Top250 -->	
 		<control type="label" id="8231">
-            <visible>!$EXP[IsEpisodeDBType]</visible>
+            <visible></visible>
             <visible>!String.IsEmpty(Control.GetLabel(8231))</visible>
 			<font>bold29</font> 
             <textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor>
@@ -347,13 +345,13 @@
                         <visible>$EXP[IsEpisodeDBType]</visible>
                         <include>Default_Visible_Fade</include>
                         <orientation>vertical</orientation>
-                        <top>0</top>
+                        <top>10</top>
 						<height>200</height>
 						<width>650</width>
 						<itemgap>20</itemgap>
 						<usecontrolcoords>true</usecontrolcoords>
                         <!--"Next Episode in" label-->
-                        <control type="label">
+                        <!--control type="label">
                             <height>30</height>
                             <width>650</width>
                             <align>left</align>
@@ -362,13 +360,12 @@
                             <font>Reg36</font>
                          	<textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor>
                             <label>$VAR[BingieEpisodeInfoHeader]</label>
-                        </control>
+                        </control-->
    
 					<!--episode title/episode no. -->
                         <control type="textbox">
-						<visible>!Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + !Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]</visible>
-						<top>-10</top>
-						    <height min="0" max="70">auto</height> <!--set to auto for episode title, set to 40 for just episode.-->
+						<top></top>
+						    <height min="0" max="100">auto</height> <!--set to auto for episode title, set to 40 for just episode.-->
 		                    <width>650</width>
                             <align>left</align>
                             <aligny>center</aligny>
@@ -382,8 +379,6 @@
                         <control type="group">
                             <visible>Skin.HasSetting(MovieDetailsHome)</visible>
 							<visible>Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]</visible>
-                            <top>29</top>
-							<left>1</left>
 							<width>650</width>
                             <height>30</height>
                             <aligny>center</aligny>
@@ -397,11 +392,11 @@
                                 <info>ListItem.PercentPlayed</info>
                             </control>
                             <control type="label">
-                                <top>-11</top>
-                                <left>210</left>
+                                <top>-12</top>
+                                <left>200</left>
                                 <height>25</height>
                                 <width>450</width>
-                                <font>Reg26</font>
+                                <font>Reg22</font>
                                 <textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor>
                                 <label>$VAR[PercentRemained,,% $LOCALIZE[31059]]</label>
                             </control>
@@ -414,10 +409,10 @@
                         <include>Default_Visible_Fade</include>
                         <include condition="Skin.HasSetting(DisableBingieMoreDetails)">Alt_Bingie_Plot_Height</include>
 						<top></top>
-						<height min="30" max="121">auto</height>   <!--80 for 2 lines with the larger font-->
-                        <width max="820">auto</width>                   <!-- default - 620 - -->
-                        <align>left</align>                            <!-- default - justify - -->
-                        <font>Plots</font>
+						<height min="50" max="165">auto</height>   <!--80 for 2 lines with the larger font-->
+                        <width max="720">auto</width>                   <!-- default - 620 - -->
+                        <align>justify</align>                            <!-- default - justify - -->
+                        <font>Bold18</font>
 						<textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor>
                         <label>$VAR[BingiePlot]</label>
                     </control>
@@ -444,9 +439,9 @@
                     <param name="top" value="600" />
                 </include>
 				<include condition="!Skin.HasSetting(EnableFixedFocusWidgets)" content="top">
-                    <param name="top" value="611" />
+                    <param name="top" value="600" />
                 </include>
-                <top>571</top> <!--home widget height, affects spotlight widget in includesbingie.  Was 605 but didn't work for landscape, cutting off text-->
+                <top>611</top> <!--home widget height, affects spotlight widget in includesbingie.  Was 605 but didn't work for landscape, cutting off text-->
                 <include condition="Skin.HasSetting(EnableFixedFocusWidgets) + [Window.IsActive(Home) | [$EXP[IsBingieHubsActive] + Skin.HasSetting(LockHubWidgets)]]">Fixed_Focus_Bottom</include>
                 <bottom>0</bottom>
                 <include condition="Skin.HasSetting(EnableFixedFocusWidgets) + [Window.IsActive(Home) | [$EXP[IsBingieHubsActive] + Skin.HasSetting(LockHubWidgets)]]">Fixed_Focus_Itemgap</include>
