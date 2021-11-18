@@ -129,7 +129,7 @@
                         <width max="800">auto</width>
                         <align>left</align>
                         <font>Title2</font>
-                        <textcolor>ff00b8d4</textcolor>
+                        <textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor>
                         <shadowcolor>$INFO[Skin.String(ViewDetailsTextShadowColor)]</shadowcolor>
                         <label>[B]$VAR[BingieSpotlightTitle][/B]</label>
                     </control>
@@ -171,7 +171,6 @@
 				<visible>!String.IsEmpty(Control.GetLabel(823100))</visible>
 				<font>bold32</font> 
 				<textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor> 
-				<include>Default_Visible_Fade</include>
 				<label>$VAR[IMDBTop250RatingValue,#, on IMDB Today]</label>
 				<include>Default_Visible_Fade</include>
 			</control>
