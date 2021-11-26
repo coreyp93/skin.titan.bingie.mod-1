@@ -940,7 +940,6 @@
 			<bottom>0</bottom>
 			<height>290</height>
 			<control type="group">
-			<visible>[Window.IsActive(videoosd) | Player.ShowInfo | Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)] | Player.Forwarding | Player.Rewinding] + Window.IsActive(fullscreenvideo)</visible>
 <!-- Progress Bars  White Line Bottom Center-->
 				<control type="progress">
 					<visible>!VideoPlayer.HasEpg</visible>

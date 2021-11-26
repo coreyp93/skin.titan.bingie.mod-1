@@ -1513,15 +1513,15 @@
     </variable>
 
     <variable name="BingieEpisodeInfoHeader">
-        <value condition="!String.IsEmpty(ListItem.PercentPlayed) + !Integer.IsGreater(ListItem.PercentPlayed,1)] | [$EXP[IsMainMenuOpened] + !Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]">[CAPITALIZE]$LOCALIZE[31212][/CAPITALIZE]</value>
+        <value condition="[!String.IsEmpty(ListItem.PercentPlayed) + !Integer.IsGreater(ListItem.PercentPlayed,1)] | !Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]">[CAPITALIZE]$LOCALIZE[31212][/CAPITALIZE]</value>
         <value condition="!String.IsEmpty(ListItem.Season) | !String.IsEmpty(ListItem.Episode)">[CAPITALIZE]$INFO[ListItem.Season, $LOCALIZE[36904] ,]$INFO[ListItem.Episode, $LOCALIZE[36906] ,][/CAPITALIZE]</value>
         <value condition="$EXP[IsMainMenuOpened] + [!String.IsEmpty(Window(Home).Property(ListItem.Season)) | !String.IsEmpty(Window(Home).Property(ListItem.Episode))]">[CAPITALIZE]$INFO[Window(Home).Property(ListItem.Season), $LOCALIZE[36904] ,]$INFO[Window(Home).Property(ListItem.Episode), $LOCALIZE[36906] ,][/CAPITALIZE]</value>
     </variable>
 
     <variable name="BingieEpisodeInfoSubLabel">
-        <value condition="[!Skin.HasSetting(MovieDetailsHome) + !String.IsEmpty(ListItem.PercentPlayed) + !Integer.IsGreater(ListItem.PercentPlayed,1)] + Skin.HasSetting(MovieDetailsHome) + !String.IsEmpty(ListItem.Title)
+        <value condition="[!String.IsEmpty(ListItem.PercentPlayed) + !Integer.IsGreater(ListItem.PercentPlayed,1)] + !String.IsEmpty(ListItem.Title)
          + [!String.IsEmpty(ListItem.Season) | !String.IsEmpty(ListItem.Episode)]">[CAPITALIZE]$INFO[ListItem.Season,$LOCALIZE[36904] ,]$INFO[ListItem.Episode, $LOCALIZE[36906] ,][/CAPITALIZE][CR]$INFO[ListItem.Title]</value>
-        <value condition="[$EXP[IsMainMenuOpened] + !Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)] + !String.IsEmpty(Window(Home).Property(ListItem.Title)) + [!String.IsEmpty(Window(Home).Property(ListItem.Season)) | !String.IsEmpty(Window(Home).Property(ListItem.Episode))]">[CAPITALIZE]$INFO[Window(Home).Property(ListItem.Season),$LOCALIZE[36904] ,]$INFO[Window(Home).Property(ListItem.Episode), $LOCALIZE[36906] ,][/CAPITALIZE][CR]$INFO[Window(Home).Property(ListItem.Title)]</value>
+        <value condition="!Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)] + !String.IsEmpty(Window(Home).Property(ListItem.Title)) + [!String.IsEmpty(Window(Home).Property(ListItem.Season)) | !String.IsEmpty(Window(Home).Property(ListItem.Episode))]">[CAPITALIZE]$INFO[Window(Home).Property(ListItem.Season),$LOCALIZE[36904] ,]$INFO[Window(Home).Property(ListItem.Episode), $LOCALIZE[36906] ,][/CAPITALIZE][CR]$INFO[Window(Home).Property(ListItem.Title)]</value>
         <value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
         <value condition="$EXP[IsMainMenuOpened] + !String.IsEmpty(Window(Home).Property(ListItem.Title))">$INFO[Window(Home).Property(ListItem.Title)]</value>
         <value>[CAPITALIZE]$INFO[Window(Home).Property(ListItem.Label)][/CAPITALIZE]</value>
@@ -1686,7 +1686,7 @@
             <include content="posx" condition="!Skin.HasSetting(EnhancedHome_Circular)">
                 <param name="posx" value="-260" />
             </include>
-            <posx>-600</posx>
+            <posx>-500</posx>
             <posy>0</posy>
             <include condition="Skin.HasSetting(EnhancedHome_Circular)">Circular_Menu_Animations</include>
            	<include condition="!Skin.HasSetting(EnhancedHome_Circular) + !Skin.HasSetting(DisableStaticSlimMenu)">No_Circular_Menu_Animations</include>
@@ -1816,12 +1816,12 @@
                     <include content="Bingie_Menu_Current_Indicator" condition="!Skin.HasSetting(EnhancedHome_Circular)"> 
                          <param name="keepvisible" value="true" />
                          <param name="visibility" value="$EXP[IsMenuEntryActive] + !$EXP[IsMainMenuOpened]" />
-                         <param name="left" value="314" /> 
+                         <param name="left" value="294" /> 
                      </include> 
 					 <!--added to keep the red line stationary on sideblade menu instead of moving with focus-->
 						<include content="Bingie_Menu_Current_Indicator"> 
                         <param name="visibility" value="$EXP[IsMainMenuOpened] + $EXP[IsMenuEntryActive]" />
-						<param name="left" value="69" />
+						<param name="left" value="49" />
 						</include>
                     <include content="Bingie_Menu_Icon" condition="!Skin.HasSetting(DisableIconsMainMenu)">
                         <param name="includeAnimCond" value="true" />
@@ -1843,7 +1843,7 @@
                      <!--Red line under sideblade icons and slim menu-->
                     <include content="Bingie_Menu_Current_Indicator">
                         <param name="visibility" value="$EXP[IsMainMenuOpened] + $EXP[IsMenuEntryActive]" />
-						<param name="left" value="69" /> 
+						<param name="left" value="49" /> 
                     </include>
                     <!-- home behavior onfocus -->
                     <include>HiddenHomeMenuButton</include>
@@ -1853,12 +1853,12 @@
 					<include content="Bingie_Menu_Current_Indicator" condition="!Skin.HasSetting(EnhancedHome_Circular)">
                         <param name="keepvisible" value="false" />
                         <param name="visibility" value="$EXP[IsMenuEntryActive] + !$EXP[IsMainMenuOpened]" />
-                        <param name="left" value="314" />  
+                        <param name="left" value="294" />  
                     </include>
 					<include content="Bingie_Menu_Current_Indicator" condition="!Skin.HasSetting(EnhancedHome_Circular)">
                         <param name="keepvisible" value="false" />
                         <param name="visibility" value="$EXP[IsMenuEntryActive] + Control.HasFocus(40003)" />
-                        <param name="left" value="69" />  
+                        <param name="left" value="49" />  
                     </include>
                     <include content="Bingie_Menu_Icon" condition="!Skin.HasSetting(DisableIconsMainMenu)">
                         <param name="includeAnimCond" value="true" />
@@ -1911,7 +1911,7 @@
     <include name="SideBladeSubMenu">
         <!-- submenu -->
         <control type="group">
-            <posx>378</posx>
+            <posx>328</posx>
             <posy>260</posy>
             <animation type="Conditional" condition="Control.IsVisible(4444)">
                 <effect type="slide" start="-10" end="0" time="200" delay="0" tween="cubic" easing="inout"/>
@@ -1943,12 +1943,12 @@
 
             <!--Panel on Home (submenu Panel) -->
             <control type="list" id="4444">
-                <posx>110</posx>
-				<posy>72</posy>
+                <posx>120</posx>
+				<posy>15</posy>
                 <visible allowhiddenfocus="true">[String.IsEqual(Window(Home).Property(submenu),show) | Control.HasFocus(4444)] + Integer.IsGreater(Container(4445).NumItems,0)</visible>
                 <width>450</width>
-                <height>250</height>
-                <itemgap>3</itemgap>
+                <height min="150" max="450">auto</height>
+                <itemgap>2</itemgap>
                 <focusposition>0</focusposition>
                 <movement>3</movement>
                 <onleft>900</onleft>
@@ -2043,7 +2043,7 @@ Bingie Menu Icons -->
     <include name="Bingie_Menu_Icon">
         <control type="group">
             <include condition="$PARAM[includeAnimCond] + !Skin.HasSetting(EnhancedHome_Circular)">Bingie_Menu_Icon_Anim</include>
-            <left>69</left>
+            <left>49</left>
             <height>100%</height>
             <top>35</top>
             <control type="image">
@@ -2055,7 +2055,7 @@ Bingie Menu Icons -->
 	<include name="Bingie_Menu_IconFOCUS">
         <control type="group">
             <include condition="$PARAM[includeAnimCond] + !Skin.HasSetting(EnhancedHome_Circular)">Bingie_Menu_Icon_Anim</include>
-            <left>69</left>
+            <left>49</left>
             <height>100%</height>
             <top>35</top>
             <control type="image">
@@ -2809,7 +2809,7 @@ Bingie Menu Icons -->
                 <!-- spotlight row details -->
                 <control type="group">
 				<visible>!Container.Content(seasons)</visible>
-				 <visible>Skin.HasSetting(MovieDetailsHome) + !Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)] | !Skin.HasSetting(MovieDetailsHome)</visible>
+				 <visible>Skin.HasSetting(MovieDetailsHome) + !Integer.IsGreater(ListItem.PercentPlayed,1) + Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)] | !Skin.HasSetting(MovieDetailsHome)</visible>
                     <top>-7</top>
 					<width>1000</width>
                     <height>60</height>
@@ -2869,7 +2869,7 @@ Bingie Menu Icons -->
                 <width>820</width>
                 <font>bold29</font> 
                 <textcolor>ffffffff</textcolor> 
-                <label>$VAR[BingieSublabel]</label>
+                <label>$VAR[Bingie  ]</label>
                 <include>Default_Visible_Fade</include>
         </control> 
 	</control>
@@ -2897,14 +2897,13 @@ Bingie Menu Icons -->
                         </control>
 					<!--episode title/episode no. -->
                         <control type="textbox">
-						<visible>!Integer.IsGreater(ListItem.PercentPlayed,1) | [$EXP[IsMainMenuOpened] + !Integer.IsGreater(Window(Home).Property(ListItem.PercentPlayed),1)]</visible>
-						<top>-10</top>
 						    <height min="0" max="70">auto</height> <!--set to auto for episode title, set to 40 for just episode.-->
 		                    <width>650</width>
                             <align>left</align>
                             <aligny>center</aligny>
-                            <font>Reg26</font> 
+                            <font>Bold23</font> 
                             <textcolor>ffffffff</textcolor>
+                            <textcolor>$INFO[Skin.String(BingiePrimaryTextColor)]</textcolor>
                             <label>$VAR[BingieEpisodeInfoSubLabel]</label>
                         </control>
                     </control>
@@ -2984,7 +2983,7 @@ Bingie Menu Icons -->
 
                 <!-- additional info -->
                 <include content="Bingie_Additional_Info">
-                    <param name="visibility" value="!$EXP[IsTVShowInLastEpisodes] + !Skin.HasSetting(DisableBingieMoreDetailsInViews) + [Container.Content(movies) | Container.Content(tvshows)] | !Skin.HasSetting(DisableBingieMoreDetailsInViews) + Skin.HasSetting(DisableTop250) + [Container.Content(movies) | Container.Content(tvshows)]" />
+                    <param name="visibility" value="!Skin.HasSetting(DisableBingieMoreDetailsInViews) + [Container.Content(movies) | Container.Content(tvshows)] | !Skin.HasSetting(DisableBingieMoreDetailsInViews) + Skin.HasSetting(DisableTop250) + [Container.Content(movies) | Container.Content(tvshows)]" />
                 </include>
             </control>
 
